@@ -1,0 +1,41 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack",
+    "start": "node devServer.js",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tedpennings/site.git"
+  },
+  "author": "Ted Pennings",
+  "license": "MIT",
+  "homepage": "http://ted.pennin.gs",
+  "devDependencies": {
+    "babel-core": "^5.4.7",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.1.2",
+    "babel-plugin-react-transform": "^1.1.1",
+    "css-loader": "^0.18.0",
+    "eslint": "^1.3.1",
+    "eslint-plugin-react": "^3.5.0",
+    "express": "^4.13.3",
+    "node-sass": "^3.2.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.0",
+    "redbox-react": "^1.0.1",
+    "rimraf": "^2.4.3",
+    "sass-loader": "^2.0.1",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.9.6",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.0.0"
+  },
+  "dependencies": {
+    "react": "^0.13.0"
+  }
+}
