@@ -1,6 +1,54 @@
+@import "reset";
 @import "bourbon";
 @import "neat";
 
+$gray: #DCE0E3;
+$dark_blue: #74B4E2;
+$med_blue: #82BCE5;
+$light_blue: lighten(#AED6EE, 7%);
+$green: darken(#D4EF9F, 40%);
+$red: #DB4342;
+
+body {
+  background: $gray;
+}
+
 h1 {
-  color: black
+  font-size: modular-scale(5);
+}
+
+.container {
+  @include outer-container;
+}
+
+.photo {
+  @include span-columns(8);
+  img {
+    width: 90%;
+    height: auto;
+    border: $light_blue 5px solid;
+  }
+}
+
+.mainColumn {
+  @include span-columns(4);
+  background: $light_blue;
+  padding: 1em;
+
+  .linkArea {
+    margin-bottom: modular-scale(0.25);
+    li {
+      display: inline-block;
+      padding: 0px modular-scale(0.0);
+    }
+    a {
+      font-size: modular-scale(1);
+      text-decoration: none;
+      color: $green;
+    }
+    a:hover {
+      color: $red;
+      transition: all 0.3s ease;
+    }
+  }
 }
