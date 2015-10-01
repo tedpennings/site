@@ -17,38 +17,49 @@ h1 {
   font-size: modular-scale(5);
 }
 
+p {
+  font-size: modular-scale(0);
+  line-height: modular-scale(1);
+  margin-bottom: modular-scale(1);
+}
+
 .container {
   @include outer-container;
 }
 
-.photo {
+.leftColumn {
   @include span-columns(8);
-  img {
-    width: 90%;
-    height: auto;
-    border: $light_blue 5px solid;
-  }
 }
 
 .mainColumn {
   @include span-columns(4);
+}
+
+.mainColumnContent {
   background: $light_blue;
   padding: 1em;
+  margin: 1em 0em;
+}
 
-  .linkArea {
-    margin-bottom: modular-scale(0.25);
-    li {
-      display: inline-block;
-      padding: 0px modular-scale(0.0);
-    }
-    a {
-      font-size: modular-scale(1);
-      text-decoration: none;
-      color: $green;
-    }
-    a:hover {
-      color: $red;
-      transition: all 0.3s ease;
-    }
+.photo img {
+  width: 90%;
+  height: auto;
+  border: $light_blue 5px solid;
+}
+
+.linkArea {
+  margin-bottom: modular-scale(0.25);
+  li {
+    display: inline-block;
+    padding: 0px modular-scale(0);
+  }
+  a {
+    font-size: modular-scale(1);
+    text-decoration: none;
+    color: $green;
+  }
+  a:hover {
+    color: $red;
+    transition: all 0.3s ease;
   }
 }
