@@ -1,6 +1,5 @@
 @import "reset";
-@import "bourbon";
-@import "neat";
+@import "~susy/sass/susy";
 
 $gray: #DCE0E3;
 $dark_blue: #74B4E2;
@@ -14,6 +13,7 @@ body {
 }
 
 h1 {
+  // TODO fix modular-scale
   font-size: modular-scale(5);
 }
 
@@ -24,15 +24,15 @@ p {
 }
 
 .container {
-  @include outer-container;
+  // TODO @include outer-container;
 }
 
 .leftColumn {
-  @include span-columns(8);
+  // TODO @include span-columns(8);
 }
 
 .mainColumn {
-  @include span-columns(4);
+  // TODO @include span-columns(4);
 }
 
 .mainColumnContent {

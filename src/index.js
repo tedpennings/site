@@ -1,6 +1,7 @@
 require('../sass/main.scss')
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { Router, Route, Redirect, IndexRoute } from 'react-router'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 
@@ -18,4 +19,4 @@ const router = (
     <Redirect from='*' to='/' />
   </Router>)
 
-React.render(router, document.body)
+ReactDOM.render(router, document.body)
