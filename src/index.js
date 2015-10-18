@@ -1,5 +1,8 @@
 require('../sass/main.scss')
 
+require('babel/polyfill')
+require('es6-shim')
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Redirect, IndexRoute } from 'react-router'
@@ -19,4 +22,4 @@ const router = (
     <Redirect from='*' to='/' />
   </Router>)
 
-ReactDOM.render(router, document.body)
+ReactDOM.render(router, document.querySelector('#container'))
