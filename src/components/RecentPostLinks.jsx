@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
-import Markdown from 'react-remarkable'
 import { recentPosts } from '../DataService'
+import Loading from './Loading'
 
 export default class RecentPostLinks extends React.Component {
 
@@ -33,7 +33,7 @@ export default class RecentPostLinks extends React.Component {
     const loaded = posts && posts.size
     return (
       <div className='recentPostLinks mainColumnContent'>
-        {!loaded && <p className='loading'>Loading posts...</p>}
+        {!loaded && <Loading />}
         {loaded && this.renderPosts(posts)}
       </div>
     )

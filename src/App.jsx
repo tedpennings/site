@@ -15,7 +15,9 @@ export default class App extends React.Component {
   render () {
     return (
       <div className='container'>
-        <h1><Link to='/'>Ted Pennings</Link></h1>
+        <header>
+          <h1><Link to='/'>Ted Pennings</Link></h1>
+        </header>
         <div className='leftColumn'>
           {this.props.children.leftColumn}
         </div>

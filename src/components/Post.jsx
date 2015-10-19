@@ -1,6 +1,7 @@
 import React from 'react'
 import Markdown from 'react-remarkable'
 import { fetchPost } from '../DataService'
+import Loading from './Loading'
 
 export default class MainColumn extends React.Component {
 
@@ -28,15 +29,19 @@ export default class MainColumn extends React.Component {
   render () {
     const { post } = this.state
     if (!Object.keys(post).length) {
-      return (<div><p>Loading...</p></div>)
+      return (
+        <section className='post'>
+          <Loading />
+        </section>
+      )
     }
     const date = new Date(post.get('date'))
     return (
-      <div className='post'>
+      <section className='post'>
         <h3>{post.get('title')}</h3>
-        <p className='date'>{date.toLocaleString()}</p>
+        <p className='date'>{date.toLocaleDateString()}</p>
         <Markdown source={post.get('body')} />
-      </div>
+      </section>
     )
   }
 }
