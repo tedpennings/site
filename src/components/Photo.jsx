@@ -1,10 +1,11 @@
 import React from 'react'
+var photo = require('file?name=me-[hash].jpg!../../public/me.jpg')
 
 export default class Photo extends React.Component {
   render () {
     return (
       <div className='photo'>
-        <img src='//s3-us-west-2.amazonaws.com/static.ted.pennin.gs/me.jpg' />
+        <img src={photo} />
       </div>
     )
   }

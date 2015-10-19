@@ -22,4 +22,9 @@ const router = (
     <Redirect from='*' to='/' />
   </Router>)
 
-ReactDOM.render(router, document.querySelector('#container'))
+window.addEventListener('load', (e) => {
+  var container = document.createElement('div')
+  container.id = 'container'
+  document.body.appendChild(container)
+  ReactDOM.render(router, container)
+})

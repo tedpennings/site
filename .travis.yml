@@ -1,6 +1,15 @@
 language: node_js
 node_js:
-  - "4.2"
-
+- '4.2'
 script:
-  - npm run build
+- npm run build
+deploy:
+  provider: s3
+  access_key_id: AKIAJGZZOVQEJL67VO6Q
+  secret_access_key:
+    secure: E10XPWzdSMhnf9h/vsK9hQaKK+EyLLr+F9yCZkKPAs8g+nAb79ex1Cumw3Zi5iloR8vguCrmn38HWT/ispae9r2TuVN1yIwMhJyTKAivLVT+ZNlDrQy+AEWue0bFKoo6lLD4Q2y/FVf+tCr3uY3V7IgUgAUDMuqokZF3ROCmobrO5ukSVl7/gwHLKRlmcP0Xs2H+7f5dG943s0LxhMPd/6u2B1wWJPmG093RC/IrLEN4mQfMsSohiv5rcJzPexJrQaDlWwJX9WTPY0TjaYcZhVVvESnUeL1njVqZ5oc6KPcnqRsy16XO8TpPUASdDjMfrK51/RgAvhZMg6TWzOO747Hpldul//kbkRwZnzQUkmZEYUFWtsbSQZeM7IbsOVemEMFajd3b5yNBd8CVYr7mwBA+mOMAc/LyEQuoandCck+qQVM1OOuir5VHL+Rb0Ib5QNa+JhqAFCP/Ayx5gALg9WZMj99oiYvyQGUBhW5UP2Xekzd0pNbhl8YgSAdQbpT0Cwq7lrWMnobPbvQ7AzxD3Bn0+TlKoDl23boZB7AtwQd8uS6uBjs+crRAGp1TCSZzPKTuNI6l2H+wJYQ37OeOnnpE+klJuJKUzQxlv/BDxFoFiaoDqNbjpLXUchejAUPnRdOlRbwag/yIXdPdktsUogYTEkv35SXfsqUmTFDzICU=
+  bucket: static.ted.pennin.gs
+  local-dir: dist
+  acl: public_read
+  on:
+    repo: tedpennings/site

@@ -1,11 +1,12 @@
 import React from 'react'
+var loadingBars = require('file?name=loading-bars-[hash].svg!../../public/loading-bars.svg')
 
 export default class RecentPostLinks extends React.Component {
 
   render () {
     return (
       <p className='loading'>
-        <img src='//s3-us-west-2.amazonaws.com/static.ted.pennin.gs/loading-bars.svg' />
+        <img src={loadingBars} />
       </p>
     )
   }

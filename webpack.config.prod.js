@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   devtool: 'cheap-source-map',
@@ -9,7 +10,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -22,6 +23,11 @@ module.exports = {
       compressor: {
         warnings: false
       }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Ted Pennings',
+      inject: true,
+      hash: true
     })
   ],
   module: {
