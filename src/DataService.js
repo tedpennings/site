@@ -1,7 +1,8 @@
 import Firebase from 'firebase'
 import Immutable from 'immutable'
 
-const posts = new Firebase('https://crackling-inferno-5250.firebaseio.com/posts')
+const root = new Firebase('https://crackling-inferno-5250.firebaseio.com')
+const posts = root.child('posts')
 
 const valWithKey = (snapshot) => { return { ... snapshot.val(), key: snapshot.key() } }
 
@@ -39,7 +40,7 @@ export function loginWithGoogle () {
       if (error) {
         reject(error)
       } else {
-        testWrite()
+        testWrite(authData)
           .then(() => resolve(authData))
           .catch((writeError) => reject(writeError))
       }
@@ -47,9 +48,10 @@ export function loginWithGoogle () {
   })
 }
 
-const testWrite = () => {
+const testWrite = (authData) => {
+  const loginData = {...authData, date: Date.now()}
   return new Promise((resolve, reject) => {
-    posts.child('canLogin').set('yep!', error => {
+    root.child('logins').push(loginData, error => {
       if (error) {
         reject(error)
       } else {
