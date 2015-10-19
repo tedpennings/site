@@ -17,6 +17,7 @@ const router = (
   <Router history={history}>
     <Route path='/' component={App}>
       <IndexRoute components={{ leftColumn: Photo, mainColumn: BioWithRecentPostLinks }} />
+      <Redirect path='entry/:key' to='post/:key' />
       <Route path='post/:key' components={{ leftColumn: Post, mainColumn: BioWithRecentPostLinks }}/>
     </Route>
     <Redirect from='*' to='/' />
