@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchPost, loginWithGoogle, savePost } from './DataService'
+import { fetchPost, loginWithGoogle, savePost, deletePost } from './DataService'
 import Loading from './components/Loading'
 import Post from './components/Post'
 
@@ -74,6 +74,14 @@ export default class Editor extends React.Component {
       .catch(error => { alert('error!'); console.log(error) })
   }
 
+  deletePost = () => {
+    if (confirm('Are you sure?')) {
+      const key = this.props.params.key
+      deletePost(key)
+        .then(() => alert('deleted!'))
+        .catch(error => { alert('error!'); console.log(error) })
+    }
+  }
 
   render () {
     if (this.state.login.authenticated === null) return this.renderLogin()
@@ -85,6 +93,7 @@ export default class Editor extends React.Component {
           <input type='text' value={this.state.post.get('date')} onChange={this.updateField('date')} />
           <textarea type='text' value={this.state.post.get('body')} onChange={this.updateField('body')} />
           <button onClick={this.submitPost}>Save!</button>
+          <button onClick={this.deletePost}>Delete</button>
         </div>
         <div className='formatted'>
           <Post post={this.state.post} />

@@ -70,3 +70,15 @@ export function savePost (key, postAsImmutable) {
     })
   })
 }
+
+export function deletePost (key) {
+  return new Promise((resolve, reject) => {
+    posts.child(key).remove(error => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
