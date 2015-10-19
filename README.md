@@ -1,7 +1,9 @@
 Ted Pennings
 =====================
 
-This is the code for my website. It is *UNDER CONSTRUCTION* and hopefully launching soon.
+[![Build Status](https://travis-ci.org/tedpennings/site.svg)](https://travis-ci.org/tedpennings/site)
+
+This is the code for my website. It deploys itself on each commit. The content is stored in Firebase.
 
 ## Developing locally
 * Clone the repo and `cd` into it
