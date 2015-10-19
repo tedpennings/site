@@ -33,7 +33,16 @@ export default class Editor extends React.Component {
   }
 
   loadPost = (key = this.props.params.key) => {
-    fetchPost(key).then(post => this.setState({post: post}))
+    fetchPost(key)
+      .then(post => {
+        // firebase doesn't have a 404
+        if (!post.get('title')) {
+          // TODO redirect to nice 404 page
+          this.context.history.pushState({}, '/')
+          return
+        }
+        this.setState({post})
+      })
   }
 
   loggedIn = () => {
@@ -70,7 +79,7 @@ export default class Editor extends React.Component {
     const key = this.props.params.key
     const post = this.state.post
     savePost(key, post)
-      .then(() => alert('saved!'))
+      .then(() => { alert('saved!'); this.loadPost() })
       .catch(error => { alert('error!'); console.log(error) })
   }
 

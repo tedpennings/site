@@ -6,12 +6,16 @@ import Post from './Post'
 
 export default class PostWrapper extends React.Component {
 
+  static contextTypes = {
+    history: React.PropTypes.object
+  }
+
   constructor (props) {
     super(props)
     this.state = { post: {} }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.loadPost()
   }
 
@@ -24,7 +28,16 @@ export default class PostWrapper extends React.Component {
   }
 
   loadPost = (key = this.props.params.key) => {
-    fetchPost(key).then(post => this.setState({post}))
+    fetchPost(key)
+      .then(post => {
+        // firebase doesn't have a 404
+        if (!post.get('title')) {
+          // TODO redirect to nice 404 page
+          this.context.history.pushState({}, '/')
+          return
+        }
+        this.setState({post})
+      })
   }
 
   render () {
