@@ -40,7 +40,7 @@ export default class MainColumn extends React.Component {
       <section className='post'>
         <h3>{post.get('title')}</h3>
         <p className='date'>{date.toLocaleDateString()}</p>
-        <Markdown source={post.get('body')} />
+        <Markdown source={post.get('body')} container='div' options={{html:true}}/>
       </section>
     )
   }

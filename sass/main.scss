@@ -113,4 +113,11 @@ a:hover {
       height: auto;
     }
   }
+  ul, ol {
+    margin: ms(0) 0 ms(0) ms(1);
+  }
+  li {
+    list-style-type: circle;
+    margin-left: ms(1);
+  }
 }
