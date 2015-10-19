@@ -19,7 +19,7 @@ export function recentPosts (count = 3) {
     const fetchedPosts = []
     const fetchProcessor = (snapshot) => {
       const val = valWithKey(snapshot)
-      fetchedPosts.push(val)
+      fetchedPosts.unshift(val)
       if (fetchedPosts.length === count) {
         resolve(Immutable.fromJS(fetchedPosts))
         posts.off('child_added', fetchProcessor)
