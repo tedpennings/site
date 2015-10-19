@@ -1,0 +1,29 @@
+.editor {
+  @include container;
+  padding: ms(1);
+
+  .raw {
+    @include span(6);
+    input, textarea {
+      width: 100%;
+      margin-bottom: ms(1);
+    }
+
+    input.title {
+      font-size: ms(5);
+      margin: 0;
+    }
+
+    textarea {
+      height: ms(15);
+    }
+
+    button {
+      font-size: ms(3);
+    }
+  }
+
+  .formatted {
+    @include span(6 last);
+  }
+}

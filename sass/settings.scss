@@ -1,0 +1,17 @@
+$susy: (
+  columns: 12,
+  gutters: .25,
+  container: 960px
+);
+
+$ms-base: 1em;
+$ms-ratio: 1.25;
+
+
+$gray: #DCE0E3;
+$dark_blue: #74B4E2;
+$med_blue: #82BCE5;
+$light_blue: lighten(#AED6EE, 7%);
+$green: darken(#D4EF9F, 40%);
+$red: #DB4342;
+$body_color: lighten(black, 25%);

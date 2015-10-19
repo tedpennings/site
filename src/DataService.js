@@ -32,3 +32,41 @@ export function recentPosts (count = 3) {
   })
 
 }
+
+export function loginWithGoogle () {
+  return new Promise((resolve, reject) => {
+    posts.authWithOAuthPopup("google", (error, authData) => {
+      if (error) {
+        reject(error)
+      } else {
+        testWrite()
+          .then(() => resolve(authData))
+          .catch((writeError) => reject(writeError))
+      }
+    })
+  })
+}
+
+const testWrite = () => {
+  return new Promise((resolve, reject) => {
+    posts.child('canLogin').set('yep!', error => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
+export function savePost (key, postAsImmutable) {
+  return new Promise((resolve, reject) => {
+    posts.child(key).set(postAsImmutable.toJS(), error => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}

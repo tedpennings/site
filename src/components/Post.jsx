@@ -3,31 +3,13 @@ import Markdown from 'react-remarkable'
 import { fetchPost } from '../DataService'
 import Loading from './Loading'
 
-export default class MainColumn extends React.Component {
-
-  constructor (props) {
-    super(props)
-    this.state = { post: {} }
-  }
-
-  componentWillMount() {
-    this.loadPost()
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    // ick. state.
-    if (nextProps.params.key !== this.props.params.key) {
-      this.setState({ post: {} })
-      this.loadPost(nextProps.params.key)
-    }
-  }
-
-  loadPost = (key = this.props.params.key) => {
-    fetchPost(key).then(post => this.setState({post}))
+export default class Post extends React.Component {
+  static propTypes = {
+    post: React.PropTypes.object,
   }
 
   render () {
-    const { post } = this.state
+    const { post } = this.props
     if (!Object.keys(post).length) {
       return (
         <section className='post'>
