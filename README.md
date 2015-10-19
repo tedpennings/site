@@ -11,4 +11,8 @@ This is the code for my website. It deploys itself on each commit. The content i
 * `npm start` and go to the URL provided.
 
 ## Deployments
-* TBD! Likely a travis-ci build pushing to GitHub pages or an S3 bucket.
+Webpack does all the heavy lifting.
+
+Inside `/dist`, webpack bundles my JS into a single `bundle.js`. The static assets are included using [webpack-file-loader](https://github.com/webpack/file-loader), and [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin) generates a spartan `index.html` that links to the `bundle.js` with a random hash for cache-busting.
+
+For the actual config, see [webpack.config.prod.js](webpack.config.prod.js) 
