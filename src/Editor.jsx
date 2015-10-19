@@ -34,15 +34,7 @@ export default class Editor extends React.Component {
 
   loadPost = (key = this.props.params.key) => {
     fetchPost(key)
-      .then(post => {
-        // firebase doesn't have a 404
-        if (!post.get('title')) {
-          // TODO redirect to nice 404 page
-          this.context.history.pushState({}, '/')
-          return
-        }
-        this.setState({post})
-      })
+      .then(post => this.setState({post: post}))
   }
 
   loggedIn = () => {
