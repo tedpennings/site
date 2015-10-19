@@ -1,0 +1,37 @@
+.post {
+  background: $light_blue;
+  border: 1px solid #ccc;
+  padding: ms(0);
+
+  h3 {
+    font-size: ms(5);
+    color: $med_blue;
+  }
+  p.date {
+    font-size: ms(-1);
+  }
+  .loading {
+    text-align: center;
+    img {
+      margin: ms(5) 0;
+      width: ms(6);
+      height: auto;
+    }
+  }
+  img {
+    width: 100%;
+    height: autp;
+  }
+  ul, ol {
+    margin: ms(0) 0 ms(0) ms(1);
+  }
+  li {
+    margin-left: ms(1);
+  }
+  ul li {
+    list-style-type: circle;
+  }
+  ol li {
+    list-style-type: decimal;
+  }
+}
