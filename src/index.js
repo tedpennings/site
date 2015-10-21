@@ -1,4 +1,5 @@
 require('../sass/main.scss')
+require('file?name=favicon.ico!../public/favicon.ico')
 
 require('babel/polyfill')
 require('es6-shim')
