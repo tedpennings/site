@@ -24,6 +24,17 @@
     }
   }
 
+  .date_input {
+    display: flex;
+    input {
+      margin-bottom: 0;
+    }
+    button {
+      font-size: ms(-1);
+      margin: 0;
+    }
+  }
+
   .formatted {
     @include span(6 last);
   }

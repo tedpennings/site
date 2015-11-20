@@ -34,7 +34,7 @@ export default class Editor extends React.Component {
 
   loadPost = (key = this.props.params.key) => {
     fetchPost(key)
-      .then(post => this.setState({post: post}))
+      .then(post => this.setState({ post }))
   }
 
   loggedIn = () => {
@@ -63,8 +63,13 @@ export default class Editor extends React.Component {
       const { value } = event.target
       const newValue = (field === 'date') ? parseInt(value) : value
       let updatedPost = this.state.post.set(field, newValue)
-      this.setState({post: updatedPost})
+      this.setState({ post: updatedPost })
     }
+  }
+
+  updateDateToNow = (event) => {
+    const updatedPost = this.state.post.set('date', Date.now())
+    this.setState({ post: updatedPost })
   }
 
   submitPost = () => {
@@ -91,7 +96,10 @@ export default class Editor extends React.Component {
       <div className='editor'>
         <div className='raw'>
           <input type='text' className='title' value={this.state.post.get('title')} onChange={this.updateField('title')} />
-          <input type='text' value={this.state.post.get('date')} onChange={this.updateField('date')} />
+          <div className='date_input'>
+            <input type='text' value={this.state.post.get('date')} onChange={this.updateField('date')} />
+            <button onClick={this.updateDateToNow}>Now!</button>
+          </div>
           <textarea type='text' value={this.state.post.get('body')} onChange={this.updateField('body')} />
           <button onClick={this.submitPost}>Save!</button>
           <button onClick={this.deletePost}>Delete</button>
