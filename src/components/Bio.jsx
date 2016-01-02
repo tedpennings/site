@@ -5,8 +5,7 @@ export default class MainColumn extends React.Component {
     return (
       <section className='bio mainColumnContent'>
         <p>
-          Ted lives in Portland, Oregon with his wife <a href='http://star-shaped.org'>
-          Aubrey</a> and three cats.</p>
+          Ted lives in Portland, Oregon with three cats.</p>
         <p>
           By day, he works at <a href='http://www.newrelic.com'>New Relic</a> as
           a software engineer. By night he eats all the delicious vegan food and
