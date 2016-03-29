@@ -1,14 +1,11 @@
 import React from 'react'
-var loadingBars = require('file?name=loading-bars-[hash].svg!../../public/loading-bars.svg')
 
-export default class RecentPostLinks extends React.Component {
+const loadingBars = require('file?name=loading-bars-[hash].svg!../../public/loading-bars.svg')
 
-  render () {
-    return (
-      <p className='loading'>
-        <img src={loadingBars} />
-      </p>
-    )
-  }
-
+export default function () {
+  return (
+    <p className='loading'>
+      <img src={loadingBars} />
+    </p>
+  )
 }
