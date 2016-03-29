@@ -1,15 +1,12 @@
 import React from 'react'
-import { Router, Route, Redirect, IndexRoute } from 'react-router'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
+import { Router, Route, Redirect, IndexRoute, browserHistory } from 'react-router'
 
 import App from './App'
 import Editor from './Editor'
 import { BioWithRecentPostLinks, Photo, PostWrapper } from './components'
 
-const history = createBrowserHistory()
-
 const Routes = (
-  <Router history={history}>
+  <Router history={browserHistory}>
     <Route path='/' component={App}>
       <IndexRoute components={{ leftColumn: Photo, mainColumn: BioWithRecentPostLinks }} />
       <Redirect path='entry/:key' to='post/:key' />
