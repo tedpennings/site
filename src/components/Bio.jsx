@@ -7,7 +7,7 @@ export default function () {
         Ted lives in Portland, Oregon with three cats. 🐈🐈🐈
       </p>
       <p>
-        By day, he works at <a href='http://www.newrelic.com'>New Relic</a> as
+        By day, he works at <a href='http://www.invisionapp.com'>InVision</a> as
         a software engineer. By night he enjoys all the delicious vegan food and
         beer in the Rose City.
       </p>
