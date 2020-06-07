@@ -1,6 +1,6 @@
 import React from 'react'
 
-const photo = require('file?name=me-[hash].jpg!../../public/me.jpg')
+const photo = require('file?name=me-2020-[hash].jpg!../../public/me-2020.jpg')
 
 export default function () {
   return (
