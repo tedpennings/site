@@ -7,9 +7,21 @@ defaults: &defaults
 commands:
   build_assets:
     steps:
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn
       - run:
           name: Build assets
-          command: yarn && yarn build
+          command: yarn build
+  cache_dependencies:
+    steps:
+      - save_cache:
+          key: v1-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
 
 jobs:
   build:
@@ -17,6 +29,7 @@ jobs:
     steps:
       - checkout
       - build_assets
+      - cache_dependencies
 
   deploy:
     <<: *defaults
