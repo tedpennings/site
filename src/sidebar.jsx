@@ -19,7 +19,13 @@ export default function Sidebar() {
     <Box className={classes.sidebar}>
       <img className={classes.photo} src="me-2020.jpg" alt="Ted Pennings" />
       <Typography variant="h4">About Ted</Typography>
-      <Typography>Ted is here on this page.</Typography>
+      <Typography variant="body1">
+        Ted lives in Portland, Oregon with his partner Jen. Ted works at
+        InVision as a software engineer.
+      </Typography>
+      <Typography variant="body2">
+        Ted enjoys gardening and eating desserts.
+      </Typography>
     </Box>
   );
 }

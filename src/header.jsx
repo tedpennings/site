@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Typography } from "@material-ui/core";
 
-// Constants for Noboto font
+// Constants for Noboto Flex font; see theme.js
 const MIN_WEIGHT = 54;
-const MAX_WIDTH = 322;
+const MAX_WEIGHT = 322;
 
 const MIN_ASCENDERS = 456; // Descenders too
 const MAX_ASCENDERS = 1000;
@@ -12,7 +12,7 @@ const MIN_DIACRITICS = -100;
 const MAX_DIACRITICS = 100;
 
 const interpolateFontWeight = (scaledInput) =>
-  Math.min(MAX_WIDTH, Math.max(MAX_WIDTH * scaledInput, MIN_WEIGHT));
+  Math.min(MAX_WEIGHT, Math.max(MAX_WEIGHT * scaledInput, MIN_WEIGHT));
 
 const interpolateAscenders = (scaledInput) =>
   Math.min(MAX_ASCENDERS, Math.max(MAX_ASCENDERS * scaledInput, MIN_ASCENDERS));
@@ -24,11 +24,24 @@ const interpolateDiacritics = (scaledInput) =>
   );
 
 export default function Header() {
-  const [position, setPosition] = useState();
+  const [position, setPosition] = useState(0);
   const [geometry, setGeometry] = useState();
 
+  useEffect(() => {
+    let frame = 0; // 0.0 -> 1.00
+    const animate = () => {
+      if (frame < 120) {
+        const value = 0.01 * (frame < 100 ? frame : frame - (frame - 100) * 2);
+        setPosition(value);
+        frame++;
+        window.requestAnimationFrame(animate);
+      }
+    };
+    window.requestAnimationFrame(animate);
+  }, []);
+
   function determineGeometry(e) {
-    // the text element is display: inline so we can't use an
+    // The text element is display:inline so we can't use an
     // observer on it. Instead we'll record it on first hover.
     if (geometry) {
       return geometry;
@@ -42,8 +55,9 @@ export default function Header() {
   }
 
   function trackMouse(e) {
-    const { textOffsetX, textWidth } = determineGeometry(e);
     const mouseX = e.clientX;
+
+    const { textOffsetX, textWidth } = determineGeometry(e);
 
     const scaledMouseX = mouseX - textOffsetX;
 
@@ -58,13 +72,10 @@ export default function Header() {
     setGeometry();
   }
 
-  const fontVariationSettings = !position
-    ? ""
-    : `'wght' ${interpolateFontWeight(position)}, 'ASCE' ${interpolateAscenders(
-        position
-      )}, 'DESC' ${interpolateAscenders(
-        position
-      )}, 'DIAC' ${interpolateDiacritics(position)}`;
+  const fontVariationSettings = `'wght' ${interpolateFontWeight(position)},
+       'ASCE' ${interpolateAscenders(position)},
+       'DESC' ${interpolateAscenders(position)},
+       'DIAC' ${interpolateDiacritics(position)}`;
 
   // TODO link to /
   return (
@@ -76,8 +87,6 @@ export default function Header() {
         component="div"
         color="primary"
         style={{
-          // Use CSS variable font because normal font weights are set with stops
-          // This will be ignored by browsers that don't support variable fonts.
           fontVariationSettings,
         }}
         variant="h1"

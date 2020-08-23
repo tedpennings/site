@@ -5,13 +5,13 @@ export default function Main() {
   return (
     <Box>
       <Box component="section">
-        <Typography>Section</Typography>
+        <Typography variant="h3">Section</Typography>
       </Box>
       <Box component="section">
-        <Typography>Section</Typography>
+        <Typography variant="h3">Section</Typography>
       </Box>
       <Box component="section">
-        <Typography>Section</Typography>
+        <Typography variant="h3">Section</Typography>
       </Box>
     </Box>
   );
