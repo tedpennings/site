@@ -5,20 +5,21 @@ defaults: &defaults
     - image: circleci/node:12
 
 build_assets: &build_assets
-  name: Build assets
-  command: yarn && yarn build
+  - run:
+    name: Build assets
+    command: yarn && yarn build
 
 jobs:
   build:
     <<: *defaults
     steps:
       - checkout
-      - run: &build_assets
+      <<: *build_assets
 
   deploy:
     <<: *defaults
     steps:
-      - run: &build_assets
+      <<: *build_assets
       - aws-s3/sync:
           arguments: |
             --acl public-read \
