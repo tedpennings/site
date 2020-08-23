@@ -38,7 +38,7 @@ const theme = createMuiTheme({
   // https://coolors.co/ff5154-424b54-ffe75c-90fcf9-fcf7ff-51e181-ff70a6-d6ff79
   palette: {
     background: {
-      default: "#fcf7ff",
+      default: "white",
     },
     primary: {
       main: "#ff70a6",
