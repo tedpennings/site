@@ -33,6 +33,33 @@ const theme = createMuiTheme({
     caption: { ...regular },
     overline: { ...regular },
   },
+  palette: {
+    background: {
+      default: "#FCF7FF",
+    },
+    primary: {
+      main: "#FF70A6",
+    },
+    secondary: {
+      main: "#D6FF79",
+    },
+    success: {
+      main: "#f00", // TODO
+    },
+    error: {
+      main: "#FF5154",
+    },
+    warning: {
+      main: "#f00", // TODO
+    },
+    info: {
+      main: "#90FCFF9",
+    },
+    text: {
+      primary: "#393424",
+      secondary: "#4B452F",
+    },
+  },
   overrides: {
     MuiTypography: {
       root: {
@@ -41,5 +68,6 @@ const theme = createMuiTheme({
     },
   },
 });
+console.log(theme);
 
 export default responsiveFontSizes(theme);
