@@ -7,14 +7,20 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Build assets
           command: yarn && yarn build
+      - save_cache:
+          key: assets-{{ .BuildNum }}
+          paths:
+            - build
+
   deploy:
     docker:
       - image: circleci/node:12
     steps:
-      - checkout
-      - run:
-          command: yarn && yarn build
+      - restore_cache:
+          keys:
+            - assets-{{ .BuildNum }}
       - aws-s3/sync:
           arguments: |
             --acl public-read \
