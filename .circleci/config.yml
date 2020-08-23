@@ -34,9 +34,7 @@ workflows:
           filters:
             branches:
               ignore: main
-      - deploy:
-          requires:
-            - build
+      - deploy
           filters:
             branches:
               only: main
