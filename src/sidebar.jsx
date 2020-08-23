@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   photo: {
     width: "100%",
     marginBottom: theme.spacing(1),
+    border: `1px solid ${theme.palette.text.secondary}`,
   },
   heading: {
     marginBottom: theme.spacing(1),
