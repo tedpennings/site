@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@material-ui/core";
+import { Box, Link, Typography } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginBottom: theme.spacing(1),
   },
+  heading: {
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 export default function Sidebar() {
@@ -18,13 +21,22 @@ export default function Sidebar() {
   return (
     <Box className={classes.sidebar}>
       <img className={classes.photo} src="me-2020.jpg" alt="Ted Pennings" />
-      <Typography variant="h4">About Ted</Typography>
-      <Typography variant="body1">
-        Ted lives in Portland, Oregon with his partner Jen. Ted works at
-        InVision as a software engineer.
+      <Typography className={classes.heading} variant="h4">
+        About Ted
       </Typography>
-      <Typography variant="body2">
-        Ted enjoys gardening and eating desserts.
+      <Typography variant="subtitle1">
+        Ted lives in Portland, Oregon with his partner Jen. Ted works at{" "}
+        <Link href="https://lightstep.com">Lightstep</Link> as a software
+        engineer.
+      </Typography>
+      <Typography variant="body1">
+        Ted enjoys gardening and eating vegan desserts.
+      </Typography>
+      <Typography variant="body1">
+        Ted and Jen had a son named Pablo who passed away in November 2017{" "}
+        <span role="img" aria-label="broken heart">
+          💔
+        </span>
       </Typography>
     </Box>
   );

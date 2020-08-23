@@ -33,6 +33,13 @@ const theme = createMuiTheme({
     caption: { ...regular },
     overline: { ...regular },
   },
+  overrides: {
+    MuiTypography: {
+      root: {
+        marginBottom: "0.75rem",
+      },
+    },
+  },
 });
 
 export default theme;
