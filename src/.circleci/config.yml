@@ -12,6 +12,12 @@ jobs:
           from: buil
           overwrite: true
           to: "s3://ted.pennin.gs"
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+
 orbs:
   aws-s3: circleci/aws-s3@x.y
 
