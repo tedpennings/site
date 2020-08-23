@@ -4,22 +4,24 @@ defaults: &defaults
   docker:
     - image: circleci/node:12
 
-build_assets: &build_assets
-  run:
-    name: Build assets
-    command: yarn && yarn build
+commands:
+  build_assets:
+    steps:
+      - run:
+          name: Build assets
+          command: yarn && yarn build
 
 jobs:
   build:
     <<: *defaults
     steps:
       - checkout
-      - &build_assets
+      - build_assets
 
   deploy:
     <<: *defaults
     steps:
-      - &build_assets
+      - build_assets
       - aws-s3/sync:
           arguments: |
             --acl public-read \
