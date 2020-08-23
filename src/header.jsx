@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Box, Typography } from "@material-ui/core";
 
-// Based on Noboto Flex font definition (54, 322)
+// Constants for Noboto font
 const MIN_WEIGHT = 54;
 const MAX_WIDTH = 322;
 
 const MIN_ASCENDERS = 456; // Descenders too
 const MAX_ASCENDERS = 1000;
 
-const MIN_DIACRITICS = 0;
+const MIN_DIACRITICS = -100;
 const MAX_DIACRITICS = 100;
 
 const interpolateFontWeight = (scaledInput) =>
@@ -25,20 +25,37 @@ const interpolateDiacritics = (scaledInput) =>
 
 export default function Header() {
   const [position, setPosition] = useState();
+  const [geometry, setGeometry] = useState();
 
-  function trackMouse(e) {
+  function determineGeometry(e) {
+    // the text element is display: inline so we can't use an
+    // observer on it. Instead we'll record it on first hover.
+    if (geometry) {
+      return geometry;
+    }
     const {
       x: textOffsetX,
       width: textWidth,
-      // TODO stop measuring this element on every mousemove
     } = e.target.getBoundingClientRect();
+    setGeometry({ textOffsetX, textWidth });
+    return { textOffsetX, textWidth };
+  }
+
+  function trackMouse(e) {
+    const { textOffsetX, textWidth } = determineGeometry(e);
     const mouseX = e.clientX;
 
     const scaledMouseX = mouseX - textOffsetX;
 
     // 100 -> 0 -> 100%, where 0 is center
     const newPosition = Math.abs(scaledMouseX / (textWidth / 2) - 1);
+
     setPosition(newPosition);
+  }
+
+  function onMouseOut() {
+    // Clear in case there is a resize
+    setGeometry();
   }
 
   const fontVariationSettings = !position
@@ -51,9 +68,10 @@ export default function Header() {
 
   // TODO link to /
   return (
-    <Box display="inline">
+    <Box>
       <Typography
         onMouseMove={trackMouse}
+        onMouseOut={onMouseOut}
         display="inline"
         component="div"
         color="primary"
