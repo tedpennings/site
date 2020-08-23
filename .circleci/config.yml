@@ -1,26 +1,40 @@
 version: 2.1
 
-jobs:
-  build:
-    docker:
-      - image: circleci/node:12
-    steps:
-      - checkout
-      - run:
-          name: Build assets
-          command: yarn && yarn build
-      - save_cache:
-          key: assets-{{ .BuildNum }}
-          paths:
-            - build
+defaults: &defaults
+  docker:
+    - image: circleci/node:12
 
-  deploy:
-    docker:
-      - image: circleci/node:12
+commands:
+  build_assets:
     steps:
       - restore_cache:
           keys:
-            - assets-{{ .BuildNum }}
+            - v1-deps-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Build assets
+          command: yarn build
+  cache_dependencies:
+    steps:
+      - save_cache:
+          key: v1-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - build_assets
+      - cache_dependencies
+
+  deploy:
+    <<: *defaults
+    steps:
+      - build_assets
       - aws-s3/sync:
           arguments: |
             --acl public-read \
@@ -32,12 +46,14 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: main
       - deploy:
-          requires:
-            - build
           filters:
             branches:
               only: main
+
 orbs:
   aws-s3: circleci/aws-s3@1.0.16
