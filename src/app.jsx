@@ -7,6 +7,8 @@ import Header from "./header";
 import Main from "./main";
 import Sidebar from "./sidebar";
 
+const SMALL_BREAKPOINT = "1024px";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3, 3, 1, 3),
@@ -23,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     flex: "1 1 100%",
+    [`@media (max-width: ${SMALL_BREAKPOINT})`]: {
+      flexDirection: "column",
+    },
   },
   main: {
     flex: "1 1 100%",
@@ -30,6 +35,14 @@ const useStyles = makeStyles((theme) => ({
   },
   sidebar: {
     width: theme.spacing(50),
+    [`@media (max-width: ${SMALL_BREAKPOINT})`]: {
+      width: "100%",
+      marginLeft: 0,
+    },
+    [`@media (max-width: 1280px`]: {
+      width: theme.spacing(30),
+      marginLeft: 0,
+    },
     marginLeft: theme.spacing(2),
     justifySelf: "flex-end",
   },
