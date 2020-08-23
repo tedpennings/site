@@ -41,7 +41,7 @@ const theme = createMuiTheme({
       default: "white",
     },
     primary: {
-      main: "#ff70a6",
+      main: "#51e181",
     },
     secondary: {
       main: "#d6ff79",
@@ -69,8 +69,12 @@ const theme = createMuiTheme({
         marginBottom: "0.75rem",
       },
     },
+    MuiLink: {
+      root: {
+        ...medium,
+      },
+    },
   },
 });
-console.log(theme);
 
 export default responsiveFontSizes(theme);
