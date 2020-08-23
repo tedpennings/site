@@ -1,0 +1,6 @@
+/* FF Meta Variable Demo Font */
+/* Example with variables, https://codepen.io/aardrian/pen/dKrZdd */
+@font-face {
+  font-family: "Noboto Flex";
+  src: url("/NobotoFlex-VF.ttf") format("truetype");
+}
