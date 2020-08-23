@@ -32,6 +32,6 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: main
 orbs:
   aws-s3: circleci/aws-s3@1.0.16
