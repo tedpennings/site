@@ -22,4 +22,4 @@ workflows:
       - build
 
 orbs:
-  aws-s3: circleci/aws-s3@x.y
+  aws-s3: circleci/aws-s3@1.0.16
