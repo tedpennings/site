@@ -2,6 +2,8 @@ import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
 import "./fonts.css";
 
+// Noboto Flex does not respect normal font-weight settings
+// and instead uses variable setting weights.
 // Noboto Flex font weights: 54 -> 322
 const light = {
   fontVariationSettings: "'wght' 150",
@@ -33,6 +35,7 @@ const theme = createMuiTheme({
     caption: { ...regular },
     overline: { ...regular },
   },
+  // https://coolors.co/ff5154-4b452f-f4d06f-90fcf9-fcf7ff-51e181-ff70a6-d6ff79
   palette: {
     background: {
       default: "#FCF7FF",
@@ -44,13 +47,13 @@ const theme = createMuiTheme({
       main: "#D6FF79",
     },
     success: {
-      main: "#f00", // TODO
+      main: "#51E181",
     },
     error: {
       main: "#FF5154",
     },
     warning: {
-      main: "#f00", // TODO
+      main: "#F4D06F",
     },
     info: {
       main: "#90FCFF9",
