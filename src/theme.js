@@ -35,32 +35,32 @@ const theme = createMuiTheme({
     caption: { ...regular },
     overline: { ...regular },
   },
-  // https://coolors.co/ff5154-4b452f-f4d06f-90fcf9-fcf7ff-51e181-ff70a6-d6ff79
+  // https://coolors.co/ff5154-424b54-ffe75c-90fcf9-fcf7ff-51e181-ff70a6-d6ff79
   palette: {
     background: {
-      default: "#FCF7FF",
+      default: "#fcf7ff",
     },
     primary: {
-      main: "#FF70A6",
+      main: "#ff70a6",
     },
     secondary: {
-      main: "#D6FF79",
+      main: "#d6ff79",
     },
     success: {
-      main: "#51E181",
+      main: "#51e181",
     },
     error: {
-      main: "#FF5154",
+      main: "#ff5154",
     },
     warning: {
-      main: "#F4D06F",
+      main: "#ffe75c",
     },
     info: {
-      main: "#90FCFF9",
+      main: "#90fcff9",
     },
     text: {
       primary: "#393424",
-      secondary: "#4B452F",
+      secondary: "#424b54",
     },
   },
   overrides: {
