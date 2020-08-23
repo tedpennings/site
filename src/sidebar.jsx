@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginBottom: theme.spacing(1),
     border: `1px solid ${theme.palette.text.secondary}`,
+    maxWidth: theme.spacing(35),
   },
   heading: {
     marginBottom: theme.spacing(1),
