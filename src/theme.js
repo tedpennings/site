@@ -8,7 +8,7 @@ import "./fonts.css";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: "Noboto Flex, Impact",
+    fontFamily: "Noboto Flex, Helvetica",
   },
 });
 
