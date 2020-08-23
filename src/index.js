@@ -1,14 +1,13 @@
-require('../sass/main.scss')
-require('file?name=favicon.ico!../public/favicon.ico')
+import React from "react";
+import ReactDOM from "react-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
-require('babel/polyfill')
-require('es6-shim')
+import App from "./app";
 
-import ReactDOM from 'react-dom'
-import Routes from './Routes'
-
-var container = document.createElement('div')
-container.id = 'container'
-document.body.appendChild(container)
-
-ReactDOM.render(Routes, container)
+ReactDOM.render(
+  <React.StrictMode>
+    <CssBaseline />
+    <App />
+  </React.StrictMode>,
+  document.getElementById("app")
+);

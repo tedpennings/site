@@ -1,7 +1,0 @@
-export Bio from './Bio'
-export BioWithRecentPostLinks from './BioWithRecentPostLinks'
-export ContactInfo from './ContactInfo'
-export Photo from './Photo'
-export Post from './Post'
-export PostWrapper from './PostWrapper'
-export RecentPostLinks from './RecentPostLinks'
