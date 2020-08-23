@@ -34,6 +34,7 @@ jobs:
   deploy:
     <<: *defaults
     steps:
+      - checkout
       - build_assets
       - aws-s3/sync:
           arguments: |
