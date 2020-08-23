@@ -2,7 +2,7 @@ version: 2.1
 
 defaults: &defaults
   docker:
-    - image: circleci/node:12
+    - image: circleci/node:11
 
 commands:
   build_assets:
@@ -12,7 +12,7 @@ commands:
             - v1-deps-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
-          command: yarn
+          command: yarn install --frozen-lockfile
       - run:
           name: Build assets
           command: yarn build
@@ -36,13 +36,9 @@ jobs:
     steps:
       - checkout
       - build_assets
-      - aws-s3/sync:
-          arguments: |
-            --acl public-read \
-            --cache-control "max-age=86400"
-          from: build
-          overwrite: true
-          to: "s3://ted.pennin.gs"
+      - run:
+          name: Upload assets
+          command: yarn upload
 
 workflows:
   build_and_test:
@@ -55,6 +51,3 @@ workflows:
           filters:
             branches:
               only: main
-
-orbs:
-  aws-s3: circleci/aws-s3@1.0.16
