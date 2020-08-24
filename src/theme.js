@@ -38,10 +38,10 @@ const theme = createMuiTheme({
   // https://coolors.co/ff5154-424b54-ffe75c-90fcf9-fcf7ff-51e181-ff70a6-d6ff79
   palette: {
     background: {
-      default: "#fcf7ff",
+      default: "white",
     },
     primary: {
-      main: "#ff70a6",
+      main: "#51e181",
     },
     secondary: {
       main: "#d6ff79",
@@ -69,8 +69,12 @@ const theme = createMuiTheme({
         marginBottom: "0.75rem",
       },
     },
+    MuiLink: {
+      root: {
+        ...medium,
+      },
+    },
   },
 });
-console.log(theme);
 
 export default responsiveFontSizes(theme);
