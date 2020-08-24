@@ -29,7 +29,8 @@ export default function Header() {
   const [geometry, setGeometry] = useState();
 
   useEffect(() => {
-    let frame = 0; // 0.0 -> 1.00
+    // 120 frames from 0 -> 1 -> 0.81, ideally 2s at 60fps
+    let frame = 0;
     const animate = () => {
       if (frame < 120) {
         const value = 0.01 * (frame < 100 ? frame : frame - (frame - 100) * 2);
@@ -56,7 +57,12 @@ export default function Header() {
   }
 
   function trackMouse(e) {
-    const mouseX = e.clientX;
+    let mouseX = e.clientX; // default to mousemove
+
+    if (e.touches?.length) {
+      // it's a touch (mobile)
+      mouseX = e.touches[0].clientX;
+    }
 
     const { textOffsetX, textWidth } = determineGeometry(e);
 
@@ -82,6 +88,7 @@ export default function Header() {
     <Box>
       <Typography
         onMouseMove={trackMouse}
+        onTouchMove={trackMouse}
         onMouseOut={onMouseOut}
         display="inline"
         component={Link}
