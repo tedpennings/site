@@ -15,7 +15,7 @@ import { dataviz } from "./routes";
 
 const useStyles = makeStyles((theme) => ({
   listIcon: {
-    minWidth: 0,
+    minWidth: "unset",
     marginRight: theme.spacing(1),
   },
 }));
