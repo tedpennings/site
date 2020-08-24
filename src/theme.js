@@ -41,32 +41,44 @@ const theme = createMuiTheme({
     medium,
     bold,
   },
-  // This palette isn't color blind safe yet :(
+  // https://coolors.co/f8615a-fc744b-ddcf67-4f695e-5fb4a4-6fffe9-b6dce9-4c4943-685e50
   palette: {
+    series: [
+      // for charts
+      "#f8615a",
+      "#fc744b",
+      "#ddcf67",
+      "#4f695e",
+      "#5fb4a4",
+      "#6fffe9",
+      "#b6dce9",
+      "#4c4943",
+      "#685e50",
+    ],
     background: {
       default: "white",
     },
     primary: {
-      main: "#51e181",
+      main: "#FC744B",
     },
     secondary: {
-      main: "#648F00",
+      main: "#5fb4a4",
     },
     success: {
-      main: "#5bb841",
+      main: "#4f695e",
     },
     error: {
-      main: "#ff5154",
+      main: "#F8615A",
     },
     warning: {
-      main: "#ffe75c",
+      main: "#DDCF67",
     },
     info: {
-      main: "#06EFE7",
+      main: "#6fffe9",
     },
     text: {
-      primary: "#393424",
-      secondary: "#585037",
+      primary: "#4c4943",
+      secondary: "#685e50",
     },
   },
   overrides: {
