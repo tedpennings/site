@@ -1,0 +1,308 @@
+[
+  {
+    "State": "Alabama",
+    "Deaths": 435,
+    "Births": 58941,
+    "Death Rate": 7.38
+  },
+  {
+    "State": "Alaska",
+    "Deaths": 60,
+    "Births": 10445,
+    "Death Rate": 5.74
+  },
+  {
+    "State": "Arizona",
+    "Deaths": 467,
+    "Births": 81872,
+    "Death Rate": 5.7
+  },
+  {
+    "State": "Arkansas",
+    "Deaths": 304,
+    "Births": 37520,
+    "Death Rate": 8.1
+  },
+  {
+    "State": "California",
+    "Deaths": 1981,
+    "Births": 471658,
+    "Death Rate": 4.2
+  },
+  {
+    "State": "Colorado",
+    "Deaths": 289,
+    "Births": 64382,
+    "Death Rate": 4.49
+  },
+  {
+    "State": "Connecticut",
+    "Deaths": 159,
+    "Births": 35221,
+    "Death Rate": 4.51
+  },
+  {
+    "State": "Delaware",
+    "Deaths": 68,
+    "Births": 10855,
+    "Death Rate": 6.26
+  },
+  {
+    "State": "District of Columbia",
+    "Deaths": 78,
+    "Births": 9560,
+    "Death Rate": 8.16
+  },
+  {
+    "State": "Florida",
+    "Deaths": 1364,
+    "Births": 223630,
+    "Death Rate": 6.1
+  },
+  {
+    "State": "Georgia",
+    "Deaths": 928,
+    "Births": 129243,
+    "Death Rate": 7.18
+  },
+  {
+    "State": "Hawaii",
+    "Deaths": 95,
+    "Births": 17517,
+    "Death Rate": 5.42
+  },
+  {
+    "State": "Idaho",
+    "Deaths": 101,
+    "Births": 22181,
+    "Death Rate": 4.55
+  },
+  {
+    "State": "Illinois",
+    "Deaths": 915,
+    "Births": 149390,
+    "Death Rate": 6.12
+  },
+  {
+    "State": "Indiana",
+    "Deaths": 593,
+    "Births": 82170,
+    "Death Rate": 7.22
+  },
+  {
+    "State": "Iowa",
+    "Deaths": 204,
+    "Births": 38430,
+    "Death Rate": 5.31
+  },
+  {
+    "State": "Kansas",
+    "Deaths": 220,
+    "Births": 36519,
+    "Death Rate": 6.02
+  },
+  {
+    "State": "Kentucky",
+    "Deaths": 361,
+    "Births": 54752,
+    "Death Rate": 6.59
+  },
+  {
+    "State": "Louisiana",
+    "Deaths": 431,
+    "Births": 61018,
+    "Death Rate": 7.06
+  },
+  {
+    "State": "Maine",
+    "Deaths": 72,
+    "Births": 12298,
+    "Death Rate": 5.85
+  },
+  {
+    "State": "Maryland",
+    "Deaths": 461,
+    "Births": 71641,
+    "Death Rate": 6.43
+  },
+  {
+    "State": "Massachusetts",
+    "Deaths": 259,
+    "Births": 70702,
+    "Death Rate": 3.66
+  },
+  {
+    "State": "Michigan",
+    "Deaths": 755,
+    "Births": 111426,
+    "Death Rate": 6.78
+  },
+  {
+    "State": "Minnesota",
+    "Deaths": 329,
+    "Births": 68595,
+    "Death Rate": 4.8
+  },
+  {
+    "State": "Mississippi",
+    "Deaths": 326,
+    "Births": 37357,
+    "Death Rate": 8.73
+  },
+  {
+    "State": "Missouri",
+    "Deaths": 457,
+    "Births": 73034,
+    "Death Rate": 6.26
+  },
+  {
+    "State": "Montana",
+    "Deaths": 65,
+    "Births": 11799,
+    "Death Rate": 5.51
+  },
+  {
+    "State": "Nebraska",
+    "Deaths": 143,
+    "Births": 25821,
+    "Death Rate": 5.54
+  },
+  {
+    "State": "Nevada",
+    "Deaths": 209,
+    "Births": 35756,
+    "Death Rate": 5.85
+  },
+  {
+    "State": "New Hampshire",
+    "Deaths": 51,
+    "Births": 12116,
+    "Death Rate": 4.21
+  },
+  {
+    "State": "New Jersey",
+    "Deaths": 451,
+    "Births": 101250,
+    "Death Rate": 4.45
+  },
+  {
+    "State": "New Mexico",
+    "Deaths": 139,
+    "Births": 23767,
+    "Death Rate": 5.85
+  },
+  {
+    "State": "New York",
+    "Deaths": 1053,
+    "Births": 229737,
+    "Death Rate": 4.58
+  },
+  {
+    "State": "North Carolina",
+    "Deaths": 845,
+    "Births": 120125,
+    "Death Rate": 7.03
+  },
+  {
+    "State": "North Dakota",
+    "Deaths": 47,
+    "Births": 10737,
+    "Death Rate": 4.38
+  },
+  {
+    "State": "Ohio",
+    "Deaths": 983,
+    "Births": 136832,
+    "Death Rate": 7.18
+  },
+  {
+    "State": "Oklahoma",
+    "Deaths": 391,
+    "Births": 50214,
+    "Death Rate": 7.79
+  },
+  {
+    "State": "Oregon",
+    "Deaths": 233,
+    "Births": 43631,
+    "Death Rate": 5.34
+  },
+  {
+    "State": "Pennsylvania",
+    "Deaths": 837,
+    "Births": 137745,
+    "Death Rate": 6.08
+  },
+  {
+    "State": "Rhode Island",
+    "Deaths": 66,
+    "Births": 10638,
+    "Death Rate": 6.2
+  },
+  {
+    "State": "South Carolina",
+    "Deaths": 372,
+    "Births": 57029,
+    "Death Rate": 6.52
+  },
+  {
+    "State": "South Dakota",
+    "Deaths": 94,
+    "Births": 12134,
+    "Death Rate": 7.75
+  },
+  {
+    "State": "Tennessee",
+    "Deaths": 591,
+    "Births": 81016,
+    "Death Rate": 7.29
+  },
+  {
+    "State": "Texas",
+    "Deaths": 2236,
+    "Births": 382050,
+    "Death Rate": 5.85
+  },
+  {
+    "State": "Utah",
+    "Deaths": 286,
+    "Births": 48585,
+    "Death Rate": 5.89
+  },
+  {
+    "State": "Vermont",
+    "Deaths": 27,
+    "Births": 5655,
+    "Death Rate": 4.77
+  },
+  {
+    "State": "Virginia",
+    "Deaths": 592,
+    "Births": 100391,
+    "Death Rate": 5.9
+  },
+  {
+    "State": "Washington",
+    "Deaths": 340,
+    "Births": 87562,
+    "Death Rate": 3.88
+  },
+  {
+    "State": "West Virginia",
+    "Deaths": 130,
+    "Births": 18675,
+    "Death Rate": 6.96
+  },
+  {
+    "State": "Wisconsin",
+    "Deaths": 415,
+    "Births": 64975,
+    "Death Rate": 6.39
+  },
+  {
+    "State": "Wyoming",
+    "Deaths": 32,
+    "Births": 6903,
+    "Death Rate": 4.64
+  }
+]
