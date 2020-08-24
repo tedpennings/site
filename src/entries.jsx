@@ -37,8 +37,10 @@ function ListItemLink(props) {
 function PlaceholderIndex() {
   return (
     <>
-      <Typography variant="h3">Data visualization</Typography>
-      <Typography>
+      <Typography variant="h3" paragraph>
+        Data visualization
+      </Typography>
+      <Typography paragraph>
         I'm working on content! Here's what I have so far:
       </Typography>
       <List>
