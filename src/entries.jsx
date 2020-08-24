@@ -47,9 +47,7 @@ function PlaceholderIndex() {
             <ListItemIcon>
               <Icon />
             </ListItemIcon>
-            <ListItemText primaryTypographyProps={{ display: "flex" }}>
-              {name}
-            </ListItemText>
+            <ListItemText>{name}</ListItemText>
           </ListItemLink>
         ))}
       </List>
