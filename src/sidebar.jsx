@@ -25,18 +25,18 @@ export default function Sidebar() {
   return (
     <Box className={classes.sidebar}>
       <img className={classes.photo} src={me2020} alt="Ted Pennings" />
-      <Typography className={classes.heading} variant="h4">
+      <Typography className={classes.heading} variant="h4" paragraph>
         About Ted
       </Typography>
-      <Typography variant="subtitle1">
+      <Typography variant="subtitle1" paragraph>
         Ted lives in Portland, Oregon with his partner Jen. Ted works at{" "}
         <Link href="https://lightstep.com">Lightstep</Link> as a software
         engineer.
       </Typography>
-      <Typography variant="body1">
+      <Typography variant="body1" paragraph>
         Ted enjoys gardening and eating vegan desserts.
       </Typography>
-      <Typography variant="body1">
+      <Typography variant="body1" paragraph>
         Ted and Jen had a son named Pablo who passed away in November 2017{" "}
         <span role="img" aria-label="broken heart">
           💔
