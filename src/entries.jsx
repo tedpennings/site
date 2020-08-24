@@ -7,22 +7,9 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { Link, Switch, Route } from "react-router-dom";
 
 import { dataviz } from "./routes";
-
-const useStyles = makeStyles((theme) => ({
-  entryzz: {
-    display: "flex",
-    textDecoration: "none",
-    marginBottom: 0,
-    fontStyle: "italic",
-    "& > *:first-child": {
-      marginRight: theme.spacing(0.25),
-    },
-  },
-}));
 
 export default function Entries() {
   return (
@@ -48,7 +35,6 @@ function ListItemLink(props) {
 }
 
 function PlaceholderIndex() {
-  const classes = useStyles();
   return (
     <>
       <Typography variant="h3">Data visualization</Typography>
