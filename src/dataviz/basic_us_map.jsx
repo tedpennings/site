@@ -41,6 +41,7 @@ export default function BasicUSMap() {
           </Typography>
           .
         </Typography>
+
         <Typography paragraph>
           The images are often the easy part. Wikipedia has some amazing maps
           for{" "}
@@ -55,8 +56,24 @@ export default function BasicUSMap() {
           <ExternalLink href="https://en.wikipedia.org/wiki/Wikipedia:Blank_maps">
             more
           </ExternalLink>
-          . It's also worth considering projections of the earth, political
-          boundaries, etc.
+          . You can find lots more elsewhere, lists of earth projections and fun
+          projections like the Fuller Projection
+          https://commons.wikimedia.org/wiki/File:Fuller_projection.svg
+          https://gisgeography.com/map-projection-types/
+        </Typography>
+        <Typography paragraph>
+          You could also use a map library like Google Maps, Leaflet or Open
+          Layers. These will usually require that you place a dataviz layer on
+          top of the map layer(s). The concepts are the same as this article,
+          but you may also need to position the elements in your dataviz layers
+          (using points/centroids, bounding boxes, spread radii, etc). These
+          libraries do offer flexibility: earth projections, political
+          boundaries, toggles for levels of detail, etc.
+        </Typography>
+        <Typography paragraph>
+          In this article we're using an off-the-shelf map that has layers for
+          each element in our dataset, so we have a single layer with our map
+          vector image and our dataviz element together.
         </Typography>
         <Typography paragraph>
           For the data set, I'm going to use infant mortality rates. When I lost
