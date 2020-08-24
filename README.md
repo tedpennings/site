@@ -1,4 +1,4 @@
-# tedpennings.com
+# [ted.pennin.gs](http://ted.pennin.gs)
 
 This is the code for my personal website, welcome.
 
