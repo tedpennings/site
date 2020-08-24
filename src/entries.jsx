@@ -9,7 +9,16 @@ import {
 } from "@material-ui/core";
 import { Link, Switch, Route } from "react-router-dom";
 
+import { makeStyles } from "@material-ui/core/styles";
+
 import { dataviz } from "./routes";
+
+const useStyles = makeStyles((theme) => ({
+  listIcon: {
+    minWidth: 0,
+    marginRight: theme.spacing(1),
+  },
+}));
 
 export default function Entries() {
   return (
@@ -35,21 +44,26 @@ function ListItemLink(props) {
 }
 
 function PlaceholderIndex() {
+  const classes = useStyles();
   return (
     <>
       <Typography variant="h3" paragraph>
         Data visualization
       </Typography>
-      <Typography paragraph>
+      <Typography>
         I'm working on content! Here's what I have so far:
       </Typography>
       <List>
         {dataviz.map(({ path, name, icon: Icon }) => (
           <ListItemLink key={path} to={path}>
-            <ListItemIcon>
+            <ListItemIcon className={classes.listIcon}>
               <Icon />
             </ListItemIcon>
-            <ListItemText>{name}</ListItemText>
+            <ListItemText disableTypography>
+              <Typography color="primary" display="inline">
+                {name}
+              </Typography>
+            </ListItemText>
           </ListItemLink>
         ))}
       </List>
