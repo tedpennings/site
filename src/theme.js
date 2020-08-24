@@ -35,6 +35,12 @@ const theme = createMuiTheme({
     caption: { ...regular },
     overline: { ...regular },
   },
+  nobotoWeights: {
+    light,
+    regular,
+    medium,
+    bold,
+  },
   // This palette isn't color blind safe yet :(
   palette: {
     background: {
