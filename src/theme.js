@@ -64,11 +64,6 @@ const theme = createMuiTheme({
     },
   },
   overrides: {
-    MuiTypography: {
-      root: {
-        marginBottom: "0.75rem",
-      },
-    },
     MuiLink: {
       root: {
         ...medium,
