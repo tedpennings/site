@@ -3,26 +3,34 @@ import { Box, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 // Constants for Noboto Flex font; see theme.js
+// Also see https://opentype.js.org/font-inspector.html
 const MIN_WEIGHT = 54;
 const MAX_WEIGHT = 322;
 
-const MIN_ASCENDERS = 456; // Descenders too
+const MIN_ASCENDERS = 456;
 const MAX_ASCENDERS = 1000;
+
+const MIN_DESCENDERS = 500;
+// The descenders/ascenders are clipped by their container. Clipping the top of
+// d looks fine, but clipping the bottom of g looks very bad.
+const MAX_DESCENDERS = window.navigator.appVersion.includes("Chrome")
+  ? 850
+  : 585; // Safari and others clip it :(
 
 const MIN_DIACRITICS = -100;
 const MAX_DIACRITICS = 100;
 
 const interpolateFontWeight = (scaledInput) =>
-  Math.min(MAX_WEIGHT, Math.max(MAX_WEIGHT * scaledInput, MIN_WEIGHT));
+  MIN_WEIGHT + scaledInput * (MAX_WEIGHT - MIN_WEIGHT);
 
 const interpolateAscenders = (scaledInput) =>
-  Math.min(MAX_ASCENDERS, Math.max(MAX_ASCENDERS * scaledInput, MIN_ASCENDERS));
+  MIN_ASCENDERS + scaledInput * (MAX_ASCENDERS - MIN_ASCENDERS);
+
+const interpolateDescenders = (scaledInput) =>
+  MIN_DESCENDERS + scaledInput * (MAX_DESCENDERS - MIN_DESCENDERS);
 
 const interpolateDiacritics = (scaledInput) =>
-  Math.min(
-    MAX_DIACRITICS,
-    Math.max(MAX_DIACRITICS * scaledInput, MIN_DIACRITICS)
-  );
+  MIN_DIACRITICS + scaledInput * (MAX_DIACRITICS - MIN_DIACRITICS);
 
 export default function Header() {
   const [position, setPosition] = useState(0);
@@ -81,7 +89,7 @@ export default function Header() {
 
   const fontVariationSettings = `'wght' ${interpolateFontWeight(position)},
        'ASCE' ${interpolateAscenders(position)},
-       'DESC' ${interpolateAscenders(position)},
+       'DESC' ${interpolateDescenders(position)},
        'DIAC' ${interpolateDiacritics(position)}`;
 
   return (
@@ -90,7 +98,6 @@ export default function Header() {
         onMouseMove={trackMouse}
         onTouchMove={trackMouse}
         onMouseOut={onMouseOut}
-        display="inline"
         component={Link}
         to="/"
         color="primary"
