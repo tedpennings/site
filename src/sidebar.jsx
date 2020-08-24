@@ -45,7 +45,7 @@ export default function Sidebar() {
           💔
         </span>
       </Typography>
-      <Typography paragraph display="flex">
+      <Typography>
         &copy; {year}
         {" / "}
         <ExternalLink href="https://github.com/tedpennings/site">
