@@ -3,6 +3,8 @@ import { Box, Link, Typography } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+import me2020 from "./assets/me-2020.jpg";
+
 const useStyles = makeStyles((theme) => ({
   sidebar: {
     padding: theme.spacing(1, 2, 0, 1),
@@ -22,7 +24,7 @@ export default function Sidebar() {
   const classes = useStyles();
   return (
     <Box className={classes.sidebar}>
-      <img className={classes.photo} src="me-2020.jpg" alt="Ted Pennings" />
+      <img className={classes.photo} src={me2020} alt="Ted Pennings" />
       <Typography className={classes.heading} variant="h4">
         About Ted
       </Typography>
