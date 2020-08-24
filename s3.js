@@ -18,6 +18,7 @@ const params = {
 
   s3Params: {
     Bucket: "ted.pennin.gs",
+    ACL: "public-read",
   },
 };
 
