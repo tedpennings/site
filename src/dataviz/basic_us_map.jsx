@@ -15,7 +15,7 @@ export default function BasicUSMap() {
   const classes = useStyles();
   return (
     <Box>
-      <Alert severity="warning" variant="filled">
+      <Alert severity="info" variant="filled">
         In Progress!
       </Alert>
       <Typography variant="h2" paragraph>
