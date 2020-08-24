@@ -45,7 +45,7 @@ export default function Sidebar() {
           💔
         </span>
       </Typography>
-      <Divider horizontal />
+      <Divider />
       <Box mt={2}>
         <Typography>
           &copy; {year}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 
 import ExternalLink from "../common/external_link";
@@ -14,9 +15,9 @@ export default function BasicUSMap() {
   const classes = useStyles();
   return (
     <Box>
-      <Typography variant="h1" color="error" paragraph>
-        In Progress
-      </Typography>
+      <Alert severity="info" variant="filled">
+        In Progress!
+      </Alert>
       <Typography variant="h2" paragraph>
         Basic US Map
       </Typography>
