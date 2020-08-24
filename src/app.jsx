@@ -4,6 +4,7 @@ import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Header from "./header";
+import Nav from "./nav";
 import Main from "./main";
 import Sidebar from "./sidebar";
 
@@ -55,6 +56,7 @@ export default function App() {
       <Box component="header" className={classes.header}>
         <Header />
       </Box>
+      <Nav />
       <Box className={classes.body}>
         <Box component="main" className={classes.main}>
           <Main />

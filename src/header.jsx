@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 // Constants for Noboto Flex font; see theme.js
 const MIN_WEIGHT = 54;
@@ -77,17 +78,18 @@ export default function Header() {
        'DESC' ${interpolateAscenders(position)},
        'DIAC' ${interpolateDiacritics(position)}`;
 
-  // TODO link to /
   return (
     <Box>
       <Typography
         onMouseMove={trackMouse}
         onMouseOut={onMouseOut}
         display="inline"
-        component="div"
+        component={Link}
+        to="/"
         color="primary"
         style={{
           fontVariationSettings,
+          textDecoration: "none",
         }}
         variant="h1"
       >

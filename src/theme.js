@@ -35,7 +35,7 @@ const theme = createMuiTheme({
     caption: { ...regular },
     overline: { ...regular },
   },
-  // https://coolors.co/ff5154-424b54-ffe75c-90fcf9-fcf7ff-51e181-ff70a6-d6ff79
+  // This palette isn't color blind safe yet :(
   palette: {
     background: {
       default: "white",
@@ -44,10 +44,10 @@ const theme = createMuiTheme({
       main: "#51e181",
     },
     secondary: {
-      main: "#d6ff79",
+      main: "#648F00",
     },
     success: {
-      main: "#51e181",
+      main: "#5bb841",
     },
     error: {
       main: "#ff5154",
@@ -56,11 +56,11 @@ const theme = createMuiTheme({
       main: "#ffe75c",
     },
     info: {
-      main: "#90fcff9",
+      main: "#06EFE7",
     },
     text: {
       primary: "#393424",
-      secondary: "#424b54",
+      secondary: "#585037",
     },
   },
   overrides: {
