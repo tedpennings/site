@@ -42,19 +42,16 @@ function PlaceholderIndex() {
         I'm working on content! Here's what I have so far:
       </Typography>
       <List>
-        {dataviz.map(({ path, name, icon }) => {
-          const Icon = icon;
-          return (
-            <ListItemLink key={path} to={path}>
-              <ListItemIcon>
-                <Icon />
-              </ListItemIcon>
-              <ListItemText primaryTypographyProps={{ display: "flex" }}>
-                {name}
-              </ListItemText>
-            </ListItemLink>
-          );
-        })}
+        {dataviz.map(({ path, name, icon: Icon }) => (
+          <ListItemLink key={path} to={path}>
+            <ListItemIcon>
+              <Icon />
+            </ListItemIcon>
+            <ListItemText primaryTypographyProps={{ display: "flex" }}>
+              {name}
+            </ListItemText>
+          </ListItemLink>
+        ))}
       </List>
     </>
   );
