@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Box, Link, Typography } from "@material-ui/core";
+import { Box, Divider, Link, Typography } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -45,17 +45,20 @@ export default function Sidebar() {
           💔
         </span>
       </Typography>
-      <Typography>
-        &copy; {year}
-        {" / "}
-        <ExternalLink href="https://github.com/tedpennings/site">
-          Code
-        </ExternalLink>
-        {" / "}
-        <ExternalLink href="https://github.com/tedpennings/site/blob/main/LICENSE">
-          License
-        </ExternalLink>
-      </Typography>
+      <Divider horizontal />
+      <Box mt={2}>
+        <Typography>
+          &copy; {year}
+          {" / "}
+          <ExternalLink href="https://github.com/tedpennings/site">
+            Code
+          </ExternalLink>
+          {" / "}
+          <ExternalLink href="https://github.com/tedpennings/site/blob/main/LICENSE">
+            License
+          </ExternalLink>
+        </Typography>
+      </Box>
     </Box>
   );
 }
