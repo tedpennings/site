@@ -1,14 +1,27 @@
-import React from "react";
-import { Box } from "@material-ui/core";
+import React, { Suspense } from "react";
+import { Box, CircularProgress } from "@material-ui/core";
 
-import Welcome from "./welcome";
 import Entries from "./entries";
 
 export default function Main() {
   return (
     <Box>
-      <Welcome />
-      <Entries />
+      <Suspense fallback={<Spinner />}>
+        <Entries />
+      </Suspense>
+    </Box>
+  );
+}
+
+function Spinner() {
+  return (
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      height="100%"
+    >
+      <CircularProgress size={60} />
     </Box>
   );
 }
