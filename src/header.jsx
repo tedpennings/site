@@ -56,7 +56,12 @@ export default function Header() {
   }
 
   function trackMouse(e) {
-    const mouseX = e.clientX;
+    let mouseX = e.clientX; // default to mousemove
+
+    if (e.touches?.length) {
+      // it's a touch (mobile)
+      mouseX = e.touches[0].clientX;
+    }
 
     const { textOffsetX, textWidth } = determineGeometry(e);
 
@@ -82,6 +87,7 @@ export default function Header() {
     <Box>
       <Typography
         onMouseMove={trackMouse}
+        onTouchMove={trackMouse}
         onMouseOut={onMouseOut}
         display="inline"
         component={Link}
