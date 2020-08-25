@@ -1,19 +1,11 @@
 import React from "react";
-import { BarChart, EmojiPeople, Map, Tune } from "@material-ui/icons";
-
-import Welcome from "./welcome"; // do not codesplit welcome, on the front page
+import { BarChart, Map, Tune } from "@material-ui/icons";
 
 export const main = [
   {
-    path: "/welcome",
-    name: "Welome!",
-    component: <Welcome />,
-    icon: EmojiPeople,
-  },
-  {
     path: "/dataviz",
     name: "Data Visualization",
-    component: <Welcome />,
+    component: <p>TODO</p>,
     icon: BarChart,
   },
   {
