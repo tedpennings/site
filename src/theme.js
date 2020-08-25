@@ -6,6 +6,7 @@ import {
 import { create } from "jss";
 
 // Embed font into bundle to prevent fetch delay
+// limit is an arbitrarily large number to base64 encode, not link
 import NobotoFlex from "!!url-loader?limit=409029395329!./assets/NobotoFlex-VF.ttf";
 const jss = create({ ...jssPreset() });
 jss
