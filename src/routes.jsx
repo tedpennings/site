@@ -28,6 +28,8 @@ export const dataviz = [
     path: "/dataviz/basic-us-map",
     name: "Basic US Map",
     icon: Map,
-    component: React.lazy(() => import("./dataviz/basic_us_map")),
+    component: React.lazy(() =>
+      import(/* webpackMode: "lazy" */ "./dataviz/basic_us_map")
+    ),
   },
 ];

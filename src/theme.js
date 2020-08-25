@@ -1,11 +1,26 @@
-/* eslint-disable sort-keys,sort-imports */
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import {
+  createMuiTheme,
+  jssPreset,
+  responsiveFontSizes,
+} from "@material-ui/core/styles";
+import { create } from "jss";
 
-import "./fonts.css";
+// Embed font into bundle to prevent fetch delay
+import NobotoFlex from "!!url-loader?limit=409029395329!./assets/NobotoFlex-VF.ttf";
+const jss = create({ ...jssPreset() });
+jss
+  .createStyleSheet({
+    "@font-face": {
+      fontFamily: "Noboto Flex",
+      src: `url(${NobotoFlex}) format("truetype")`,
+    },
+  })
+  .attach();
 
 // Noboto Flex does not respect normal font-weight settings
 // and instead uses variable setting weights.
 // Noboto Flex font weights: 54 -> 322
+/* Example with variables, https://codepen.io/aardrian/pen/dKrZdd */
 const light = {
   fontVariationSettings: "'wght' 150",
 };
