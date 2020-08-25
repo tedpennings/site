@@ -6,9 +6,10 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/all",
+    "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "prettier"
+    "prettier",
+    "prettier/react"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -23,28 +24,37 @@
   },
   "plugins": ["react"],
   "rules": {
-    "complexity": "error",
+    "complexity": ["error", 10],
     "dot-notation": "error",
     "no-console": "error",
     "no-shadow": "error",
     "prefer-destructuring": "error",
     "prefer-template": "error",
-    "sort-imports": "error",
     "sort-keys": "error",
     "prefer-object-spread": "error",
 
     "react/boolean-prop-naming": "error",
-    "react/display-name": "error",
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "react/jsx-no-target-blank": "error",
+    "react/jsx-boolean-value": "error",
+
+    "react/jsx-no-literals": "off",
+    "react/forbid-component-props": "off",
+    "react/jsx-max-depth": "off"
   },
   "overrides": [
     {
       "files": ["config/**", "scripts/**"],
       "rules": {
         "no-console": "off",
-        "sort-keys": "off",
-        "sort-imports": "off"
+        "sort-keys": "off"
+      }
+    },
+    {
+      "files": ["src/datasets/**", "scripts/**"],
+      "rules": {
+        "sort-keys": "off"
       }
     }
   ],

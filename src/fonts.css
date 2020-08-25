@@ -2,5 +2,6 @@
 /* Example with variables, https://codepen.io/aardrian/pen/dKrZdd */
 @font-face {
   font-family: "Noboto Flex";
-  src: url("./assets/NobotoFlex-VF.ttf") format("truetype");
+  src: url("url-loader?limit=10000000000!./assets/NobotoFlex-VF.ttf")
+    format("truetype");
 }

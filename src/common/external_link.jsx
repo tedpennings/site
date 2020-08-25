@@ -1,15 +1,17 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from "react";
-import { PropTypes } from "prop-types";
 import { Link } from "@material-ui/core";
+import { PropTypes } from "prop-types";
 import { useTheme } from "@material-ui/core/styles";
 
 export default function ExternalLink({ weight, ...props }) {
   const theme = useTheme();
   return (
     <Link
+      rel="noopener noreferrer"
       style={theme.nobotoWeights[weight]}
       target="_blank"
-      rel="noopener noreferrer"
       {...props}
     />
   );
