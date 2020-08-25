@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys,sort-imports */
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
 import "./fonts.css";

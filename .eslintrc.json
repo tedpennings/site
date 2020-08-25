@@ -7,7 +7,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/all",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "prettier"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -22,9 +23,43 @@
   },
   "plugins": ["react"],
   "rules": {
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
+    "complexity": "error",
+    "dot-notation": "error",
+    "no-console": "error",
+    "no-shadow": "error",
+    "prefer-destructuring": "error",
+    "prefer-template": "error",
+    "sort-imports": "error",
+    "sort-keys": "error",
+    "prefer-object-spread": "error",
+
     "react/boolean-prop-naming": "error",
-    "react/display-name": "error"
+    "react/display-name": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
+  },
+  "overrides": [
+    {
+      "files": ["config/**", "scripts/**"],
+      "rules": {
+        "no-console": "off",
+        "sort-keys": "off",
+        "sort-imports": "off"
+      }
+    }
+  ],
+  "settings": {
+    "react": { "version": "detect", "pragma": "React" },
+    "linkComponents": [
+      "Hyperlink",
+      {
+        "name": "Link",
+        "linkAttribute": "to"
+      },
+      {
+        "name": "ExternalLink",
+        "linkAttribute": "href"
+      }
+    ]
   }
 }

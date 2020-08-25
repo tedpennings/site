@@ -24,10 +24,6 @@ const moduleFileExtensions = [
   "mjs",
   "web.js",
   "js",
-  "web.ts",
-  "ts",
-  "web.tsx",
-  "tsx",
   "json",
   "web.jsx",
   "jsx",
@@ -35,8 +31,8 @@ const moduleFileExtensions = [
 
 // Resolve file paths in the same order as webpack
 const resolveModule = (resolveFn, filePath) => {
-  const extension = moduleFileExtensions.find((extension) =>
-    fs.existsSync(resolveFn(`${filePath}.${extension}`))
+  const extension = moduleFileExtensions.find((ext) =>
+    fs.existsSync(resolveFn(`${filePath}.${ext}`))
   );
 
   if (extension) {
@@ -56,7 +52,6 @@ module.exports = {
   appIndexJs: resolveModule(resolveApp, "src/index"),
   appPackageJson: resolveApp("package.json"),
   appSrc: resolveApp("src"),
-  appTsConfig: resolveApp("tsconfig.json"),
   appJsConfig: resolveApp("jsconfig.json"),
   yarnLockFile: resolveApp("yarn.lock"),
   testsSetup: resolveModule(resolveApp, "src/setupTests"),
