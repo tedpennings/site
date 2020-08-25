@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
     marginBottom: 0,
     "& > *:first-child": {
-      marginRight: theme.spacing(0.25),
+      marginRight: theme.spacing(0.5),
     },
   },
   loading: {
@@ -50,7 +50,7 @@ function renderBreadcrumb(routeList, breadcrumb, className) {
   const Icon = route.icon;
   return (
     <Typography component={Link} to={route.path} className={className}>
-      <Icon /> {route.name}
+      <Icon fontSize="small" /> {route.name}
     </Typography>
   );
 }
