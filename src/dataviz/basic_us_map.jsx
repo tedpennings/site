@@ -29,7 +29,7 @@ export default function BasicUSMap() {
       </Box>
       <Box>
         <Typography variant="h4" paragraph>
-          Compile the assets
+          Gather the assets
         </Typography>
         <Typography paragraph>
           There are two basic ingredients, a{" "}

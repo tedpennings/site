@@ -1,27 +1,39 @@
 import React, { Suspense } from "react";
-import { Box, CircularProgress } from "@material-ui/core";
+import { Box, Fade, Typography } from "@material-ui/core";
+import { Skeleton } from "@material-ui/lab";
 
 import Entries from "./entries";
 
 export default function Main() {
   return (
     <Box>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<SkeletonEntry />}>
         <Entries />
       </Suspense>
     </Box>
   );
 }
 
-function Spinner() {
+const paragraphCounts = ["h2", 3, "h3", 2, 4, "h3", 3];
+
+const paragraphs = paragraphCounts.map((count, p) => (
+  <Box key={p} mb={3}>
+    {typeof count === "string" ? (
+      <Typography variant={count}>
+        <Skeleton variant="text" animation="wave" />
+      </Typography>
+    ) : (
+      new Array(count)
+        .fill()
+        .map((_, l) => <Skeleton key={l} variant="text" animation="wave" />)
+    )}
+  </Box>
+));
+
+function SkeletonEntry() {
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      height="100%"
-    >
-      <CircularProgress size={60} />
-    </Box>
+    <Fade in timeout={{ enter: 200 }}>
+      <Box>{paragraphs}</Box>
+    </Fade>
   );
 }
