@@ -14,6 +14,9 @@ commands:
           name: Install dependencies
           command: yarn install --frozen-lockfile
       - run:
+          name: Lint
+          command: yarn lint
+      - run:
           name: Build assets
           command: yarn build
   cache_dependencies:
