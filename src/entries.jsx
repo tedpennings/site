@@ -1,4 +1,5 @@
 import React from "react";
+import { Alert } from "@material-ui/lab";
 import { Box } from "@material-ui/core";
 import { Switch, Route } from "react-router-dom";
 
@@ -8,7 +9,10 @@ import Sitemap from "./sitemap";
 
 export default function Entries() {
   return (
-    <Box component="section" mt={3}>
+    <Box mt={2}>
+      <Alert severity="info" variant="filled">
+        Under construction
+      </Alert>
       <Switch>
         <Switch path="/testing" />
         <Switch path="/dataviz">{dataviz.map(renderRoute)}</Switch>

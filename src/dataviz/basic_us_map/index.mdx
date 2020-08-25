@@ -1,8 +1,11 @@
 import { Alert } from "@material-ui/lab";
+import { Box } from "@material-ui/core";
 
-<Alert severity="info" variant="filled">
-  In Progress!
-</Alert>
+<Box>
+  <Alert severity="info" variant="filled">
+    In Progress!
+  </Alert>
+</Box>
 
 ## Basic US Map
 
@@ -13,15 +16,13 @@ visualization where we show a dimension of data across a geography.
 
 There are two basic ingredients, a **map vector image** and a **data set**.
 
+
 The images are often the easy part. Wikipedia has some amazing maps for
-[https://commons.wikimedia.org/wiki/File:Blank_US_Map_(states_only).svg](the US)
-and for
-[https://en.wikipedia.org/wiki/File:BlankMap-World.png](the world) and
-[https://en.wikipedia.org/wiki/Wikipedia:Blank_maps](more). You can find lots
-more elsewhere, [lists of earth projections](https://gisgeography.com/map-projection-types/)
-and fun projections like [the Fuller Projection](https://commons.wikimedia.org/wiki/File:Fuller_projection.svg)
-
-
+[the US](https://commons.wikimedia.org/wiki/File:Blank_US_Map_(states_only).svg)
+and for [the world](https://en.wikipedia.org/wiki/File:BlankMap-World.png) and
+[more](https://en.wikipedia.org/wiki/Wikipedia:Blank_maps).
+You can find lots more elsewhere, [lists of earth projections](https://gisgeography.com/map-projection-types/)
+and fun projections like [the Fuller Projection](https://commons.wikimedia.org/wiki/File:Fuller_projection.svg).
 
 You could also use a map library like Google Maps, Leaflet or Open
 Layers. These will usually require that you place a dataviz layer on
@@ -41,11 +42,11 @@ For the data set, I'm going to use infant mortality rates. When I
 lost my son Pablo, I assumed it was unusual and an aberration. It
 turns out it happens more often than you'd think, as you can see
 below. The US CDC provides
-[https://www.cdc.gov/nchs/data/nvsr/nvsr69/NVSR-69-7-508.pdf#page=15&zoom=100,0,0](infant mortality reports),
+[infant mortality reports](https://www.cdc.gov/nchs/data/nvsr/nvsr69/NVSR-69-7-508.pdf#page=15&zoom=100,0,0),
 broken down by state, among other axes. This will need to be
 translated from PDF text form into JSON (or similar). There are often
-other ways to get this data, like [https://data.gov](data.gov) and
-[https://wonder.cdc.gov](wonder.cdc.gov). I found the same data from
-that PDF on wonder.cdc.gov, downloaded the tab-separated data and found
-[https://shancarter.github.io/mr-data-converter/](a converter) to make
-it JSON. Done.
+other ways to get this data, like [data.gov](https://data.gov) and
+[wonder.cdc.gov](https://wonder.cdc.gov). I found the same data from
+that PDF on [wonder.cdc.gov](https://wonder.cdc.gov), downloaded the
+tab-separated data and found [a converter](https://shancarter.github.io/mr-data-converter/)
+to make it JSON. Done.

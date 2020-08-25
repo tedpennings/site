@@ -31,7 +31,7 @@ export default function Sidebar() {
       <Typography className={classes.heading} paragraph variant="h4">
         About Ted
       </Typography>
-      <Typography paragraph variant="subtitle1">
+      <Typography paragraph>
         Ted lives in Portland, Oregon with his partner Jen. Ted works at{" "}
         <ExternalLink href="https://lightstep.com">Lightstep</ExternalLink> as a
         software engineer.

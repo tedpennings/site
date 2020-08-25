@@ -12,7 +12,7 @@ const SMALL_BREAKPOINT = "1024px";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(3, 3, 1, 3),
+    padding: theme.spacing(3, 3, 2, 3),
     height: "100vh",
     display: "flex",
     flexDirection: "column",
