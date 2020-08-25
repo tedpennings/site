@@ -2,7 +2,7 @@ version: 2.1
 
 defaults: &defaults
   docker:
-    - image: circleci/node:11
+    - image: circleci/node:10
 
 commands:
   build_assets:
