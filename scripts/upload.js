@@ -17,8 +17,8 @@ const params = {
   deleteRemoved: true,
 
   s3Params: {
-    Bucket: "ted.pennin.gs",
     ACL: "public-read",
+    Bucket: "ted.pennin.gs",
     CacheControl: "no-cache",
   },
 };

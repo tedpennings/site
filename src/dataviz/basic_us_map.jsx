@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-max-depth */
+// TODO react/jsx-max-depth
 import React from "react";
 import { Box, Typography } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
@@ -18,7 +20,7 @@ export default function BasicUSMap() {
       <Alert severity="info" variant="filled">
         In Progress!
       </Alert>
-      <Typography variant="h2" paragraph>
+      <Typography paragraph variant="h2">
         Basic US Map
       </Typography>
       <Box>
@@ -28,16 +30,16 @@ export default function BasicUSMap() {
         </Typography>
       </Box>
       <Box>
-        <Typography variant="h4" paragraph>
+        <Typography paragraph variant="h4">
           Gather the assets
         </Typography>
         <Typography paragraph>
           There are two basic ingredients, a{" "}
-          <Typography component="span" className={classes.em}>
+          <Typography className={classes.em} component="span">
             map vector image
           </Typography>{" "}
           and a{" "}
-          <Typography component="span" className={classes.em}>
+          <Typography className={classes.em} component="span">
             data set
           </Typography>
           .
@@ -59,7 +61,7 @@ export default function BasicUSMap() {
           </ExternalLink>
           . You can find lots more elsewhere, lists of earth projections and fun
           projections like the Fuller Projection
-          https://commons.wikimedia.org/wiki/File:Fuller_projection.svg
+          https://commons.wikimedia.org/wiki/ File:Fuller_projection.svg
           https://gisgeography.com/map-projection-types/
         </Typography>
         <Typography paragraph>
@@ -72,15 +74,15 @@ export default function BasicUSMap() {
           boundaries, toggles for levels of detail, etc.
         </Typography>
         <Typography paragraph>
-          In this article we're using an off-the-shelf map that has layers for
-          each element in our dataset, so we have a single layer with our map
-          vector image and our dataviz element together.
+          In this article we&apos;re using an off-the-shelf map that has layers
+          for each element in our dataset, so we have a single layer with our
+          map vector image and our dataviz element together.
         </Typography>
         <Typography paragraph>
-          For the data set, I'm going to use infant mortality rates. When I lost
-          my son Pablo, I assumed it was unusual and an aberration. It turns out
-          it happens more often than you'd think, as you can see below. The US
-          CDC provides{" "}
+          For the data set, I&apos;m going to use infant mortality rates. When I
+          lost my son Pablo, I assumed it was unusual and an aberration. It
+          turns out it happens more often than you&apos;d think, as you can see
+          below. The US CDC provides{" "}
           <ExternalLink href="https://www.cdc.gov/nchs/data/nvsr/nvsr69/NVSR-69-7-508.pdf#page=15&zoom=100,0,0">
             infant mortality reports
           </ExternalLink>

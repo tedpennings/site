@@ -1,0 +1,69 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "plugins": ["react"],
+  "rules": {
+    "complexity": ["error", 10],
+    "dot-notation": "error",
+    "no-console": "error",
+    "no-shadow": "error",
+    "prefer-destructuring": "error",
+    "prefer-template": "error",
+    "prefer-object-spread": "error",
+
+    "react/boolean-prop-naming": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-no-target-blank": "error",
+    "react/jsx-boolean-value": "error",
+
+    "react/jsx-no-literals": "off",
+    "react/forbid-component-props": "off",
+    "react/jsx-max-depth": "off"
+  },
+  "overrides": [
+    {
+      "files": ["config/**", "scripts/**"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ],
+  "settings": {
+    "react": { "version": "detect", "pragma": "React" },
+    "linkComponents": [
+      "Hyperlink",
+      {
+        "name": "Link",
+        "linkAttribute": "to"
+      },
+      {
+        "name": "ExternalLink",
+        "linkAttribute": "href"
+      }
+    ]
+  }
+}

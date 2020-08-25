@@ -8,17 +8,17 @@ import ExternalLink from "./common/external_link";
 import me2020 from "./assets/me-2020.jpg";
 
 const useStyles = makeStyles((theme) => ({
-  sidebar: {
-    padding: theme.spacing(1, 2, 0, 1),
-  },
-  photo: {
-    width: "100%",
-    marginBottom: theme.spacing(1),
-    border: `1px solid ${theme.palette.text.secondary}`,
-    maxWidth: theme.spacing(35),
-  },
   heading: {
     marginBottom: theme.spacing(1),
+  },
+  photo: {
+    border: `1px solid ${theme.palette.text.secondary}`,
+    marginBottom: theme.spacing(1),
+    maxWidth: theme.spacing(35),
+    width: "100%",
+  },
+  sidebar: {
+    padding: theme.spacing(1, 2, 0, 1),
   },
 }));
 
@@ -27,11 +27,11 @@ export default function Sidebar() {
   const classes = useStyles();
   return (
     <Box className={classes.sidebar}>
-      <img className={classes.photo} src={me2020} alt="Ted Pennings" />
-      <Typography className={classes.heading} variant="h4" paragraph>
+      <img alt="Ted Pennings" className={classes.photo} src={me2020} />
+      <Typography className={classes.heading} paragraph variant="h4">
         About Ted
       </Typography>
-      <Typography variant="subtitle1" paragraph>
+      <Typography paragraph variant="subtitle1">
         Ted lives in Portland, Oregon with his partner Jen. Ted works at{" "}
         <ExternalLink href="https://lightstep.com">Lightstep</ExternalLink> as a
         software engineer.
@@ -41,7 +41,7 @@ export default function Sidebar() {
       </Typography>
       <Typography paragraph>
         Ted and Jen had a son named Pablo who passed away in November 2017{" "}
-        <span role="img" aria-label="broken heart">
+        <span aria-label="broken heart" role="img">
           💔
         </span>
       </Typography>

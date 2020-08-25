@@ -2,7 +2,7 @@ version: 2.1
 
 defaults: &defaults
   docker:
-    - image: circleci/node:11
+    - image: circleci/node:10
 
 commands:
   build_assets:
@@ -13,6 +13,9 @@ commands:
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
+      - run:
+          name: Lint
+          command: yarn lint
       - run:
           name: Build assets
           command: yarn build

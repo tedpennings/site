@@ -51,7 +51,7 @@ function PlaceholderIndex() {
         Data visualization
       </Typography>
       <Typography>
-        I'm working on content! Here's what I have so far:
+        I&apos;m working on content! Here&apos;s what I have so far:
       </Typography>
       <List>
         {dataviz.map(({ path, name, icon: Icon }) => (
