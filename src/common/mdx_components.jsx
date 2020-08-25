@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types, react/display-name */
 import React from "react";
 
 import { Divider, Link, Typography } from "@material-ui/core";
@@ -19,7 +19,7 @@ function MdxLink(props) {
 // https://mdxjs.com/getting-started/#mdxprovider
 export default {
   a: MdxLink,
-  p: Typography,
+  p: (props) => <Typography paragraph {...props} />,
   h1: TypographyFactory("h1"),
   h2: TypographyFactory("h2"),
   h3: TypographyFactory("h3"),
