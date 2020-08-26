@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box, Fade } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -53,19 +53,22 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
-      <Box component="header" className={classes.header}>
-        <Header />
-      </Box>
-      <Nav />
-      <Box className={classes.body}>
-        <Box component="main" className={classes.main}>
-          <Main />
+    // Fade allows time for font parsing, etc
+    <Fade in timeout={{ enter: 500 }}>
+      <Box className={classes.root}>
+        <Box component="header" className={classes.header}>
+          <Header />
         </Box>
-        <Box component="aside" className={classes.sidebar}>
-          <Sidebar />
+        <Nav />
+        <Box className={classes.body}>
+          <Box component="main" className={classes.main}>
+            <Main />
+          </Box>
+          <Box component="aside" className={classes.sidebar}>
+            <Sidebar />
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </Fade>
   );
 }
