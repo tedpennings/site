@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Box, Fade, Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import Entries from "./entries";
@@ -31,9 +31,5 @@ const paragraphs = paragraphCounts.map((count, p) => (
 ));
 
 function SkeletonEntry() {
-  return (
-    <Fade in timeout={{ enter: 200 }}>
-      <Box>{paragraphs}</Box>
-    </Fade>
-  );
+  return <Box>{paragraphs}</Box>;
 }

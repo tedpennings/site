@@ -1,5 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
+  Box,
   List,
   ListItem,
   ListItemIcon,
@@ -9,7 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { dataviz } from "./routes";
+import routes from "./routes";
 
 const useStyles = makeStyles((theme) => ({
   listIcon: {
@@ -18,11 +20,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Sitemap() {
+export default function Sitemap({ sections = Object.keys(routes) }) {
+  return (
+    <Box>
+      {pickAsArray(routes, sections).map((s, i) => (
+        <SectionSitemap key={i} sectionRoutes={s} />
+      ))}
+    </Box>
+  );
+}
+
+Sitemap.propTypes = {
+  sections: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(routes))),
+};
+
+function SectionSitemap({ sectionRoutes }) {
   const classes = useStyles();
   return (
     <List>
-      {dataviz.map(({ path, name, icon: Icon }) => (
+      {sectionRoutes.map(({ path, name, icon: Icon }) => (
         <ListItemLink key={path} to={path}>
           <ListItemIcon className={classes.listIcon}>
             <Icon />
@@ -36,6 +52,13 @@ export default function Sitemap() {
       ))}
     </List>
   );
+}
+SectionSitemap.propTypes = {
+  sectionRoutes: PropTypes.array,
+};
+
+function pickAsArray(obj, keys) {
+  return keys.map((k) => obj[k]);
 }
 
 function ListItemLink(props) {

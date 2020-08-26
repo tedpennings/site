@@ -1,17 +1,21 @@
 import React from "react";
-import { BarChart, Map, Tune } from "@material-ui/icons";
+import { BarChart, Map, Speed, Tune } from "@material-ui/icons";
 
 export const main = [
   {
     path: "/dataviz",
     name: "Data Visualization",
-    component: <p>TODO</p>,
     icon: BarChart,
+  },
+  {
+    path: "/performance",
+    name: "Performance",
+    icon: Speed,
   },
   {
     path: "/testing",
     name: "Testing",
-    component: Tune,
+    icon: Tune,
   },
 ];
 
@@ -25,3 +29,5 @@ export const dataviz = [
     ),
   },
 ];
+
+export default { dataviz };

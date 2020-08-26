@@ -1,9 +1,9 @@
 import { Alert } from "@material-ui/lab";
-import { Box } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 
-<Box>
+<Box mb={2}>
   <Alert severity="info" variant="filled">
-    In Progress!
+    <Typography>{"In Progress!"}</Typography>
   </Alert>
 </Box>
 
@@ -15,7 +15,6 @@ visualization where we show a dimension of data across a geography.
 #### Gather the assets
 
 There are two basic ingredients, a **map vector image** and a **data set**.
-
 
 The images are often the easy part. Wikipedia has some amazing maps for
 [the US](https://commons.wikimedia.org/wiki/File:Blank_US_Map_(states_only).svg)
@@ -32,11 +31,9 @@ but you may also need to position the elements in your dataviz layers
 libraries do offer flexibility: earth projections, political
 boundaries, toggles for levels of detail, etc.
 
-
 In this article we're using an off-the-shelf map that has layers
 for each element in our dataset, so we have a single layer with our
 map vector image and our dataviz element together.
-
 
 For the data set, I'm going to use infant mortality rates. When I
 lost my son Pablo, I assumed it was unusual and an aberration. It
@@ -50,3 +47,5 @@ other ways to get this data, like [data.gov](https://data.gov) and
 that PDF on [wonder.cdc.gov](https://wonder.cdc.gov), downloaded the
 tab-separated data and found [a converter](https://shancarter.github.io/mr-data-converter/)
 to make it JSON. Done.
+
+Here is a [router link](/) and external links are above
