@@ -3,16 +3,19 @@ import { BarChart, Map, Speed, Tune, Whatshot } from "@material-ui/icons";
 
 export const main = [
   {
+    key: "dataviz",
     path: "/dataviz",
     name: "Data Visualization",
     icon: BarChart,
   },
   {
+    key: "performance",
     path: "/performance",
     name: "Performance",
     icon: Speed,
   },
   {
+    key: "testing",
     path: "/testing",
     name: "Testing",
     icon: Tune,

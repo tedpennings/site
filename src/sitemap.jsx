@@ -11,26 +11,66 @@ import {
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
-import routes from "./routes";
+import routes, { main as mainRoutes } from "./routes";
 
 const useStyles = makeStyles((theme) => ({
+  sectionHeading: {
+    display: "flex",
+    alignItems: "center",
+    "& > *": {
+      marginRight: theme.spacing(1),
+    },
+  },
+  listItem: {
+    paddingLeft: theme.spacing(0.5),
+  },
   listIcon: {
     minWidth: "unset",
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(2),
   },
 }));
 
-export default function Sitemap({ sections = Object.keys(routes) }) {
+export default function Sitemap({
+  headings = false,
+  icons = true,
+  sections = Object.keys(routes),
+}) {
+  const classes = useStyles();
   return (
     <Box>
-      {pickAsArray(routes, sections).map((s, i) => (
-        <SectionSitemap key={i} sectionRoutes={s} />
-      ))}
+      {sections.map((section, i) => {
+        const sectionRoutes = routes[section];
+        const mainEntry = mainRoutes.find((e) => e.key === section);
+        let sectionHeading = section;
+        if (mainEntry) {
+          let Icon = React.Fragment;
+          if (mainEntry.icon && icons) {
+            Icon = mainEntry.icon;
+          }
+          sectionHeading = (
+            <>
+              <Icon fontSize="large" /> {mainEntry.name}
+            </>
+          );
+        }
+        return (
+          <Box key={i} mt={3}>
+            {headings && (
+              <Typography variant="h4" className={classes.sectionHeading}>
+                {sectionHeading}
+              </Typography>
+            )}
+            <SectionSitemap sectionRoutes={sectionRoutes} />
+          </Box>
+        );
+      })}
     </Box>
   );
 }
 
 Sitemap.propTypes = {
+  headings: PropTypes.bool,
+  icons: PropTypes.bool,
   sections: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(routes))),
 };
 
@@ -39,7 +79,7 @@ function SectionSitemap({ sectionRoutes }) {
   return (
     <List dense>
       {sectionRoutes.map(({ path, name, icon: Icon }) => (
-        <ListItemLink key={path} to={path}>
+        <ListItemLink className={classes.listItem} key={path} to={path}>
           <ListItemIcon className={classes.listIcon}>
             <Icon />
           </ListItemIcon>
@@ -56,10 +96,6 @@ function SectionSitemap({ sectionRoutes }) {
 SectionSitemap.propTypes = {
   sectionRoutes: PropTypes.array,
 };
-
-function pickAsArray(obj, keys) {
-  return keys.map((k) => obj[k]);
-}
 
 function ListItemLink(props) {
   return <ListItem component={Link} {...props} />;
