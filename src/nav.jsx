@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 0,
     "& > *:first-child": {
       marginRight: theme.spacing(0.5),
+      height: theme.spacing(2.75),
     },
   },
   loading: {

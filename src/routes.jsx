@@ -1,25 +1,21 @@
 import React from "react";
-import { BarChart, EmojiPeople, Map, Tune } from "@material-ui/icons";
-
-import Welcome from "./welcome"; // do not codesplit welcome, on the front page
+import { BarChart, Map, Speed, Tune } from "@material-ui/icons";
 
 export const main = [
   {
-    path: "/welcome",
-    name: "Welome!",
-    component: <Welcome />,
-    icon: EmojiPeople,
-  },
-  {
     path: "/dataviz",
     name: "Data Visualization",
-    component: <Welcome />,
     icon: BarChart,
+  },
+  {
+    path: "/performance",
+    name: "Performance",
+    icon: Speed,
   },
   {
     path: "/testing",
     name: "Testing",
-    component: Tune,
+    icon: Tune,
   },
 ];
 
@@ -33,3 +29,5 @@ export const dataviz = [
     ),
   },
 ];
+
+export default { dataviz };
