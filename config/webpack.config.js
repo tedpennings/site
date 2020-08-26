@@ -1,10 +1,7 @@
 /* eslint-disable complexity */
 
-const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
-const resolve = require("resolve");
-const PnpWebpackPlugin = require("pnp-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
@@ -22,8 +19,6 @@ const paths = require("./paths");
 const modules = require("./modules");
 const getClientEnvironment = require("./env");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
-const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
-const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 
 const postcssNormalize = require("postcss-normalize");
 
@@ -39,9 +34,6 @@ const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || "10000",
   10
 );
-
-// Check if TypeScript is setup
-const useTypeScript = fs.existsSync(paths.appTsConfig);
 
 // style files regexes
 const cssRegex = /\.css$/;
@@ -285,9 +277,7 @@ module.exports = function (webpackEnv) {
       // https://github.com/facebook/create-react-app/issues/290
       // `web` extension prefixes have been added for better support
       // for React Native Web.
-      extensions: paths.moduleFileExtensions
-        .map((ext) => `.${ext}`)
-        .filter((ext) => useTypeScript || !ext.includes("ts")),
+      extensions: paths.moduleFileExtensions.map((ext) => `.${ext}`),
       alias: {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -300,22 +290,12 @@ module.exports = function (webpackEnv) {
         ...(modules.webpackAliases || {}),
       },
       plugins: [
-        // Adds support for installing with Plug'n'Play, leading to faster installs and adding
-        // guards against forgotten dependencies and such.
-        PnpWebpackPlugin,
         // Prevents users from importing files from outside of src/ (or node_modules/).
         // This often causes confusion because we only process files within src/ with babel.
         // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
         // please link the files into your node_modules/ and let module-resolution kick in.
         // Make sure your source files are compiled, as they will not be processed in any way.
         new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-      ],
-    },
-    resolveLoader: {
-      plugins: [
-        // Also related to Plug'n'Play, but this time it tells webpack to load its loaders
-        // from the current package.
-        PnpWebpackPlugin.moduleLoader(module),
       ],
     },
     module: {
@@ -327,7 +307,7 @@ module.exports = function (webpackEnv) {
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
         {
-          test: /\.(js|mjs|jsx|ts|tsx)$/,
+          test: /\.(jsx?)$/,
           enforce: "pre",
           use: [
             {
@@ -358,9 +338,8 @@ module.exports = function (webpackEnv) {
               },
             },
             // Process application JS with Babel.
-            // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
-              test: /\.(js|mjs|jsx|ts|tsx)$/,
+              test: /\.(jsx?)$/,
               include: paths.appSrc,
               loader: require.resolve("babel-loader"),
               options: {
@@ -496,7 +475,7 @@ module.exports = function (webpackEnv) {
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              exclude: [/\.(jsx?)$/, /\.html$/, /\.json$/],
               options: {
                 name: "static/media/[name].[hash:8].[ext]",
               },
@@ -616,33 +595,6 @@ module.exports = function (webpackEnv) {
             // a route with query params (e.g. auth callbacks).
             new RegExp("/[^/?]+\\.[^/]+$"),
           ],
-        }),
-      // TypeScript type checking
-      useTypeScript &&
-        new ForkTsCheckerWebpackPlugin({
-          typescript: resolve.sync("typescript", {
-            basedir: paths.appNodeModules,
-          }),
-          async: isEnvDevelopment,
-          useTypescriptIncrementalApi: true,
-          checkSyntacticErrors: true,
-          resolveModuleNameModule: process.versions.pnp
-            ? `${__dirname}/pnpTs.js`
-            : undefined,
-          resolveTypeReferenceDirectiveModule: process.versions.pnp
-            ? `${__dirname}/pnpTs.js`
-            : undefined,
-          tsconfig: paths.appTsConfig,
-          reportFiles: [
-            "**",
-            "!**/__tests__/**",
-            "!**/?(*.)(spec|test).*",
-            "!**/src/setupProxy.*",
-            "!**/src/setupTests.*",
-          ],
-          silent: true,
-          // The formatter is invoked directly in WebpackDevServerUtils during development
-          formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
