@@ -55,7 +55,7 @@ module.exports = {
   appSrc: resolveApp("src"),
   appJsConfig: resolveApp("jsconfig.json"),
   yarnLockFile: resolveApp("yarn.lock"),
-  testsSetup: resolveModule(resolveApp, "src/setupTests"),
+  testsSetup: resolveModule(resolveApp, "src/setupTesa"),
   proxySetup: resolveApp("src/setupProxy.js"),
   appNodeModules: resolveApp("node_modules"),
   publicUrlOrPath,
