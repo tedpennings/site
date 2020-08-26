@@ -43,13 +43,14 @@ export default function Sitemap({
         const mainEntry = mainRoutes.find((e) => e.key === section);
         let sectionHeading = section;
         if (mainEntry) {
-          let Icon = React.Fragment;
+          let icon = false;
           if (mainEntry.icon && icons) {
-            Icon = mainEntry.icon;
+            const Icon = mainEntry.icon;
+            icon = <Icon fontSize="large" />;
           }
           sectionHeading = (
             <>
-              <Icon fontSize="large" /> {mainEntry.name}
+              {icon} {mainEntry.name}
             </>
           );
         }
