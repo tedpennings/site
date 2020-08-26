@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart, Map, Speed, Tune } from "@material-ui/icons";
+import { BarChart, Map, Speed, Tune, Whatshot } from "@material-ui/icons";
 
 export const main = [
   {
@@ -20,6 +20,14 @@ export const main = [
 ];
 
 export const dataviz = [
+  {
+    path: "/dataviz/heatmaps",
+    name: "Heatmaps",
+    icon: Whatshot,
+    component: React.lazy(() =>
+      import(/* webpackMode: "lazy" */ "./dataviz/heatmaps")
+    ),
+  },
   {
     path: "/dataviz/basic-us-map",
     name: "Basic US Map",
