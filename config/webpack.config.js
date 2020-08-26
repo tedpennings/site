@@ -20,6 +20,8 @@ const modules = require("./modules");
 const getClientEnvironment = require("./env");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+
 const postcssNormalize = require("postcss-normalize");
 
 const appPackageJson = require(paths.appPackageJson);
@@ -487,6 +489,7 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
+      ...(process.env.GENERATE_SOURCEMAP ? [new BundleAnalyzerPlugin()] : []),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin({
         inject: true,

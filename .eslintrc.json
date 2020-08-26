@@ -42,7 +42,14 @@
 
     "react/jsx-no-literals": "off",
     "react/forbid-component-props": "off",
-    "react/jsx-max-depth": "off"
+    "react/jsx-max-depth": "off",
+
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
+      }
+    ]
   },
   "overrides": [
     {
