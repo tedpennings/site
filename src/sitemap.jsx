@@ -37,7 +37,7 @@ Sitemap.propTypes = {
 function SectionSitemap({ sectionRoutes }) {
   const classes = useStyles();
   return (
-    <List>
+    <List dense>
       {sectionRoutes.map(({ path, name, icon: Icon }) => (
         <ListItemLink key={path} to={path}>
           <ListItemIcon className={classes.listIcon}>

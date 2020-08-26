@@ -2,6 +2,7 @@
 import React from "react";
 
 import { Box, Divider, Typography } from "@material-ui/core";
+import { ChevronRight } from "@material-ui/icons";
 import { useTheme } from "@material-ui/core/styles";
 
 import ConsolidatedLink from "./consolidated_link";
@@ -48,6 +49,30 @@ function InlineCode({ children }) {
   );
 }
 
+const listParentStyles = {
+  my: 3,
+  ml: 1,
+  style: { paddingInlineStart: 0 },
+};
+
+const UL = ({ children }) => (
+  <Box component="ul" {...listParentStyles}>
+    {children}
+  </Box>
+);
+const OL = ({ children }) => (
+  <Box component="ol" {...listParentStyles}>
+    {children}
+  </Box>
+);
+const LI = ({ children }) => (
+  // Do not put <Typography> on children, to <p> inside <p>
+  <Box component="li" display="flex">
+    <ChevronRight color="secondary" />
+    {children}
+  </Box>
+);
+
 // Overwrite MdxProvider components to work with Material-UI
 // https://mdxjs.com/getting-started/#mdxprovider
 export default {
@@ -64,5 +89,8 @@ export default {
   thematicBreak: (props) => <Divider light {...props} />,
   inlineCode: InlineCode,
   blockquote: Blockquote,
+  ul: UL,
+  ol: OL,
+  li: LI,
   // TODO code block, lists, tables
 };
