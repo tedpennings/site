@@ -10,7 +10,7 @@ import DataViz from "./dataviz_section.mdx";
 
 export default function Entries() {
   return (
-    <Box mt={2}>
+    <Box mt={1}>
       <Box mb={2}>
         <Alert severity="error" variant="filled">
           <Typography>
