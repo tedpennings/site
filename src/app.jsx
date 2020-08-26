@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   body: {
     height: "100%",
     width: "100%",
+    marginTop: theme.spacing(1),
     display: "flex",
     flex: "1 1 100%",
     [`@media (max-width: ${SMALL_BREAKPOINT})`]: {

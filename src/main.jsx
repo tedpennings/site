@@ -6,11 +6,9 @@ import Entries from "./entries";
 
 export default function Main() {
   return (
-    <Box>
-      <Suspense fallback={<SkeletonEntry />}>
-        <Entries />
-      </Suspense>
-    </Box>
+    <Suspense fallback={<SkeletonEntry />}>
+      <Entries />
+    </Suspense>
   );
 }
 
