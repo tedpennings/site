@@ -8,17 +8,75 @@ Heatmaps are basic visualizations where color communicates the data, either with
 the brightness/intensity of the color or a change in the hue, like a gradient or
 a rainbow.
 
-A heatmap involves mapping an input domain, `[1, 2, 3, 4, 5]` to an output domain,
-say, `[10, 20, 30, 40, 50]`. This can happen in a few different ways:
+There are a few different types of heatmaps &mdash; we'll break down each:
 
-- CSS `opacity` setting, `0` to `1.0`.
+- **Gradient color spectrums** that interpolate unique hex codes for **all** values, as shown below. This is the common
+  type of heatmap because it yields a fluid gradient. This might sound like the most difficult, but the
+  code is actually very easy. Accessibility and color blindness present the challenge here, when the gradient
+  crosses hues (eg, red -> green, which is classically bad for color blindness).
 
-- Defining a color spectrum to interpolate hex codes for given values, as shown below.
+- Color spectrum with a few **specific color stops**; your heatmap only shows those few colors.
+  This is common in <ImageTooltip imgSrc={electoralMap} href='https://270towin.com/' source='270toWin'>electoral college heat maps</ImageTooltip>,
+  showing the party leaning of a state as _safe_, _likely_, _leans_, _toss up_, and
+  wrapping back to _leans_ and _safe_ for the opposite party. This is
+  actually a heatmap with specific intervals/stops.
 
-- Setting specific color stops, so your heatmap shows just a few colors. This is common
-  in <ImageTooltip imgSrc={electoralMap} href='https://270towin.com/' source='270toWin'>electoral college heat
-  maps</ImageTooltip>, showing the party leaning of a state as _safe_, _likely_, _leans_,
-  _toss up_, and wrapping back to _leans_ and _safe_ for the opposite party. This is
-  just a heatmap with specific intervals/stops.
+- **Opacity heatmaps**, between `0` and `1.0`. CSS `opacity` makes this the easiest option. This is nearly
+  the same option as the gradient color spectrum above, for a single color. Keep in mind that many of your
+  values will be illegible or even invisible due to low opacity. In an even distribution, much of the spectrum
+  may be hard to read. In an uneven distribution, with one giant outlier, everything else might be
+  invisible &mdash; you may only be able to see that one outlier.
 
-## WIP
+### The Math
+
+First, the math. A heatmap involves mapping an input domain, `[1, 2, 3, 4, 5]` to an output domain,
+say, `[10, 20, 30, 40, 50]`. Here's an example where we map `3 -> 15` to `1 -> 5`:
+
+| Input (domain) | Output (range) |
+| -------------- | -------------- |
+| 3              | 1              |
+| 6              | 2              |
+| 7              | 2.33           |
+| 11             | 3.67           |
+| 15             | 5              |
+
+This process maps the values from your raw data to what you can visualize. There are three methods,
+as mentioned above. In math terms, that's:
+
+- percentage scale (like opacity)
+- scaled to fix buckets (election map)
+- gradient scale (common heatmap)
+
+For all of these, you will need to calculate the domain of your data set. In Javascript, `Math.min()` and
+`Math.max()` on the dataset values will give you this, `3 -> 15` above.
+
+TODO MAYBE ? Now that you have your domain, `3 -> 15`, you need to write a little function to interpolate a value within
+it. So, the value is `7` is `2.33`. This comes from `((7/15) * 5)`, where `15` and `5` are the maximum values of the
+domain and range.
+
+#### But Wait!
+
+**There's an easier way.** [d3-scale](https://github.com/d3/d3-scale) can provide this translation for you
+you don't need to do math! I'll show how to use it in this post, and [this article](https://medium.com/@mbostock/introducing-d3-scale-61980c51545f)
+talks about how it works.
+
+```javascript
+const calculateOpacity = d3.scaleLinear().domain([3, 15]).range([0.5, 1]);
+const myData = [3, 6, 7, 11, 15];
+const opacities = myData.map(calculateOpacity); // [0.5, 0.625, 0.667, 0.833, 1]
+```
+
+There's also a color-specific library for scaling data, [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic). TODO why use it
+
+### Opacity Heatmaps
+
+These are very easy to do. If you need something basic and quick, start here. We talked about the math -- normal
+domain calculations, and a range ending at `1.0`. (Be careful if it starts at `0`.)
+
+TODO? For an opacity heatmap, you can use a simple range of `0` to `1.0`, so `(7/15)` is `0.47` and that's the
+be the opacity for that value. Small values like `0.1` are very hard to read, so it would be better to
+use `0.5 -> 1.0` for your opacity range, not `0 -> 1`.
+
+# WIP
+
+I'm still writing!! Coming back to this!

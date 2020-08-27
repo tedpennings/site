@@ -40,6 +40,7 @@ function InlineCode({ children }) {
         fontVariationSettings: "'MONO' 100, 'wght' 175",
         background: theme.palette.grey[200],
         padding: theme.spacing(0.25, 0.75),
+        whiteSpace: "pre",
       }}
       display="inline"
       component="span"
@@ -92,5 +93,11 @@ export default {
   ul: UL,
   ol: OL,
   li: LI,
+  // TODO this pre handling sucks
+  pre: ({ children }) => (
+    <Blockquote>
+      <InlineCode>{children}</InlineCode>
+    </Blockquote>
+  ),
   // TODO code block, lists, tables
 };
