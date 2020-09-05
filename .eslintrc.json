@@ -6,18 +6,14 @@
   },
   "extends": [
     "eslint:recommended",
+    "plugin:mdx/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:mdx/recommended",
     "prettier",
     "prettier/react"
   ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parser": "babel-eslint",
   "parserOptions": {
+    "parser": "babel-eslint",
     "ecmaFeatures": {
       "jsx": true
     },
@@ -45,6 +41,8 @@
     "react/forbid-component-props": "off",
     "react/jsx-max-depth": "off",
 
+    "react/no-unescaped-entities": "off",
+
     "no-restricted-imports": [
       "error",
       {
@@ -57,6 +55,12 @@
       "files": ["config/**", "scripts/**"],
       "rules": {
         "no-console": "off"
+      }
+    },
+    {
+      "files": ["*.json"],
+      "rules": {
+        "mdx/no-unused-expressions": "off"
       }
     }
   ],
