@@ -18,6 +18,7 @@
     "babel-preset-react-app": "^9.1.2",
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
+    "concurrently": "^5.3.0",
     "css-loader": "3.4.2",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
@@ -27,6 +28,7 @@
     "eslint-loader": "3.0.3",
     "eslint-plugin-import": "2.20.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-mdx": "^1.8.2",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "file-loader": "4.3.0",
@@ -68,15 +70,12 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "lint:eslint": "eslint src/**/*.js* config/**/*.js* scripts/**/*.js*",
-    "lint:prettier": "prettier --check src/**/*.js* config/**/*.js* scripts/**/*.js*",
-    "lint": "yarn lint:prettier && yarn lint:eslint",
+    "lint:eslint": "eslint src config scripts --ext js,jsx,json,mdx,md",
+    "lint:prettier": "prettier --check src config scripts",
+    "lint": "concurrently -n 'prettier,eslint' yarn:lint:prettier yarn:lint:eslint",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
