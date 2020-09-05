@@ -25,7 +25,7 @@ jobs:
 
       - name: yarn install
         run: |
-          yarn -version
+          yarn cache list
           yarn install --frozen-lockfile
 
       - name: Lint
