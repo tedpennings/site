@@ -6,6 +6,10 @@ jobs:
   build_and_lint:
     name: Build and Lint
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: site
     steps:
       - name: Run Lint
         run: yarn lint
