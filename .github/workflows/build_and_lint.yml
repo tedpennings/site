@@ -1,6 +1,6 @@
 name: Build and Lint
 
-on: [push, pull_request]
+on: push
 
 jobs:
   build_and_lint:
@@ -9,7 +9,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: site
     steps:
       - name: Run Lint
         run: yarn lint
