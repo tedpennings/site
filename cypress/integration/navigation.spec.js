@@ -1,6 +1,6 @@
 context("Navigation", () => {
   beforeEach(() => {
-    cy.visit("/");
+    cy.visitSite();
   });
 
   it("loads with a title, sidebar and photo", () => {

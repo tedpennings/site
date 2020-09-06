@@ -24,6 +24,12 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("getByTestId", (testId) =>
-  cy.get(`[data-test-id=${testId}]`)
+Cypress.Commands.add("getByTestId", (testId, options = {}) =>
+  cy.get(`[data-test-id=${testId}]`, options)
 );
+
+Cypress.Commands.add("visitSite", () => {
+  cy.visit("/");
+  // Allow addition time for the page to load in a PR check
+  cy.getByTestId("root", { timeout: 15 * 1000 });
+});
