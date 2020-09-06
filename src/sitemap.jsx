@@ -80,7 +80,12 @@ function SectionSitemap({ sectionRoutes }) {
   return (
     <List dense>
       {sectionRoutes.map(({ path, name, icon: Icon }) => (
-        <ListItemLink className={classes.listItem} key={path} to={path}>
+        <ListItemLink
+          data-link-name={name}
+          className={classes.listItem}
+          key={path}
+          to={path}
+        >
           <ListItemIcon className={classes.listIcon}>
             <Icon />
           </ListItemIcon>
