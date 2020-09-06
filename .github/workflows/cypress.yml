@@ -3,6 +3,7 @@ on: pull_request
 jobs:
   cypress:
     runs-on: ubuntu-latest
+    container: cypress/included:5.1.0
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.5.0
@@ -10,16 +11,6 @@ jobs:
           access_token: ${{ github.token }}
 
       - uses: actions/checkout@v2
-
-      # Cache is shared with Build and Lint workflow
-      - uses: actions/cache@v2
-        name: yarn cache
-        with:
-          path: .yarn-cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-
-      - name: yarn install
-        run: yarn install --frozen-lockfile
 
       - name: Wait for Netlify
         uses: probablyup/wait-for-netlify-action@3.2.0
@@ -30,14 +21,8 @@ jobs:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
 
       - name: Run Cypress
-        uses: cypress-io/github-action@v2
-        with:
-          record: true
-          config: baseUrl=${{ steps.waitForDeployment.outputs.url }}
-          browser: chrome
+        run: cypress run --record --config baseUrl=${{ steps.waitForDeployment.outputs.url }} --browser chrome --group default
         env:
           # pass the Dashboard record key as an environment variable
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          # this is automatically set by GitHub
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_ENV: test
