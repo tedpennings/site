@@ -9,7 +9,7 @@ context("Navigation", () => {
     cy.getByTestId("photo").should("be.visible");
   });
 
-  it("navigates to a page from the body links and updates the breadcrumbs", () => {
+  it("navigates to a page from the body links", () => {
     cy.get("[data-link-name=Heatmaps]").click();
     cy.scrollTo("top");
     cy.get("h2").contains("Heatmaps").should("be.visible");
