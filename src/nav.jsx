@@ -32,25 +32,41 @@ export default function Nav() {
         separator={<NavigateNext fontSize="small" />}
         aria-label="breadcrumb"
       >
-        <Typography component={Link} to="/" className={classes.entry}>
+        <Typography
+          component={Link}
+          to="/"
+          className={classes.entry}
+          data-test-id="breadcrumb"
+          data-breadcrumb-level={0}
+          data-breadcrumb-name="Home"
+        >
           <Home fontSize="small" />
           Home
         </Typography>
-        {renderBreadcrumb(main, breadcrumbs[1], classes.entry)}
-        {renderBreadcrumb(dataviz, breadcrumbs[2], classes.entry)}
+        {renderBreadcrumb(main, breadcrumbs, 1, classes.entry)}
+        {renderBreadcrumb(dataviz, breadcrumbs, 2, classes.entry)}
       </Breadcrumbs>
     </Suspense>
   );
 }
 
-function renderBreadcrumb(routeList, breadcrumb, className) {
-  const route = routeList.find((r) => r.path === breadcrumb?.match?.path);
+function renderBreadcrumb(routeList, breadcrumbs, level, className) {
+  const route = routeList.find(
+    (r) => r.path === breadcrumbs[level]?.match?.path
+  );
   if (!route) {
     return null;
   }
   const Icon = route.icon;
   return (
-    <Typography component={Link} to={route.path} className={className}>
+    <Typography
+      component={Link}
+      to={route.path}
+      className={className}
+      data-test-id="breadcrumb"
+      data-breadcrumb-level={level}
+      data-breadcrumb-name={route.name}
+    >
       <Icon fontSize="small" /> {route.name}
     </Typography>
   );

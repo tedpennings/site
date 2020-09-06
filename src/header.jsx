@@ -93,7 +93,7 @@ export default function Header() {
        'DIAC' ${interpolateDiacritics(position)}`;
 
   return (
-    <Box>
+    <Box data-test-id="header">
       <Typography
         onMouseMove={trackMouse}
         onTouchMove={trackMouse}

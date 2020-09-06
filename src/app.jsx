@@ -55,7 +55,7 @@ export default function App() {
   return (
     // Fade allows time for font parsing, etc
     <Fade in timeout={{ enter: 500 }}>
-      <Box className={classes.root}>
+      <Box className={classes.root} data-test-id="root">
         <Box component="header" className={classes.header}>
           <Header />
         </Box>

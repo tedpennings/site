@@ -20,12 +20,14 @@
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "concurrently": "^5.3.0",
     "css-loader": "3.4.2",
+    "cypress": "^5.1.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "eslint": "^7.8.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-loader": "3.0.3",
+    "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-import": "2.20.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-mdx": "^1.8.2",
@@ -70,10 +72,11 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "lint:eslint": "eslint src config scripts --ext js,jsx,json,mdx,md",
-    "lint:prettier": "prettier --check src config scripts",
+    "lint:eslint": "eslint src cypress config scripts --ext js,jsx,json,mdx,md",
+    "lint:prettier": "prettier --check src cypress config scripts",
     "lint": "concurrently -n 'prettier,eslint' yarn:lint:prettier yarn:lint:eslint",
     "start": "node scripts/start.js",
+    "open:cypress": "NODE_ENV=test yarn cypress open --config baseUrl=http://localhost:3000/",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },

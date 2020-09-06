@@ -23,8 +23,13 @@ const useStyles = makeStyles((theme) => ({
 export default function Sidebar() {
   const classes = useStyles();
   return (
-    <Box className={classes.sidebar}>
-      <img alt="Ted Pennings" className={classes.photo} src={me2020} />
+    <Box className={classes.sidebar} data-test-id="sidebar">
+      <img
+        data-test-id="photo"
+        alt="Ted Pennings"
+        className={classes.photo}
+        src={me2020}
+      />
       <SidebarContent />
     </Box>
   );
