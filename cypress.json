@@ -1,5 +1,9 @@
 {
   "projectId": "hqbyzv",
   "viewportWidth": 1920,
-  "viewportHeight": 1280
+  "viewportHeight": 1280,
+  "retries": {
+    "runMode": 3,
+    "openMode": 0
+  }
 }
