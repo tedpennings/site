@@ -7,6 +7,7 @@ import { MDXProvider } from "@mdx-js/react";
 
 import theme from "./theme";
 import mdxComponents from "./common/mdx_components";
+import { ZoomParent } from "./common/zoom_image";
 import App from "./app";
 
 ReactDOM.render(
@@ -15,7 +16,9 @@ ReactDOM.render(
       <CssBaseline />
       <MDXProvider components={mdxComponents}>
         <BrowserRouter>
-          <App />
+          <ZoomParent>
+            <App />
+          </ZoomParent>
         </BrowserRouter>
       </MDXProvider>
     </ThemeProvider>

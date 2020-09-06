@@ -11,9 +11,13 @@ import NobotoFlex from "!!url-loader?limit=409029395329!./assets/NobotoFlex-VF.t
 const jss = create({ ...jssPreset() });
 jss
   .createStyleSheet({
-    "@font-face": {
-      fontFamily: "Noboto Flex",
-      src: `url(${NobotoFlex}) format("truetype")`,
+    "@global": {
+      ".medium-zoom-overlay": { zIndex: 1300 },
+      ".medium-zoom-image--opened": { zIndex: 1350 },
+      "@font-face": {
+        fontFamily: "Noboto Flex",
+        src: `url(${NobotoFlex}) format("truetype")`,
+      },
     },
   })
   .attach();

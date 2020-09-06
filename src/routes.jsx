@@ -1,5 +1,12 @@
 import React from "react";
-import { BarChart, Map, Speed, Tune, Whatshot } from "@material-ui/icons";
+import {
+  BarChart,
+  Favorite as Heart,
+  Map,
+  Speed,
+  Tune,
+  Whatshot,
+} from "@material-ui/icons";
 
 export const main = [
   {
@@ -19,6 +26,12 @@ export const main = [
     path: "/testing",
     name: "Testing",
     icon: Tune,
+  },
+  {
+    key: "pablo",
+    path: "/pablo",
+    name: "Pablo Valentine Pennings",
+    icon: Heart,
   },
 ];
 

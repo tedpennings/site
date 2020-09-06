@@ -26,6 +26,12 @@ export default function Entries() {
           <Route component={DataViz} />
         </Switch>
         <Switch path="/performance" />
+        <Route
+          path="/pablo"
+          component={React.lazy(() =>
+            import(/* webpackMode: "lazy" */ "./pablo")
+          )}
+        />
         <Route component={Welcome} />
       </Switch>
     </Box>
