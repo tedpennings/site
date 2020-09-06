@@ -11,13 +11,11 @@ context("Navigation", () => {
 
   it("navigates to a page from the body links", () => {
     cy.get("[data-link-name=Heatmaps]").click();
-    cy.scrollTo("top");
     cy.get("h2").contains("Heatmaps").should("be.visible");
   });
 
   it("updates the breadcrumbs", () => {
     cy.get("[data-link-name=Heatmaps]").click();
-    cy.scrollTo("top");
     cy.getByTestId("breadcrumb")
       .filter("[data-breadcrumb-level=2][data-breadcrumb-name=Heatmaps]")
       .should("be.visible");
