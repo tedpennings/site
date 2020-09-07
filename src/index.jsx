@@ -5,23 +5,21 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter } from "react-router-dom";
 import { MDXProvider } from "@mdx-js/react";
 
-import theme from "./theme";
 import mdxComponents from "./common/mdx_components";
-import { ZoomParent } from "./common/zoom_image";
+import { ZoomImageContainer } from "./common/zoom_image";
+import theme from "./theme";
 import App from "./app";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <MDXProvider components={mdxComponents}>
-        <BrowserRouter>
-          <ZoomParent>
-            <App />
-          </ZoomParent>
-        </BrowserRouter>
-      </MDXProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <MDXProvider components={mdxComponents}>
+      <BrowserRouter>
+        <ZoomImageContainer>
+          <App />
+        </ZoomImageContainer>
+      </BrowserRouter>
+    </MDXProvider>
+  </ThemeProvider>,
   document.getElementById("app")
 );

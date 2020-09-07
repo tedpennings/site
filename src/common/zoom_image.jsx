@@ -6,7 +6,7 @@ import { Skeleton } from "@material-ui/lab";
 
 const ZoomContext = React.createContext();
 
-export function ZoomParent({ children }) {
+export function ZoomImageContainer({ children }) {
   const zoomParentRef = useRef(mediumZoom());
 
   return (
@@ -15,7 +15,7 @@ export function ZoomParent({ children }) {
     </ZoomContext.Provider>
   );
 }
-ZoomParent.propTypes = {
+ZoomImageContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
