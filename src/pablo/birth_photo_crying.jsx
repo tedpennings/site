@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import ZoomableImage from "../common/zoom_image";
 
-import Crying from "./crying";
+import CryingAudio from "./crying_audio";
 
 import pabloBirthPhoto1 from "./IMG_2462.jpeg";
 import pabloBirthPhoto2 from "./IMG_2466.jpeg";
@@ -67,7 +67,7 @@ export default function BirthPhotoCrying() {
         </Typography>
       </Box>
       <Box className={classes.audio}>
-        <Crying />
+        <CryingAudio />
       </Box>
     </Box>
   );

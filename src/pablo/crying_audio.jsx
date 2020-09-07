@@ -6,7 +6,7 @@ import WaveSurfer from "wavesurfer.js";
 
 import pabloCrying from "./pablo_crying.m4a";
 
-export default function Crying() {
+export default function CryingAudio() {
   const theme = useTheme();
   const audioRef = useRef();
   const wavesurferContainerRef = useRef();
