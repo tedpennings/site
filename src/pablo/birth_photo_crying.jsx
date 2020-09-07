@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(40 * LANDSCAPE_ASPECT_RATIO),
     marginRight: theme.spacing(2),
     boxShadow: theme.shadows[4],
+    // fontSize sets broken image icon size
+    fontSize: theme.spacing(13),
   },
   audio: {
     marginLeft: theme.spacing(4),
