@@ -14,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
     maxWidth: theme.spacing(35),
     width: "100%",
+    [`@media (max-width: 450px)`]: {
+      width: "80vw",
+      maxWidth: "unset",
+    },
   },
   sidebar: {
     padding: theme.spacing(1, 2, 0, 1),
