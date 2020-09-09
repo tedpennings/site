@@ -1,28 +1,15 @@
 import React from "react";
-import { Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
 import PabloImage from "./pablo_image";
+import PabloContentRow from "./pablo_content_row";
 
 import ashesAltar from "./ashes-altar.jpeg";
 import heartAshes from "./heart-ashes.jpeg";
 import jenTedPeoonies from "./jen-ted-peonies.jpeg";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(3),
-    justifyContent: "center",
-    alignItems: "center",
-    flexWrap: "wrap",
-  },
-}));
-
 export default function PabloGriefPhotos() {
-  const classes = useStyles();
   return (
-    <Box className={classes.root}>
+    <PabloContentRow>
       <PabloImage
         src={heartAshes}
         alt="Jen and Ted in a peony field"
@@ -38,6 +25,6 @@ export default function PabloGriefPhotos() {
         alt="Jen and Ted in a peony field"
         orientation="landscape"
       />
-    </Box>
+    </PabloContentRow>
   );
 }
