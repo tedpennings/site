@@ -10,10 +10,14 @@ import me2020 from "!!url-loader?limit=409029395329!./assets/me-2020.jpg";
 
 const useStyles = makeStyles((theme) => ({
   photo: {
-    border: `1px solid ${theme.palette.text.secondary}`,
+    boxShadow: theme.shadows[2],
     marginBottom: theme.spacing(1),
     maxWidth: theme.spacing(35),
     width: "100%",
+    [`@media (max-width: 450px)`]: {
+      width: "80vw",
+      maxWidth: "unset",
+    },
   },
   sidebar: {
     padding: theme.spacing(1, 2, 0, 1),

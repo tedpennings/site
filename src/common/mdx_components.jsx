@@ -7,9 +7,13 @@ import { useTheme } from "@material-ui/core/styles";
 
 import ConsolidatedLink from "./consolidated_link";
 
-const TypographyFactory = (variant) => {
-  const wrapped = (props) => <Typography variant={variant} {...props} />;
-  wrapped.displayName = `WrappedTypography(${variant})`;
+const HeadingFactory = (variant) => {
+  const wrapped = (props) => (
+    <Box mb={1}>
+      <Typography variant={variant} {...props} />
+    </Box>
+  );
+  wrapped.displayName = `MdxHeading(${variant})`;
   return wrapped;
 };
 
@@ -78,12 +82,12 @@ const LI = ({ children }) => (
 export default {
   a: ConsolidatedLink,
   p: (props) => <Typography paragraph {...props} />,
-  h1: TypographyFactory("h1"),
-  h2: TypographyFactory("h2"),
-  h3: TypographyFactory("h3"),
-  h4: TypographyFactory("h4"),
-  h5: TypographyFactory("h5"),
-  h6: TypographyFactory("h6"),
+  h1: HeadingFactory("h1"),
+  h2: HeadingFactory("h2"),
+  h3: HeadingFactory("h3"),
+  h4: HeadingFactory("h4"),
+  h5: HeadingFactory("h5"),
+  h6: HeadingFactory("h6"),
   // em, del, strong use html elements and do not require extra styling
   hr: Divider,
   thematicBreak: (props) => <Divider light {...props} />,
