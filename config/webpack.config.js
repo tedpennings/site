@@ -310,7 +310,6 @@ module.exports = function (webpackEnv) {
               loader: require.resolve("responsive-loader"),
               options: {
                 name: "static/media/[name].[hash:8].[ext]",
-                adapter: require("responsive-loader/sharp"),
                 sizes: [1024, 99999],
               },
             },

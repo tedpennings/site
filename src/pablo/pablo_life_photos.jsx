@@ -4,8 +4,8 @@ import PabloImage from "./pablo_image";
 import PabloContentRow from "./pablo_content_row";
 
 import myFavPhoto from "./nicu-1.jpeg";
-import pabloAndTed from "./pablo-ted.jpeg";
 import fingersPhoto from "./nicu-fingers.jpeg";
+import pabloAndTed from "./pablo-ted.jpeg";
 
 export default function PabloLifePhotos() {
   return (
@@ -22,7 +22,7 @@ export default function PabloLifePhotos() {
       />
       <PabloImage
         src={pabloAndTed}
-        alt="Me holding Pablo" // TODO this photo is broken (because portrait)
+        alt="Me holding Pablo"
         orientation="portrait"
       />
     </PabloContentRow>
