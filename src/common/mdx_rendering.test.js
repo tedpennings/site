@@ -10,26 +10,19 @@ async function renderMarkdown(markdown) {
 }
 
 describe("MDX rendering", () => {
-  describe("headings", () => {
-    it("renders h1 tags correctly", async () => {
-      await renderMarkdown(headingMarkdown(1));
-      expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-        "heading one"
-      );
-      expect(screen.getByRole("heading", { level: 1 })).toHaveClass(
-        "MuiTypography-h1"
-      );
-    });
-
-    it("renders h2 tags correctly", async () => {
-      await renderMarkdown(headingMarkdown(2));
-      expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-        "heading two"
-      );
-      expect(screen.getByRole("heading", { level: 2 })).toHaveClass(
-        "MuiTypography-h2"
-      );
-    });
+  describe("heading", () => {
+    test.each([1, 2, 3, 4, 5, 6])(
+      `renders h%i tags correctly`,
+      async (level) => {
+        await renderMarkdown(headingMarkdown(level));
+        expect(screen.getByRole("heading", { level })).toHaveTextContent(
+          `heading ${headingWords[level]}`
+        );
+        expect(screen.getByRole("heading", { level })).toHaveClass(
+          `MuiTypography-h${level}`
+        );
+      }
+    );
   });
 });
 
