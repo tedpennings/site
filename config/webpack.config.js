@@ -310,15 +310,13 @@ module.exports = function (webpackEnv) {
           // match the requirements. When no loader matches it will fall
           // back to the "file" loader at the end of the loader list.
           oneOf: [
-            // "url" loader works like "file" loader except that it embeds assets
-            // smaller than specified limit in bytes as data URLs to avoid requests.
-            // A missing `test` is equivalent to a match.
             {
-              test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-              loader: require.resolve("url-loader"),
+              test: /\.(jpe?g|png|webp)$/i,
+              loader: require.resolve("responsive-loader"),
               options: {
-                limit: imageInlineSizeLimit,
                 name: "static/media/[name].[hash:8].[ext]",
+                adapter: require("responsive-loader/sharp"),
+                sizes: [1024, 99999],
               },
             },
             // Process application JS with Babel.

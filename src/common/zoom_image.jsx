@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import mediumZoom from "medium-zoom";
 import { Box, Fade } from "@material-ui/core";
@@ -41,6 +41,7 @@ export default function ZoomImage({
   containerClassName = "",
   imageClassName = "",
   src,
+  zoomSrc,
   zoomStyles = {},
 }) {
   const classes = useStyles();
@@ -48,6 +49,14 @@ export default function ZoomImage({
   const zoomRef = useRef(zoomParentRef.current.clone(zoomStyles));
 
   const [imageStatus, setImageStatus] = useState(STATUS.LOADING);
+
+  useEffect(() => {
+    setTimeout(() => {
+      // this also avoids a twitch when the <img src> changes
+      const preload = new Image();
+      preload.src = zoomSrc;
+    }, 2000);
+  }, [zoomSrc]);
 
   function attachZoom(image) {
     zoomRef.current.attach(image);
@@ -63,11 +72,12 @@ export default function ZoomImage({
     <div className={containerClassName}>
       <Fade in={imageStatusSuccess}>
         <img
+          ref={attachZoom}
           style={imageStyles}
           className={imageClassName}
           src={src}
+          data-zoom-src={zoomSrc}
           alt={alt}
-          ref={attachZoom}
           onLoad={() => {
             setImageStatus(STATUS.SUCCESS);
           }}
@@ -87,10 +97,12 @@ export default function ZoomImage({
     </div>
   );
 }
+
 ZoomImage.propTypes = {
   alt: PropTypes.string.isRequired,
   containerClassName: PropTypes.string,
   imageClassName: PropTypes.string,
   src: PropTypes.string.isRequired,
+  zoomSrc: PropTypes.string,
   zoomStyles: PropTypes.object,
 };
