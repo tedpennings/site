@@ -1,6 +1,6 @@
 const settings = {
   presets: [
-    "react-app",
+    "@babel/preset-react",
     ["@babel/preset-env", { targets: { node: "current" } }],
   ],
 };

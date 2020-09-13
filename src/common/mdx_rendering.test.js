@@ -3,7 +3,7 @@ import { renderWithReact } from "@mdx-js/test-util";
 import mdxComponents from "./mdx_components";
 
 describe("MDX rendering", () => {
-  it.skip("renders h1 tags correctly", async () => {
+  it("renders h1 tags correctly", async () => {
     const jsx = await renderWithReact(
       `# hello
 
