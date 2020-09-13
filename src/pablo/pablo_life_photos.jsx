@@ -22,7 +22,7 @@ export default function PabloLifePhotos() {
       />
       <PabloImage
         src={pabloAndTed}
-        alt="Me holding Pablo"
+        alt="Me holding Pablo" // TODO this photo is broken (because portrait)
         orientation="portrait"
       />
     </PabloContentRow>
