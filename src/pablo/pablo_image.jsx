@@ -58,7 +58,7 @@ export default function PabloImage({ src, orientation, alt }) {
   );
 }
 PabloImage.propTypes = {
-  alt: PropTypes.string, // TODO required
+  alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   orientation: PropTypes.oneOf(["portrait", "landscape", "square"]).isRequired,
 };
