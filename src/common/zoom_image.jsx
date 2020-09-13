@@ -51,8 +51,11 @@ export default function ZoomImage({
   const [imageStatus, setImageStatus] = useState(STATUS.LOADING);
 
   useEffect(() => {
+    if (!zoomSrc) {
+      return;
+    }
     setTimeout(() => {
-      // this also avoids a twitch when the <img src> changes
+      // preloads and avoids a twitch when the <img src> changes
       const preload = new Image();
       preload.src = zoomSrc;
     }, 2000);
