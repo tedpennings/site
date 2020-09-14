@@ -4,8 +4,8 @@ import PabloImage from "./pablo_image";
 import PabloContentRow from "./pablo_content_row";
 
 import myFavPhoto from "./nicu-1.jpeg";
-import pabloAndTed from "./pablo-ted.jpeg";
 import fingersPhoto from "./nicu-fingers.jpeg";
+import pabloAndTed from "./pablo-ted.jpeg";
 
 export default function PabloLifePhotos() {
   return (

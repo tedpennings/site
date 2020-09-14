@@ -3,8 +3,8 @@ import React from "react";
 import PabloImage from "./pablo_image";
 import PabloContentRow from "./pablo_content_row";
 
-import ashesAltar from "./ashes-altar.jpeg";
 import heartAshes from "./heart-ashes.jpeg";
+import ashesAltar from "./ashes-altar.jpeg";
 import jenTedPeoonies from "./jen-ted-peonies.jpeg";
 
 export default function PabloGriefPhotos() {

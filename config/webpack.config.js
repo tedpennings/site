@@ -31,11 +31,6 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== "false";
 
-const imageInlineSizeLimit = parseInt(
-  process.env.IMAGE_INLINE_SIZE_LIMIT || "10000",
-  10
-);
-
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -310,15 +305,12 @@ module.exports = function (webpackEnv) {
           // match the requirements. When no loader matches it will fall
           // back to the "file" loader at the end of the loader list.
           oneOf: [
-            // "url" loader works like "file" loader except that it embeds assets
-            // smaller than specified limit in bytes as data URLs to avoid requests.
-            // A missing `test` is equivalent to a match.
             {
-              test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-              loader: require.resolve("url-loader"),
+              test: /\.(jpe?g|png|webp)$/i,
+              loader: require.resolve("responsive-loader"),
               options: {
-                limit: imageInlineSizeLimit,
                 name: "static/media/[name].[hash:8].[ext]",
+                sizes: [1024, 99999],
               },
             },
             // Process application JS with Babel.
