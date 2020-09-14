@@ -23,12 +23,32 @@ describe("MDX rendering", () => {
   });
 
   it("renders a paragraph with the appropriate styling", async () => {
-    const html = await renderMarkdown(paragraph);
-    expect(html).toMatchSnapshot();
+    await renderMarkdown(paragraph);
+    expect(screen.getByText(/I do not believe a word of it/)).toHaveClass(
+      "MuiTypography-body1"
+    );
+    expect(screen.getByText(/I do not believe a word of it/)).toHaveClass(
+      "MuiTypography-paragraph"
+    );
   });
-  it("renders lists with the appropriate styling", async () => {
-    const html = await renderMarkdown(lists);
-    expect(html).toMatchSnapshot();
+
+  it("renders ordered lists", async () => {
+    await renderMarkdown(orderedList);
+    screen.getByRole("list");
+    expect(screen.getAllByRole("listitem")).toHaveLength(12);
+    screen.getByText("UAE", { selector: "li:nth-of-type(9)" });
+  });
+
+  it("renders unordered lists", async () => {
+    await renderMarkdown(unorderedList);
+    screen.getByRole("list");
+    expect(screen.getAllByRole("listitem")).toHaveLength(4);
+    screen.getByText("Love", { selector: "li:nth-of-type(2)" });
+  });
+
+  it("renders a separator", async () => {
+    await renderMarkdown("\n---\n");
+    screen.getByRole("separator");
   });
 });
 
@@ -47,7 +67,7 @@ const paragraph = `
 "To plague us to death," answered Martin.
 `;
 
-const lists = `
+const orderedList = `
 In 2017, Jen I and I traveled to:
 
 1. New Zealand
@@ -62,7 +82,8 @@ In 2017, Jen I and I traveled to:
 1. Egypt
 1. Morocco
 1. Spain
-
+`;
+const unorderedList = `
 We brought with us:
 * Backpacks
 * Love
