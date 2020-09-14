@@ -53,6 +53,9 @@ export default function Header() {
   function determineGeometry(e) {
     // The text element is display:inline so we can't use an
     // observer on it. Instead we'll record it on first hover.
+    // TODO this might not be true, but I can't get a ResizeObserver
+    // to trigger on it. It would also trigger, theoretically, once
+    // per rAF, after it, which could cause an endless loop.
     if (geometry) {
       return geometry;
     }
@@ -68,7 +71,7 @@ export default function Header() {
     let mouseX = e.clientX; // default to mousemove
 
     if (e.touches?.length) {
-      // it's a touch (mobile)
+      // it's a touch event (mobile)
       mouseX = e.touches[0].clientX;
     }
 
@@ -79,7 +82,7 @@ export default function Header() {
     // 100 -> 0 -> 100%, where 0 is center
     const newPosition = Math.abs(scaledMouseX / (textWidth / 2) - 1);
 
-    setPosition(newPosition);
+    window.requestAnimationFrame(() => setPosition(newPosition));
   }
 
   function onMouseOut() {
@@ -106,6 +109,8 @@ export default function Header() {
           textDecoration: "none",
         }}
         variant="h1"
+        aria-role="heading"
+        aria-level="1"
       >
         Ted Pennings
       </Typography>
