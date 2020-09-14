@@ -68,7 +68,7 @@ export default function Header() {
     let mouseX = e.clientX; // default to mousemove
 
     if (e.touches?.length) {
-      // it's a touch (mobile)
+      // it's a touch event (mobile)
       mouseX = e.touches[0].clientX;
     }
 
@@ -79,7 +79,7 @@ export default function Header() {
     // 100 -> 0 -> 100%, where 0 is center
     const newPosition = Math.abs(scaledMouseX / (textWidth / 2) - 1);
 
-    setPosition(newPosition);
+    window.requestAnimationFrame(() => setPosition(newPosition));
   }
 
   function onMouseOut() {
