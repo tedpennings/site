@@ -53,6 +53,9 @@ export default function Header() {
   function determineGeometry(e) {
     // The text element is display:inline so we can't use an
     // observer on it. Instead we'll record it on first hover.
+    // TODO this might not be true, but I can't get a ResizeObserver
+    // to trigger on it. It would also trigger, theoretically, once
+    // per rAF, after it, which could cause an endless loop.
     if (geometry) {
       return geometry;
     }
@@ -106,6 +109,8 @@ export default function Header() {
           textDecoration: "none",
         }}
         variant="h1"
+        aria-role="heading"
+        aria-level="1"
       >
         Ted Pennings
       </Typography>
