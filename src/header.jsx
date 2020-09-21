@@ -109,8 +109,6 @@ export default function Header() {
           textDecoration: "none",
         }}
         variant="h1"
-        aria-role="heading"
-        aria-level="1"
       >
         Ted Pennings
       </Typography>
