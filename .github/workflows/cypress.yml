@@ -25,7 +25,7 @@ jobs:
         uses: probablyup/wait-for-netlify-action@3.2.0
         id: waitForDeployment
         with:
-          site_id: 3c91e3a5-7afd-49b3-82a0-142dfc07929e
+          site_id: 81808a20-a8ff-404a-9c8b-f52769908b56
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
 
