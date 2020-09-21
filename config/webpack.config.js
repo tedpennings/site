@@ -309,6 +309,8 @@ module.exports = function (webpackEnv) {
               test: /\.(jpe?g|png|webp)$/i,
               loader: require.resolve("responsive-loader"),
               options: {
+                // TODO See https://github.com/dazuaz/responsive-loader/pull/122
+                adapter: require("./sharp-adapter"),
                 name: "static/media/[name].[hash:8].[ext]",
                 sizes: [1024, 99999],
               },
