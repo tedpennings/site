@@ -58,7 +58,7 @@ export default function ZoomImage({
       // preloads and avoids a twitch when the <img src> changes
       const preload = new Image();
       preload.src = zoomSrc;
-    }, 2000);
+    }, 0);
   }, [zoomSrc]);
 
   function attachZoom(image) {
