@@ -71,7 +71,7 @@
     "terser-webpack-plugin": "^4.2.0",
     "url-loader": "4.1.0",
     "use-react-router-breadcrumbs": "^1.0.4",
-    "wavesurfer.js": "^4.0.1",
+    "wavesurfer.js": "^4.1.0",
     "webpack": "4.44.1",
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-dev-server": "3.11.0",
