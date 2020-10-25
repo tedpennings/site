@@ -1,5 +1,3 @@
-/* eslint-disable */
-function onmessage(...args) {
-  console.log('worker received message - TODO remove this')
-  postMessage(...args)
-}
+global.onmessage = function onmessage(msg) {
+  global.postMessage(msg.data);
+};
