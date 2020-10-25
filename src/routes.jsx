@@ -54,4 +54,15 @@ export const dataviz = [
   },
 ];
 
-export default { dataviz };
+export const performance = [
+  {
+    path: "/performance/web-workers",
+    name: "Web Workers",
+    icon: Whatshot,
+    component: React.lazy(() =>
+      import(/* webpackMode: "lazy" */ "./performance/web_workers")
+    ),
+  },
+];
+
+export default { dataviz, performance };

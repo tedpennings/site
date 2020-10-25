@@ -73,7 +73,7 @@ const LI = ({ children }) => (
   // Do not put <Typography> on children, to <p> inside <p>
   <Box component="li" display="flex">
     <ChevronRight color="secondary" />
-    {children}
+    <div>{children}</div>
   </Box>
 );
 

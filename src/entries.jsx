@@ -3,7 +3,7 @@ import { Alert } from "@material-ui/lab";
 import { Box, Typography } from "@material-ui/core";
 import { Switch, Route, useLocation } from "react-router-dom";
 
-import { dataviz } from "./routes";
+import { dataviz, performance } from "./routes";
 
 import Welcome from "./welcome";
 import DataViz from "./dataviz_section.mdx";
@@ -28,7 +28,10 @@ export default function Entries() {
           {dataviz.map(renderRoute)}
           <Route component={DataViz} />
         </Switch>
-        <Switch path="/performance" />
+        <Switch path="/performance">
+          {performance.map(renderRoute)}
+          <Route component={() => <p>TODO section page</p>} />
+        </Switch>
         <Route
           path="/pablo"
           component={React.lazy(() =>
