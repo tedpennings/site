@@ -10223,13 +10223,13 @@ resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.17.0, resolve@^1.3
   dependencies:
     path-parse "^1.0.6"
 
-responsive-loader@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/responsive-loader/-/responsive-loader-2.1.1.tgz#462b34601fb1200740ab7aba05c99040dea22d64"
-  integrity sha512-5vv37eOR6M+fnUakZRkldR0Z/35MaCziap2re+eDiQPq6+1uy4onTk7aZ1OZM+iUAz6Ove6hnEBOfmRYHmq/6w==
+responsive-loader@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/responsive-loader/-/responsive-loader-2.2.0.tgz#0fe49e6f8397e7dd33630bc3417c7767c117d2b0"
+  integrity sha512-hhShIoU1Ltx1VpLGsll4yAc6bz05V+gX1PjiSOqKLVS9fInb70ymMrStedkTyOFHxw/hGDyVsb1DKk99RiZyKg==
   dependencies:
     loader-utils "^2.0.0"
-    schema-utils "^2.7.1"
+    schema-utils "^3.0.0"
 
 restore-cursor@^1.0.1:
   version "1.0.1"

@@ -51,7 +51,7 @@
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "responsive-loader": "^2.1.1",
+    "responsive-loader": "^2.2.0",
     "sharp": "^0.26.1",
     "terser-webpack-plugin": "^4.2.3",
     "url-loader": "4.1.0",
