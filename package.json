@@ -25,6 +25,7 @@
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "concurrently": "^5.3.0",
     "cypress": "^5.4.0",
+    "d3-delaunay": "^5.3.0",
     "d3-scale": "^3.2.3",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
