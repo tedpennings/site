@@ -1,9 +1,10 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo, useRef } from "react";
 import PropTypes from "prop-types";
-import { useMeasure } from "react-use";
-import { Box } from "@material-ui/core";
+import { useDebounce, useMeasure, useRafState } from "react-use";
+import { Box, Tooltip } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { scaleLinear } from "d3-scale";
+import { Delaunay } from "d3-delaunay";
 
 const X_AXIS_HEIGHT = 24;
 const Y_AXIS_WIDTH = 54;
@@ -34,6 +35,14 @@ export default function ScatterPlot({ points, pointColors, pointTitles }) {
     width,
   });
 
+  const { onMouseMove, onMouseLeave, onMouseEnter, activePoint } = useHover({
+    points,
+    xScale,
+    yScale,
+  });
+
+  console.log(activePoint);
+
   return (
     <Box
       ref={ref}
@@ -43,7 +52,14 @@ export default function ScatterPlot({ points, pointColors, pointTitles }) {
       height={480}
       width="100%"
     >
-      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        onMouseMove={onMouseMove}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
         <g data-x-axis>
           {height + width > 0 && (
             <rect
@@ -121,14 +137,39 @@ export default function ScatterPlot({ points, pointColors, pointTitles }) {
             <circle
               className={classes[name]}
               key={`point-${x}-${y}-${idx}`}
-              r={2.5}
+              r={2}
               fill={pointColors[name]}
               cx={xScale(x)}
               cy={yScale(y)}
             />
           ))}
         </g>
+        {activePoint && (
+          <circle
+            cx={xScale(activePoint.x)}
+            cy={yScale(activePoint.y)}
+            r={4}
+            fill="transparent"
+            stroke={theme.palette.primary.main}
+            strokeWidth={1}
+          />
+        )}
       </svg>
+      {activePoint && (
+        <Tooltip title={"hello i a toolti"} open placement="top" arrow>
+          <div
+            style={{
+              pointerEvents: "none",
+              background: "red",
+              position: "absolute",
+              width: 5,
+              height: 5,
+              left: xScale(activePoint.x),
+              top: yScale(activePoint.y),
+            }}
+          />
+        </Tooltip>
+      )}
     </Box>
   );
 }
@@ -188,4 +229,61 @@ function useDomains({ points }) {
     xDomain: [xDomainMin, xDomainMax],
     yDomain: [yDomainMin, yDomainMax],
   };
+}
+
+function useHover({ points, xScale, yScale }) {
+  const [activePointIdx, setActivePointIdx] = useRafState();
+  const delaunayRef = useRef({
+    find() {},
+  });
+
+  useDebounce(
+    () => {
+      delaunayRef.current = Delaunay.from(
+        points,
+        (p) => xScale(p.x),
+        (p) => yScale(p.y)
+      );
+    },
+    0,
+    [xScale, yScale, points]
+  );
+
+  const onMouseMove = useCallback(
+    (e) => {
+      const { left, top } = e.target.getBoundingClientRect();
+      const scatterX = e.clientX - left;
+      const scatterY = e.clientY - top;
+      const pointIdx = delaunayRef.current.find(scatterX, scatterY);
+      if (typeof pointIdx !== "number") {
+        return;
+      }
+      const [pointX, pointY] = delaunayRef.current.points.slice(
+        pointIdx * 2,
+        pointIdx * 2 + 2
+      );
+      const distance = Math.sqrt(
+        Math.pow(scatterX - pointX, 2) + Math.pow(scatterY - pointY, 2)
+      );
+      const maxDistancePx = 16;
+      if (distance < maxDistancePx) {
+        setActivePointIdx(pointIdx);
+        return;
+      }
+      setActivePointIdx();
+    },
+    [setActivePointIdx]
+  );
+
+  const onMouseEnter = useCallback(() => {
+    setActivePointIdx();
+  }, [setActivePointIdx]);
+
+  const onMouseLeave = useCallback(() => {
+    setActivePointIdx();
+  }, [setActivePointIdx]);
+
+  const activePoint = points[activePointIdx];
+
+  return { activePoint, onMouseEnter, onMouseMove, onMouseLeave };
 }

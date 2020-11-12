@@ -2,8 +2,8 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
+  useReducer,
   useRef,
-  useState,
 } from "react";
 import { Box, LinearProgress, Typography } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -36,8 +36,8 @@ const SERIES_KEYS = [
   LARGE_RANDOM_OBJ,
 ];
 
-const DEFAULT_UNIT_SIZE = 15;
-const DEFAULT_BENCHMARK_RUNS = 100;
+const DEFAULT_UNIT_SIZE = 20;
+const DEFAULT_BENCHMARK_RUNS = 125;
 const TOTAL_SAMPLES =
   DEFAULT_UNIT_SIZE * DEFAULT_BENCHMARK_RUNS * SERIES_KEYS.length;
 
@@ -80,25 +80,9 @@ function createComplexNewMessage(count) {
 
 export default function SerializationBenchmark() {
   const classes = useStyles();
-  const results = useRef([]);
   const theme = useTheme();
   const startTime = useRef(window.performance.now());
-  const [_, setLastResult] = useState();
-  const afterBenchmark = useCallback((timings, name) => {
-    timings.forEach((t) =>
-      results.current.push({
-        x: t[0], // time since origin (page load, not 1970)
-        y: t[1], // duration
-        name,
-      })
-    );
-    if (
-      results.current.length % 50 === 0 ||
-      results.current.length === TOTAL_SAMPLES
-    ) {
-      setLastResult(window.performance.now());
-    }
-  }, []);
+  const { addBatch, results } = useResultsRecorder();
 
   useEffect(() => {
     const smallerMessage = createComplexNewMessage(300);
@@ -107,24 +91,18 @@ export default function SerializationBenchmark() {
     const biggerMessageJson = JSON.stringify(biggerMessage);
     for (let i = 0; i < DEFAULT_BENCHMARK_RUNS; i++) {
       window.requestIdleCallback(() => {
-        afterBenchmark(benchmarkPostMessage(CovidDatasetObject), COVID_OBJ);
-        afterBenchmark(benchmarkPostMessage(CovidDatasetJsonText), COVID_JSON);
+        addBatch(benchmarkPostMessage(CovidDatasetObject), COVID_OBJ);
+        addBatch(benchmarkPostMessage(CovidDatasetJsonText), COVID_JSON);
       });
 
       window.requestIdleCallback(() => {
-        afterBenchmark(benchmarkPostMessage(smallerMessage), SMALL_RANDOM_OBJ);
-        afterBenchmark(
-          benchmarkPostMessage(smallerMessageJson),
-          SMALL_RANDOM_JSON
-        );
-        afterBenchmark(benchmarkPostMessage(biggerMessage), LARGE_RANDOM_OBJ);
-        afterBenchmark(
-          benchmarkPostMessage(biggerMessageJson),
-          LARGE_RANDOM_JSON
-        );
+        addBatch(benchmarkPostMessage(smallerMessage), SMALL_RANDOM_OBJ);
+        addBatch(benchmarkPostMessage(smallerMessageJson), SMALL_RANDOM_JSON);
+        addBatch(benchmarkPostMessage(biggerMessage), LARGE_RANDOM_OBJ);
+        addBatch(benchmarkPostMessage(biggerMessageJson), LARGE_RANDOM_JSON);
       });
     }
-  }, [afterBenchmark]);
+  }, [addBatch]);
 
   const pointColors = useMemo(() => {
     return SERIES_KEYS.reduce((acc, cur, idx) => {
@@ -136,27 +114,49 @@ export default function SerializationBenchmark() {
   return (
     <Box>
       <ScatterPlot
-        points={results.current}
+        points={results}
         pointColors={pointColors}
         pointTitles={{}}
       />
       <Box mt={2} mb={2}>
         <Typography className={classes.sampleCountText} component="div">
-          {results.current.length.toLocaleString()} samples{" "}
-          {results.current.length === TOTAL_SAMPLES
+          {results.length.toLocaleString()} samples{" "}
+          {results.length === TOTAL_SAMPLES
             ? `(${formatTime(
-                results.current[results.current.length - 1].timestamp -
-                  startTime.current
+                results[results.length - 1].timestamp - startTime.current
               )})`
-            : `(${Math.round(
-                (results.current.length / TOTAL_SAMPLES) * 100
-              )}%)`}
+            : `(${Math.round((results.length / TOTAL_SAMPLES) * 100)}%)`}
         </Typography>
         <LinearProgress
           variant="determinate"
-          value={(results.current.length / TOTAL_SAMPLES) * 100}
+          value={(results.length / TOTAL_SAMPLES) * 100}
         />
       </Box>
     </Box>
   );
+}
+
+const ADD_BATCH = "add_batch";
+
+function resultsReducer(state, action) {
+  switch (action.type) {
+    case ADD_BATCH: {
+      const { name } = action.meta;
+      return [...state, ...action.payload.map(([x, y]) => ({ x, y, name }))];
+    }
+    default: {
+      return state;
+    }
+  }
+}
+function useResultsRecorder() {
+  const [state, dispatch] = useReducer(resultsReducer, []);
+  const addBatch = useCallback(
+    (seriesResults, name) => {
+      dispatch({ type: ADD_BATCH, payload: seriesResults, meta: { name } });
+    },
+    [dispatch]
+  );
+
+  return { results: state, addBatch };
 }
