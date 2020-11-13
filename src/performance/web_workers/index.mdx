@@ -1,0 +1,82 @@
+import SerializationBenchmark from "./serialization_benchmark";
+
+## Web Workers
+
+Browser performance can become a significant issue in data visualization. The browser is
+single threaded by default. Javascript code runs on the same thread that renders the UI
+and user interaction. When code takes longer than **16ms** to execute, the browser begins to
+drop frames: spinners stop spinning, scrolling is non-responsive, and _eventually the browser
+will kill your tab!_
+
+Browsers target 60 frames per second for a fluid, smooth interface, re-rendering every 16ms.
+All computation should be **batched into execution units smaller than 16ms**, to allow that work
+to fit between renders and not drop frames. The work should ideally staggered so two expensive
+computations do not trigger on the same animation frame (10ms + 9ms > 16ms 😢). Staggering
+happens on its own when computation is done in response to `fetch`/`XHR` requests. Computation is very
+unlikely to stagger when it is triggered by virtual scrolling (eg, a row of charts scrolling into view),
+so any significant task can become a problem at some point.
+
+#### Overview of Web Workers
+
+[Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) offer
+non-blocking computation in the browser. They run on a separate, background thread, with a send/receive
+interface with the main thread. Web Workers can [`XHR`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)/
+[`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) data and access [most standard
+browser APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers).
+
+Web Workers have a separate Javascript namespace and execution context for security reasons. They **do not share memory**,
+object references or any of the like. Data is **copied** when sent to the Web Worker, and copied again when sent back
+to the main thread. (This can make it harder to cache data with a [`WeakMap`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap))
+
+#### So how do I move my data?
+
+You can call `postMessage` with simple objects like any other function call. You can send anything that you can
+represent in JSON. For small amounts of data, just send it and don't think twice.
+
+Bigger datasets are problematic. **Big datasets can take so long to send that it actually blocks the browser.**
+
+The catch is that the data is copied using [structured cloning](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm),
+rather than passed by reference. Regular function calls pass objects by reference, so you can modify that object in
+the function and the caller will see those changes; this is blocked as a security risk in Web Workers. This is called
+serialization cost. It's similar to `JSON.stringify()` and `JSON.parse()`, but the algorithm and performance is different.
+
+The way data is structured has a significant impact on the serialization cost.
+
+#### Data serialization options and analysis
+
+Assuming you have to send kilobytes+ of data, here is a breakdown of the options:
+
+- Regular Javascript objects ([beware cloning restrictions](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#Things_that_dont_work_with_structured_clone))
+- `JSON` in text form (not parsed objects)
+- [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)s - basically raw memory that you can
+  map onto a [`TypedArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) or access directly with
+  a [`DataView`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) or normal `myArr[5]` notation. You can also
+  `myArrayBuffer.slice()` to make a copy -- more on this later.
+- [`SharedArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer)s - an
+  `ArrayBuffer` that can be **SHARED** with a Web Worker. Woah! Of course there are caveats. And it [not available in Safari](https://caniuse.com/sharedarraybuffer)
+  as of October 2020.
+
+<SerializationBenchmark />
+
+#### Worker instantiation time
+
+Factors: blob vs external script; script length
+
+#### What about Shared Workers and Service Workers?
+
+There are two other kinds of workers [Shared Workers](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker) and
+[Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API). Shared Workers are basically that,
+Web Workers that have a shared memory context across tabs, etc, for the same origin. The same worker can be accessed from
+all tabs at once. But they do _not_ have shared memory with the main thread! Conceptually they're a lot like a
+[`BroadcastChannel`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel) with computation.
+
+Service Workers are a superset of Web Workers with many extra features. Service Workers may intercept XHR/fetch requests to provide cached data or transform the data in-flight.
+(This is essentially a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) on your own code,
+so treat it with care. It's commonly used for offline browsing.) Service Workers have
+[complicated lifecycles](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle); they can run
+even when your app is not open in any of the tabs in a user's browser, allowing push notifications, for example.
+Because Service Workers have elevated permissions, they are a bit more difficult to deploy (strict origin matching,
+and no blob URLs). Service Workers also do not have shared memory with the main thread!
+
+Everything described in this article also applies to Shared Workers and Service Workers; all three are `Worker` types that
+implement the `onmessage`/`postMessage` interface.

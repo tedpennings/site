@@ -8,6 +8,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:mdx/recommended",
+    "plugin:json/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "prettier",

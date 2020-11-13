@@ -66,15 +66,15 @@ const theme = createMuiTheme({
   palette: {
     series: [
       // for charts
-      "#f8615a",
-      "#fc744b",
-      "#ddcf67",
-      "#4f695e",
       "#5fb4a4",
-      "#6fffe9",
       "#b6dce9",
       "#4c4943",
+      "#ddcf67",
       "#685e50",
+      "#fc744b",
+      "#6fffe9",
+      "#4f695e",
+      "#f8615a",
     ],
     background: {
       default: "white",
