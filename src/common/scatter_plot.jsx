@@ -23,7 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ScatterPlot({ points, pointColors }) {
+export default function ScatterPlot({
+  points,
+  pointColors,
+  xScaleNice = false,
+}) {
   const theme = useTheme();
   const classes = useStyles();
   const [ref, { height, width }] = useMeasure();
@@ -32,6 +36,7 @@ export default function ScatterPlot({ points, pointColors }) {
     points,
     height,
     width,
+    xScaleNice,
   });
 
   return (
@@ -142,15 +147,20 @@ ScatterPlot.propTypes = {
   ),
   pointColors: PropTypes.objectOf(PropTypes.string),
   pointTitles: PropTypes.objectOf(PropTypes.string),
+  xScaleNice: PropTypes.bool,
 };
 
-function useScales({ width, height, points }) {
+function useScales({ width, height, points, xScaleNice }) {
   const { xDomain, yDomain } = useDomains({ points });
   return useMemo(() => {
     const xScale = scaleLinear()
       .domain(xDomain)
-      .range([CANVAS_BUFFER, width - Y_AXIS_WIDTH - CANVAS_BUFFER])
-      .nice();
+      .range([CANVAS_BUFFER, width - Y_AXIS_WIDTH - CANVAS_BUFFER]);
+
+    if (xScaleNice) {
+      xScale.nice();
+    }
+
     xScale.clamp();
     const xTicks = xScale.ticks(6);
 
