@@ -32,7 +32,9 @@ export default function Entries() {
         <Route
           path="/pablo"
           component={React.lazy(() =>
-            import(/* webpackMode: "lazy" */ "./pablo")
+            import(
+              /* webpackMode: "lazy" */ /* webpackChunkName: "pablo" */ "./pablo"
+            )
           )}
         />
         <Route component={Welcome} />

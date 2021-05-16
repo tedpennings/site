@@ -41,7 +41,9 @@ export const dataviz = [
     name: "Heatmaps",
     icon: Whatshot,
     component: React.lazy(() =>
-      import(/* webpackMode: "lazy" */ "./dataviz/heatmaps")
+      import(
+        /* webpackMode: "lazy" */ /* webpackChunkName: "heatmaps" */ "./dataviz/heatmaps"
+      )
     ),
   },
   {
@@ -49,7 +51,9 @@ export const dataviz = [
     name: "Basic Map Visualizations",
     icon: Map,
     component: React.lazy(() =>
-      import(/* webpackMode: "lazy" */ "./dataviz/basic_us_map")
+      import(
+        /* webpackMode: "lazy" */ /* webpackChunkName: "us_map" */ "./dataviz/basic_us_map"
+      )
     ),
   },
 ];
