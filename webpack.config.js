@@ -1,7 +1,7 @@
 const path = require("path");
 
-const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 const isEnvProduction = process.env.NODE_ENV === "production";
 
@@ -12,15 +12,19 @@ module.exports = {
   devtool: isEnvProduction ? false : "cheap-module-source-map",
 
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
 
     chunkFilename: isEnvProduction
       ? "static/js/[name].[contenthash:8].chunk.js"
       : "static/js/[name].chunk.js",
-
-    publicPath: "public",
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Ted Pennings",
+      template: "public/index.html",
+    }),
+  ],
 
   resolve: {
     extensions: [".js", ".jsx", ".mjs", ".mdx", ".json"],
@@ -41,15 +45,6 @@ module.exports = {
     compress: true,
     port: 3000,
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Ted Pennings",
-      meta: {
-        viewport: "minimum-scale=1, initial-scale=1, width=device-width",
-      },
-    }),
-  ],
 
   module: {
     rules: [
