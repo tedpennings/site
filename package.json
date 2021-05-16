@@ -22,7 +22,7 @@
     "camelcase": "^6.2.0",
     "concurrently": "^6.1.0",
     "cypress": "^7.3.0",
-    "eslint": "^7.11.0",
+    "eslint": "^7.25.0",
     "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-cypress": "^2.11.1",
     "eslint-plugin-import": "^2.22.1",
