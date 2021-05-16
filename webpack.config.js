@@ -23,7 +23,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".jsx", ".mdx", ".json"],
+    extensions: [".js", ".jsx", ".mjs", ".mdx", ".json"],
 
     alias: {
       "react-dom$": "react-dom/profiling",
@@ -37,10 +37,9 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: path.join(__dirname, "build"),
+    public: "public",
     compress: true,
     port: 3000,
-    hot: true,
   },
 
   plugins: [
@@ -69,8 +68,11 @@ module.exports = {
             },
           },
           {
-            test: /\.(jsx?)$/,
+            test: /\.(m?jsx?)$/,
             loader: require.resolve("babel-loader"),
+            resolve: {
+              fullySpecified: false,
+            },
           },
           { test: /.mdx$/, use: ["babel-loader", "@mdx-js/loader"] },
           {
