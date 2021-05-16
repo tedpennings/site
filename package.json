@@ -37,7 +37,7 @@
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "26.4.0",
     "jest-watch-typeahead": "0.6.1",
-    "jss": "^10.0.3",
+    "jss": "^10.6.0",
     "medium-zoom": "^1.0.6",
     "prettier": "2.1.2",
     "prop-types": "^15.7.2",
