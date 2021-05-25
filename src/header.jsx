@@ -59,10 +59,8 @@ export default function Header() {
     if (geometry) {
       return geometry;
     }
-    const {
-      x: textOffsetX,
-      width: textWidth,
-    } = e.target.getBoundingClientRect();
+    const { x: textOffsetX, width: textWidth } =
+      e.target.getBoundingClientRect();
     setGeometry({ textOffsetX, textWidth });
     return { textOffsetX, textWidth };
   }
