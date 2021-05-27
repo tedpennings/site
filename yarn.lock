@@ -11013,10 +11013,10 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-react-router-breadcrumbs@^1.0.4:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/use-react-router-breadcrumbs/-/use-react-router-breadcrumbs-1.0.5.tgz#3b39a2c2a6ab72544c2fc8984f6825d0f1122877"
-  integrity sha512-NDMgWr5MdksqnATRvp84RtZ0ABfuztlsgR4VWlsBV0D3TVV6xhbmkhTdV3cWnyRIZqNlMXZhwJhyRHoC6fbAsQ==
+use-react-router-breadcrumbs@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/use-react-router-breadcrumbs/-/use-react-router-breadcrumbs-2.0.0.tgz#91e5ac056d85e6f31e440f50a5fc7d12c2a66707"
+  integrity sha512-Jep3cGbPDv/tMSZ3QYzPdEJcxVlfh/aqRpEPV5CpHSlfFk+LGcu29e3QdbavLgXa+PjIKEkFSu3j8JPrBDUTJA==
 
 use@^3.1.0:
   version "3.1.1"
