@@ -17,7 +17,6 @@ I'm also thankful to the following companies for free versions of their cool pro
 - [GitHub Actions](https://github.com/features/actions) for my CI setup (see [.github/workflows](.github/workflows))
 - [Netlify](https://www.netlify.com/) for static site hosting and PR previews, and shoutout to the OSS [Wait for Netlify Deployment](https://github.com/marketplace/actions/wait-for-netlify-deployment) GitHub Action
 - [Cypress](https://cypress.io) for their great [dashboard service](https://www.cypress.io/dashboard) to view test run recordings and history
-- [Packtracker](https://packtracker.io/) for monitoring my asset bundle sizes
 - [Dependabot](https://dependabot.com/) (GitHub) for keeping me up to date
 - [Snyk](https://snyk.io/) for keeping me safe
 
