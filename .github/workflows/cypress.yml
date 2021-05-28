@@ -11,6 +11,16 @@ jobs:
 
       - uses: actions/checkout@v2
 
+      # Cache is shared with Build and Lint workflow
+      - uses: actions/cache@v2
+        name: yarn cache
+        with:
+          path: .yarn-cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: yarn install
+        run: yarn install --frozen-lockfile
+
       - name: Wait for Netlify
         uses: probablyup/wait-for-netlify-action@3.2.0
         id: waitForDeployment
