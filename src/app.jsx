@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Fade } from "@material-ui/core";
-import { Code, GitHub, LinkedIn } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
 import me2021 from "./assets/me-2021.jpg";
 import Heading from "./header"; // TODO rename
 import Landing from "./landing";
-import ConsolidatedLink from "./common/consolidated_link";
+import Footer from "./footer";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -48,12 +47,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(2),
   },
   footer: {
-    marginTop: "auto",
-    opacity: 0.4,
-    transition: "opacity 300ms",
-    "&:hover": {
-      opacity: 1,
-    },
+    marginTop: "auto", // bottom
   },
 }));
 
@@ -90,36 +84,5 @@ export default function App() {
         </div>
       </div>
     </Fade>
-  );
-}
-
-const useFooterStyles = makeStyles((theme) => ({
-  link: {
-    marginRight: theme.spacing(1),
-  },
-}));
-function Footer() {
-  const classes = useFooterStyles();
-  return (
-    <div>
-      <ConsolidatedLink
-        className={classes.link}
-        href="https://github.com/tedpennings/site"
-      >
-        <Code alt="Code for this website" />
-      </ConsolidatedLink>
-      <ConsolidatedLink
-        className={classes.link}
-        href="https://github.com/tedpennings"
-      >
-        <GitHub alt="My GitHub" />
-      </ConsolidatedLink>
-      <ConsolidatedLink
-        className={classes.link}
-        href="https://www.linkedin.com/in/tedpennings/"
-      >
-        <LinkedIn alt="My LinkedIn" />
-      </ConsolidatedLink>
-    </div>
   );
 }
