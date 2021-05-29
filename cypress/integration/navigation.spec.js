@@ -1,4 +1,4 @@
-context("Navigation", () => {
+context.skip("Navigation", () => {
   beforeEach(() => {
     cy.visitSite();
   });

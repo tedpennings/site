@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography } from "@material-ui/core";
+import { useTheme } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 
 // Constants for Noboto Flex font; see theme.js
@@ -35,6 +36,7 @@ const interpolateDiacritics = (scaledInput) =>
 export default function Header() {
   const [position, setPosition] = useState(0);
   const [geometry, setGeometry] = useState();
+  const theme = useTheme();
 
   useEffect(() => {
     // 120 frames from 0 -> 1 -> 0.81, ideally 2s at 60fps
@@ -101,12 +103,12 @@ export default function Header() {
         onMouseOut={onMouseOut}
         component={Link}
         to="/"
-        color="primary"
         style={{
+          color: theme.palette.background.default,
           fontVariationSettings,
           textDecoration: "none",
         }}
-        variant="h1"
+        variant="h2"
       >
         Ted Pennings
       </Typography>

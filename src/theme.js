@@ -62,11 +62,18 @@ const theme = createMuiTheme({
     medium,
     bold,
   },
+  layout: {
+    large: {
+      heroWidth: 450,
+      contentWidth: 400,
+      headingFontSize: "32px",
+    },
+  },
   // 2020: https://coolors.co/f8615a-fc744b-ddcf67-4f695e-5fb4a4-6fffe9-b6dce9-4c4943-685e50
   // 2021: https://coolors.co/07345f-e0f6fc-87c5ea-685e50-4c4943-d7fbed-a63e11
   palette: {
     background: {
-      default: "white",
+      default: "#eee",
     },
     primary: {
       main: "#07345f",

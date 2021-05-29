@@ -2,12 +2,10 @@ import React, { Suspense } from "react";
 import { Box, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
-import Entries from "./entries";
-
 export default function Main() {
   return (
     <Suspense fallback={<SkeletonEntry />}>
-      <Entries />
+      <p>hello this is text that may not be seen TODO TODO </p>
     </Suspense>
   );
 }
