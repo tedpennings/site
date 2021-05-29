@@ -7,7 +7,7 @@ import SidebarContent from "./sidebar_content.mdx";
 import ConsolidatedLink from "./common/consolidated_link";
 
 // Force image into bundle to avoid layout twitch
-import me2020 from "!!url-loader?limit=409029395329!./assets/me-2020.jpg";
+import me2021 from "!!url-loader?limit=409029395329!./assets/me-2021.jpg";
 
 const useStyles = makeStyles((theme) => ({
   photo: {
@@ -33,7 +33,7 @@ export default function Sidebar() {
         data-test-id="photo"
         alt="Ted Pennings"
         className={classes.photo}
-        src={me2020}
+        src={me2021}
       />
       <SidebarContent />
       <Footer />
