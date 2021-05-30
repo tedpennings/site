@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
   },
   header: {
-    background: "#07345F",
+    background: theme.palette.hero.outer,
     padding: theme.spacing(1),
     display: "flex",
     alignItems: "center",
@@ -21,9 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
   headerImage: {
     height: theme.spacing(7),
-    width: 70, // based on aspect // TODO parameterize and use netlify cdn
+    width: 70, // based on aspect ratio
+    // TODO use netlify cdn for compression
     objectFit: "cover",
-    border: `${theme.spacing(1)}px solid #D7FBED`,
+    border: `${theme.spacing(1)}px solid ${theme.palette.hero.inner}`,
     marginRight: theme.spacing(2),
   },
 }));
