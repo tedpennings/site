@@ -23,7 +23,7 @@ module.exports = {
 
   plugins: [
     new CopyPlugin({
-      patterns: [{ from: "config/_redirects" }],
+      patterns: [{ from: "config/netlify/**" }],
     }),
     new HtmlWebpackPlugin({
       title: "Ted Pennings",
