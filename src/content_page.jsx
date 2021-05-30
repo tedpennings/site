@@ -32,7 +32,13 @@ export default function ContentPageWrapper({ children }) {
   const classes = useStyles();
   return (
     <Container classes={{ root: classes.contentWrapper }}>
-      <ConsolidatedLink to="/" className={classes.header} color="secondary">
+      <ConsolidatedLink
+        to="/"
+        className={classes.header}
+        color="secondary"
+        data-test-id="navigation-heading"
+        role="navigation"
+      >
         <img
           className={classes.headerImage}
           src={me2021}

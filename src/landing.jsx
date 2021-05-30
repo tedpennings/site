@@ -76,6 +76,7 @@ export default function App() {
             <div className={classes.heroInner}>
               <img
                 className={classes.heroImage}
+                data-test-id="photo"
                 src={me2021}
                 alt="Ted in front of a colorful mural"
                 onLoad={() => {
@@ -85,7 +86,9 @@ export default function App() {
             </div>
           </div>
           <div className={classes.main}>
-            <div className={classes.heading}>{ready && <Name />}</div>
+            <div className={classes.heading} data-test-id="heading">
+              {ready && <Name />}
+            </div>
             <div className={classes.content}>
               <div>
                 <Landing />
