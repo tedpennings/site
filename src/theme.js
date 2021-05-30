@@ -98,6 +98,10 @@ const theme = createMuiTheme({
       primary: "#4c4943",
       secondary: "#685e50",
     },
+    hero: {
+      inner: "#D7FBED",
+      outer: "#07345F",
+    },
   },
   overrides: {
     MuiLink: {

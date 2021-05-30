@@ -35,21 +35,28 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(4, 0),
       width: "60%",
       "& $heading": {
+        // make heading look like a polaroid label
         marginTop: -1,
         marginBottom: theme.spacing(2),
         paddingTop: 0,
       },
     },
   },
-  heroOuter: { background: "#07345F", padding: theme.spacing(2) },
-  heroInner: { background: "#D7FBED", padding: theme.spacing(2) },
+  heroOuter: {
+    background: theme.palette.hero.outer,
+    padding: theme.spacing(2),
+  },
+  heroInner: {
+    background: theme.palette.hero.inner,
+    padding: theme.spacing(2),
+  },
   heroImage: { objectFit: "cover", width: "100%" },
   main: {
     display: "flex",
     flexDirection: "column",
   },
   heading: {
-    background: "#07345F",
+    background: theme.palette.hero.outer,
     marginTop: "15%",
     marginBottom: theme.spacing(4),
     padding: theme.spacing(3, 2, 2, 4),
