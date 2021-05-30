@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     background: "#07345F",
     padding: theme.spacing(1),
     display: "flex",
+    alignItems: "center",
     marginBottom: theme.spacing(4),
   },
   headerImage: {
@@ -29,21 +30,16 @@ export default function ContentPageWrapper({ children }) {
   const classes = useStyles();
   return (
     <div className={classes.contentWrapper}>
-      <div className={classes.header}>
+      <ConsolidatedLink to="/" className={classes.header} color="secondary">
         <img
           className={classes.headerImage}
           src={me2021}
           alt="Ted in front of a colorful mural"
         />
-        <Typography
-          component={ConsolidatedLink}
-          to="/"
-          variant="h3"
-          color="secondary"
-        >
+        <Typography variant="h3" color="inherit">
           Ted Pennings
         </Typography>
-      </div>
+      </ConsolidatedLink>
       {children}
     </div>
   );
