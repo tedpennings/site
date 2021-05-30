@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 
 import me2021 from "./assets/me-2021.jpg";
 import { Typography } from "@material-ui/core";
@@ -8,7 +9,8 @@ import ConsolidatedLink from "./common/consolidated_link";
 
 const useStyles = makeStyles((theme) => ({
   contentWrapper: {
-    margin: theme.spacing(5, 0),
+    minHeight: "100vh",
+    marginTop: theme.spacing(5),
   },
   header: {
     background: "#07345F",
@@ -29,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ContentPageWrapper({ children }) {
   const classes = useStyles();
   return (
-    <div className={classes.contentWrapper}>
+    <Container classes={{ root: classes.contentWrapper }}>
       <ConsolidatedLink to="/" className={classes.header} color="secondary">
         <img
           className={classes.headerImage}
@@ -41,7 +43,7 @@ export default function ContentPageWrapper({ children }) {
         </Typography>
       </ConsolidatedLink>
       {children}
-    </div>
+    </Container>
   );
 }
 ContentPageWrapper.propTypes = {

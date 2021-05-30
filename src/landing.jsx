@@ -13,11 +13,33 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 1 100%",
     alignItems: "center",
     justifyContent: "center",
-    height: "100%",
+    minHeight: "100vh",
   },
   root: {
     display: "grid",
     gridTemplateColumns: "7fr 5fr",
+    "@media(min-width: 1024px)": {
+      width: 975,
+    },
+    "@media(min-width: 1280px)": {
+      width: 1080,
+    },
+    "@media(min-width: 1600px)": {
+      width: 1280,
+    },
+    // smaller screens see a polaroid-like layout
+    "@media(max-width: 1023px)": {
+      display: "flex",
+      flexDirection: "column",
+      minWidth: 250,
+      padding: theme.spacing(4, 0),
+      width: "60%",
+      "& $heading": {
+        marginTop: -1,
+        marginBottom: theme.spacing(2),
+        paddingTop: 0,
+      },
+    },
   },
   heroOuter: { background: "#07345F", padding: theme.spacing(2) },
   heroInner: { background: "#D7FBED", padding: theme.spacing(2) },
@@ -25,14 +47,9 @@ const useStyles = makeStyles((theme) => ({
   main: {
     display: "flex",
     flexDirection: "column",
-    margin: theme.spacing(0, 2),
-    padding: theme.spacing(2),
   },
   heading: {
     background: "#07345F",
-    position: "relative",
-    left: theme.spacing(-4),
-    width: `calc(100% + ${theme.spacing(4)}px)`,
     marginTop: "15%",
     marginBottom: theme.spacing(4),
     padding: theme.spacing(3, 2, 2, 4),
@@ -41,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     flex: "1 1 100%",
-    paddingRight: theme.spacing(2),
+    padding: theme.spacing(2, 4),
   },
   footer: {
     marginTop: "auto", // bottom

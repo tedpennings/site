@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Container from "@material-ui/core/Container";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { MDXProvider } from "@mdx-js/react";
@@ -19,16 +18,14 @@ ReactDOM.render(
     <MDXProvider components={mdxComponents}>
       <BrowserRouter>
         <ZoomImageContainer>
-          <Container style={{ height: "100vh" }}>
-            <Switch>
-              <Route path="/pablo">
-                <ContentPage>
-                  <PabloPage />
-                </ContentPage>
-              </Route>
-              <Route component={Landing} />
-            </Switch>
-          </Container>
+          <Switch>
+            <Route path="/pablo">
+              <ContentPage>
+                <PabloPage />
+              </ContentPage>
+            </Route>
+            <Route component={Landing} />
+          </Switch>
         </ZoomImageContainer>
       </BrowserRouter>
     </MDXProvider>
