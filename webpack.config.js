@@ -2,6 +2,7 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const isEnvProduction = process.env.NODE_ENV === "production";
 
@@ -21,9 +22,12 @@ module.exports = {
   },
 
   plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "public" }],
+    }),
     new HtmlWebpackPlugin({
       title: "Ted Pennings",
-      template: "public/index.html",
+      template: "src/assets/index.html",
     }),
   ],
 
