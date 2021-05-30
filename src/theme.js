@@ -70,19 +70,20 @@ const theme = createMuiTheme({
     },
   },
   // 2020: https://coolors.co/f8615a-fc744b-ddcf67-4f695e-5fb4a4-6fffe9-b6dce9-4c4943-685e50
-  // 2021: https://coolors.co/07345f-e0f6fc-87c5ea-685e50-4c4943-d7fbed-a63e11
+  // 2021: https://coolors.co/07345f-e0f6fc-87c5ea-685e50-4c4943-d7fbed-a63e11-f8615a
+  // Note that the status colors are not currently used.
   palette: {
     background: {
       default: "#eee",
     },
     primary: {
-      main: "#07345f",
+      main: "#A63E11",
     },
     secondary: {
       main: "#87c5ea",
     },
     success: {
-      main: "#4f695e",
+      main: "#D7FBED",
     },
     error: {
       main: "#F8615A",

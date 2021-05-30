@@ -4,23 +4,20 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import me2021 from "./assets/me-2021.jpg";
 import Heading from "./header"; // TODO rename
-import Landing from "./landing";
+import Landing from "./landing.mdx";
 import Footer from "./footer";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    height: "100vh",
-    width: "100vw",
     display: "flex",
     flex: "1 1 100%",
     alignItems: "center",
     justifyContent: "center",
+    height: "100%",
   },
   root: {
-    padding: theme.spacing(3, 3, 2, 3),
     display: "grid",
     gridTemplateColumns: "7fr 5fr",
-    width: "calc(min(100%, 1280px))",
   },
   heroOuter: { background: "#07345F", padding: theme.spacing(2) },
   heroInner: { background: "#D7FBED", padding: theme.spacing(2) },

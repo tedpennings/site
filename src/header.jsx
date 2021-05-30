@@ -3,6 +3,7 @@ import { Box, Typography } from "@material-ui/core";
 import { useTheme } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 
+// Note: This requires the Noboto Flex font (in src/assets)
 // Constants for Noboto Flex font; see theme.js
 // Also see https://opentype.js.org/font-inspector.html
 const MIN_WEIGHT = 54;
@@ -34,18 +35,22 @@ const interpolateDiacritics = (scaledInput) =>
   MIN_DIACRITICS + scaledInput * (MAX_DIACRITICS - MIN_DIACRITICS);
 
 export default function Header() {
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = useState(0); // 0 -> 1
   const [geometry, setGeometry] = useState();
   const theme = useTheme();
 
   useEffect(() => {
-    // 120 frames from 0 -> 1 -> 0.81, ideally 2s at 60fps
-    let frame = 0;
-    const animate = () => {
-      if (frame < 120) {
-        const value = 0.01 * (frame < 100 ? frame : frame - (frame - 100) * 2);
-        setPosition(value);
-        frame++;
+    // Animates 0.2 -> 1 -> 0.8, linearly
+    const duration = 2_000; // ms
+    let start;
+    const animate = (frameTime) => {
+      start ||= frameTime;
+      const progress = (frameTime - start) / (start + duration);
+      if (progress < 0.8) {
+        setPosition(progress + 0.2);
+        window.requestAnimationFrame(animate);
+      } else if (progress <= 1) {
+        setPosition(1 - (progress - 0.8));
         window.requestAnimationFrame(animate);
       }
     };

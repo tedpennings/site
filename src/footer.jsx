@@ -7,7 +7,7 @@ import ConsolidatedLink from "./common/consolidated_link";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
-    opacity: 0.4,
+    opacity: 0.3,
     transition: "opacity 300ms",
     "&:hover": {
       opacity: 1,
