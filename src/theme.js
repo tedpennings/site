@@ -62,31 +62,28 @@ const theme = createMuiTheme({
     medium,
     bold,
   },
-  // https://coolors.co/f8615a-fc744b-ddcf67-4f695e-5fb4a4-6fffe9-b6dce9-4c4943-685e50
+  layout: {
+    large: {
+      heroWidth: 450,
+      contentWidth: 400,
+      headingFontSize: "32px",
+    },
+  },
+  // 2020: https://coolors.co/f8615a-fc744b-ddcf67-4f695e-5fb4a4-6fffe9-b6dce9-4c4943-685e50
+  // 2021: https://coolors.co/07345f-e0f6fc-87c5ea-685e50-4c4943-d7fbed-a63e11-f8615a
+  // Note that the status colors are not currently used.
   palette: {
-    series: [
-      // for charts
-      "#f8615a",
-      "#fc744b",
-      "#ddcf67",
-      "#4f695e",
-      "#5fb4a4",
-      "#6fffe9",
-      "#b6dce9",
-      "#4c4943",
-      "#685e50",
-    ],
     background: {
-      default: "white",
+      default: "#eee",
     },
     primary: {
-      main: "#FC744B",
+      main: "#A63E11",
     },
     secondary: {
-      main: "#5fb4a4",
+      main: "#87c5ea",
     },
     success: {
-      main: "#4f695e",
+      main: "#D7FBED",
     },
     error: {
       main: "#F8615A",
@@ -100,6 +97,10 @@ const theme = createMuiTheme({
     text: {
       primary: "#4c4943",
       secondary: "#685e50",
+    },
+    hero: {
+      inner: "#D7FBED",
+      outer: "#07345F",
     },
   },
   overrides: {

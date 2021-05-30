@@ -3,29 +3,36 @@ context("Navigation", () => {
     cy.visitSite();
   });
 
-  it("loads with a title, sidebar and photo", () => {
-    cy.get("header").should("be.visible");
-    cy.getByTestId("sidebar").should("be.visible");
-    cy.getByTestId("photo").should("be.visible");
+  it("landing age loads with heading and photo", () => {
+    assertLandingPage();
   });
 
-  it("navigates to a page from the body links", () => {
-    cy.get("[data-link-name=Heatmaps]").click();
-    cy.url().should("contain", "/dataviz/heatmaps");
-    cy.contains("h2", "Heatmaps");
+  it("navigates to Pablo's page by clicking the link", () => {
+    cy.contains("a", "Pablo").click();
+    assertPablosPage();
   });
 
-  it("updates the breadcrumbs", () => {
-    cy.getByTestId("breadcrumb").should("have.length", 1);
+  it("navigates to Pablo's page directly", () => {
+    cy.visit("/pablo");
+    assertPablosPage();
+  });
 
-    cy.get("[data-link-name=Heatmaps]").click();
-    cy.contains("[data-breadcrumb-level=0]", "Home");
-    cy.contains("[data-breadcrumb-level=1]", "Data Visualization");
-    cy.contains("[data-breadcrumb-level=2]", "Heatmaps");
-    cy.getByTestId("breadcrumb").should("have.length", 3);
-
-    cy.contains("[data-breadcrumb-level=1]", "Data Visualization").click();
-    cy.get("[data-breadcrumb-level=2]").should("not.exist"); // Heatmaps is gone
-    cy.getByTestId("breadcrumb").should("have.length", 2);
+  it("Pablo's page links back to landing page", () => {
+    cy.visit("/pablo");
+    cy.getByTestId("navigation-heading").click();
+    assertLandingPage();
   });
 });
+
+function assertPablosPage() {
+  cy.url().should("contain", "/pablo");
+  cy.contains("h2", "Pablo Valentine Pennings");
+  cy.contains("We had nine beautiful days with Pablo.");
+}
+
+function assertLandingPage() {
+  cy.contains("Ted lives in Portland, Oregon");
+  cy.getByTestId("root").should("be.visible");
+  cy.getByTestId("heading").should("be.visible");
+  cy.getByTestId("photo").should("be.visible");
+}

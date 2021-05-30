@@ -2,6 +2,8 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const isEnvProduction = process.env.NODE_ENV === "production";
 
@@ -20,9 +22,12 @@ module.exports = {
   },
 
   plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "config/netlify/_redirects" }],
+    }),
     new HtmlWebpackPlugin({
       title: "Ted Pennings",
-      template: "public/index.html",
+      template: "src/assets/index.html",
     }),
   ],
 
@@ -44,6 +49,7 @@ module.exports = {
     public: "public",
     compress: true,
     port: 3000,
+    historyApiFallback: true,
   },
 
   module: {
