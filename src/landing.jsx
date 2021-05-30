@@ -3,7 +3,7 @@ import { Fade } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import me2021 from "./assets/me-2021.jpg";
-import Heading from "./header"; // TODO rename
+import Name from "./name";
 import Landing from "./landing.mdx";
 import Footer from "./footer";
 
@@ -68,7 +68,7 @@ export default function App() {
             </div>
           </div>
           <div className={classes.main}>
-            <div className={classes.heading}>{ready && <Heading />}</div>
+            <div className={classes.heading}>{ready && <Name />}</div>
             <div className={classes.content}>
               <div>
                 <Landing />
