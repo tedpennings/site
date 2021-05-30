@@ -15,7 +15,6 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, "dist"),
-    publicPath: path.resolve(__dirname, "public"),
 
     chunkFilename: isEnvProduction
       ? "static/js/[name].[contenthash:8].chunk.js"
