@@ -3,8 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const isEnvProduction = process.env.NODE_ENV === "production";
 
@@ -31,9 +30,7 @@ module.exports = {
       title: "Ted Pennings",
       template: "src/assets/index.html",
     }),
-  ].concat(
-    isEnvProduction ? [] : [new BundleAnalyzerPlugin({ openAnalyzer: false })]
-  ),
+  ],
 
   resolve: {
     extensions: [".js", ".jsx", ".mjs", ".mdx", ".json"],
