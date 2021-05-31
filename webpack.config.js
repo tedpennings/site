@@ -25,7 +25,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "config/netlify/_redirects" },
-        { from: "assets/robots.txt" },
+        { from: "src/assets/robots.txt" },
       ],
     }),
     new HtmlWebpackPlugin({
