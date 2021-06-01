@@ -37,7 +37,7 @@
     "html-webpack-plugin": "^5.3.1",
     "jest": "27.0.1",
     "jest-environment-jsdom-fourteen": "1.0.1",
-    "jest-resolve": "27.0.1",
+    "jest-resolve": "27.0.2",
     "jest-watch-typeahead": "0.6.4",
     "jss": "^10.6.0",
     "medium-zoom": "^1.0.6",
