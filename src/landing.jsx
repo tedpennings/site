@@ -33,12 +33,15 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
       minWidth: 250,
       padding: theme.spacing(4, 0),
-      width: "60%",
+      width: "85%",
       "& $heading": {
         // make heading look like a polaroid label
         marginTop: -1,
         marginBottom: theme.spacing(2),
         paddingTop: 0,
+      },
+      "& $footer": {
+        marginTop: theme.spacing(2),
       },
     },
   },
