@@ -1,8 +1,5 @@
-import {
-  createMuiTheme,
-  jssPreset,
-  responsiveFontSizes,
-} from "@material-ui/core/styles";
+import { jssPreset } from "@material-ui/styles";
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { create } from "jss";
 
 // Embed font into bundle to prevent fetch delay

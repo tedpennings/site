@@ -25,6 +25,10 @@ module.exports = {
   // The test environment that will be used for testing
   testEnvironment: "jest-environment-jsdom",
 
+  transform: {
+    "\\.m?jsx?$": "jest-esm-transformer",
+  },
+
   // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
   // timers: "real",
 

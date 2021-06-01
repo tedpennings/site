@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 
-import me2021 from "./assets/me-2021.jpg";
-import { Typography } from "@material-ui/core";
 import ConsolidatedLink from "./common/consolidated_link";
+import SuspenseLoader from "./suspense_loader";
+import me2021 from "./assets/me-2021.jpg";
 
 const useStyles = makeStyles((theme) => ({
   contentWrapper: {
@@ -49,7 +49,7 @@ export default function ContentPageWrapper({ children }) {
           Ted Pennings
         </Typography>
       </ConsolidatedLink>
-      {children}
+      <SuspenseLoader>{children}</SuspenseLoader>
     </Container>
   );
 }

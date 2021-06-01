@@ -2,8 +2,8 @@
 import React from "react";
 
 import { Box, Divider, Typography } from "@material-ui/core";
-import { ChevronRight } from "@material-ui/icons";
 import { useTheme } from "@material-ui/core/styles";
+import { ChevronRight } from "@material-ui/icons";
 
 import ConsolidatedLink from "./consolidated_link";
 
