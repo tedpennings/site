@@ -69,14 +69,9 @@
     "build": "webpack build",
     "test": "jest"
   },
-  "browserslist": {
-    "production": [
-      "last 1 chrome version",
-      "last 1 firefox version"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version"
-    ]
-  }
+  "browserslist": [
+    "last 2 major versions and >1%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
