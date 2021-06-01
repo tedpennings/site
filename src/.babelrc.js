@@ -1,3 +1,9 @@
+const env = {
+  test: {
+    plugins: ["@babel/plugin-transform-modules-commonjs"],
+  },
+};
+
 const plugins = [
   [
     "babel-plugin-import",
@@ -36,11 +42,5 @@ const plugins = [
     "labs",
   ],
 ];
-
-const env = {
-  test: {
-    plugins: ["@babel/plugin-transform-modules-commonjs"],
-  },
-};
 
 module.exports = { env, plugins };
