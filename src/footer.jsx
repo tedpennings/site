@@ -25,20 +25,23 @@ export default function Footer() {
       <ConsolidatedLink
         className={classes.link}
         href="https://github.com/tedpennings/site"
+        aria-label="Code for this site"
       >
-        <Code alt="Code for this website" />
+        <Code alt="Code icon" />
       </ConsolidatedLink>
       <ConsolidatedLink
         className={classes.link}
         href="https://github.com/tedpennings"
+        aria-label="My GitHub"
       >
-        <GitHub alt="My GitHub" />
+        <GitHub alt="GitHub icon" />
       </ConsolidatedLink>
       <ConsolidatedLink
         className={classes.link}
         href="https://www.linkedin.com/in/tedpennings/"
+        aria-label="My LinkedIn"
       >
-        <LinkedIn alt="My LinkedIn" />
+        <LinkedIn alt="LinkedIn icon" />
       </ConsolidatedLink>
     </div>
   );
