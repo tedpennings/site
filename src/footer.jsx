@@ -1,8 +1,8 @@
 import React from "react";
 
+import { Code, GitHub, LinkedIn } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { Code, GitHub, LinkedIn } from "@material-ui/icons";
 import ConsolidatedLink from "./common/consolidated_link";
 
 const useStyles = makeStyles((theme) => ({
