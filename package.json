@@ -61,8 +61,8 @@
     "webpack-dev-server": "4.0.0-beta.3"
   },
   "scripts": {
-    "lint:eslint": "eslint src cypress config --ext js,jsx,json,mdx,md",
-    "lint:prettier": "prettier --check src cypress config",
+    "lint:eslint": "eslint src cypress --ext js,jsx,json,mdx,md",
+    "lint:prettier": "prettier --check src cypress",
     "lint": "concurrently -n 'prettier,eslint' yarn:lint:prettier yarn:lint:eslint",
     "start": "webpack serve",
     "open:cypress": "NODE_ENV=test yarn cypress open --config baseUrl=http://localhost:3000/",
