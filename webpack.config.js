@@ -32,6 +32,7 @@ module.exports = {
       title: "Ted Pennings",
       template: "src/assets/index.html",
     }),
+    // new BundleAnalyzerPlugin(),
   ],
 
   resolve: {

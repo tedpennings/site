@@ -11,7 +11,9 @@ import theme from "./theme";
 import ContentPage from "./content_page";
 import Landing from "./landing";
 
-const PabloPage = React.lazy(() => import("./pablo"));
+const PabloPage = React.lazy(() =>
+  import(/* webpackChunkName: "pablos_page" */ "./pablo")
+);
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>

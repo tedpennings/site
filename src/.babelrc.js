@@ -1,30 +1,46 @@
 const plugins = [
   [
-    "babel-plugin-transform-imports",
+    "babel-plugin-import",
     {
-      "@material-ui/styles": {
-        transform: "@material-ui/styles/esm/${member}",
-        preventFullImport: true,
-      },
-      "@material-ui/core/styles": {
-        transform: "@material-ui/core/esm/styles/${member}",
-        preventFullImport: true,
-      },
-      "@material-ui/core": {
-        transform: "@material-ui/core/esm/${member}",
-        preventFullImport: true,
-      },
-      "@material-ui/icons": {
-        transform: "@material-ui/icons/esm/${member}",
-        preventFullImport: true,
-      },
-      "@material-ui/lab": {
-        // Use "transform: '@material-ui/icons/${member}'," if your bundler does not support ES modules
-        transform: "@material-ui/lab/esm/${member}",
-        preventFullImport: true,
-      },
+      libraryName: "@material-ui/core",
+      libraryDirectory: "esm",
+      camel2DashComponentName: false,
     },
+    "core",
+  ],
+  [
+    "babel-plugin-import",
+    {
+      libraryName: "@material-ui/icons",
+      libraryDirectory: "esm",
+      camel2DashComponentName: false,
+    },
+    "icons",
+  ],
+  [
+    "babel-plugin-import",
+    {
+      libraryName: "@material-ui/styles",
+      libraryDirectory: "esm",
+      camel2DashComponentName: false,
+    },
+    "styles",
+  ],
+  [
+    "babel-plugin-import",
+    {
+      libraryName: "@material-ui/labs",
+      libraryDirectory: "esm",
+      camel2DashComponentName: false,
+    },
+    "labs",
   ],
 ];
 
-module.exports = { plugins };
+const env = {
+  test: {
+    plugins: ["@babel/plugin-transform-modules-commonjs"],
+  },
+};
+
+module.exports = { env, plugins };

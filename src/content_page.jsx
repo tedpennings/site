@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import me2021 from "./assets/me-2021.jpg";
-import { Typography } from "@material-ui/core";
 import ConsolidatedLink from "./common/consolidated_link";
 import SuspenseLoader from "./suspense_loader";
+import me2021 from "./assets/me-2021.jpg";
 
 const useStyles = makeStyles((theme) => ({
   contentWrapper: {
