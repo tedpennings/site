@@ -1,7 +1,13 @@
 {
   "name": "site",
+  "description": "Personal website for Ted Pennings",
   "version": "3.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tedpennings/site.git"
+  },
   "license": "MIT",
+  "browser": "./src/index.jsx",
   "scripts": {
     "lint:eslint": "eslint src cypress --ext js,jsx,json,mdx,md",
     "lint:prettier": "prettier --check src cypress",
