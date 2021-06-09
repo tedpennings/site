@@ -1,7 +1,16 @@
 {
   "name": "site",
-  "version": "0.3.0",
+  "version": "3.1.0",
   "license": "MIT",
+  "scripts": {
+    "lint:eslint": "eslint src cypress --ext js,jsx,json,mdx,md",
+    "lint:prettier": "prettier --check src cypress",
+    "lint": "concurrently -n 'prettier,eslint' yarn:lint:prettier yarn:lint:eslint",
+    "start": "webpack serve",
+    "open:cypress": "NODE_ENV=test yarn cypress open --config baseUrl=http://localhost:3000/",
+    "build": "webpack build",
+    "test": "jest"
+  },
   "dependencies": {
     "@babel/core": "^7.14.3",
     "@babel/plugin-transform-modules-commonjs": "^7.14.0",
@@ -59,15 +68,6 @@
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "4.0.0-beta.3"
-  },
-  "scripts": {
-    "lint:eslint": "eslint src cypress --ext js,jsx,json,mdx,md",
-    "lint:prettier": "prettier --check src cypress",
-    "lint": "concurrently -n 'prettier,eslint' yarn:lint:prettier yarn:lint:eslint",
-    "start": "webpack serve",
-    "open:cypress": "NODE_ENV=test yarn cypress open --config baseUrl=http://localhost:3000/",
-    "build": "webpack build",
-    "test": "jest"
   },
   "browserslist": [
     "last 2 major versions and >1%",
