@@ -207,7 +207,7 @@
   dependencies:
     "@babel/types" "^7.10.4"
 
-"@babel/helper-module-imports@^7.12.13", "@babel/helper-module-imports@^7.12.5", "@babel/helper-module-imports@^7.13.12":
+"@babel/helper-module-imports@^7.12.13", "@babel/helper-module-imports@^7.12.5":
   version "7.13.12"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-imports/-/helper-module-imports-7.13.12.tgz#c6a369a6f3621cb25da014078684da9196b61977"
   integrity sha512-4cVvR2/1B693IuOvSI20xqqa/+bl7lqAMR59R4iu39R9aOX8/JoYY1sFaNvUMyMBGnHdwvJgUrzNLoUZxXypxA==
@@ -10424,10 +10424,10 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-react-router-breadcrumbs@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/use-react-router-breadcrumbs/-/use-react-router-breadcrumbs-2.0.1.tgz#70ff8eefe4a7e495da30dadd4c4a4098ca7ae6d6"
-  integrity sha512-Ugnu2fHZrDFIIwleQpuCa3KZ1etuzBYGnb+jU9cJ9LvQaYmvdvlSQXi4kNyVE3I4jUyFqy2b3X/aZlrpzmGJBQ==
+use-react-router-breadcrumbs@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/use-react-router-breadcrumbs/-/use-react-router-breadcrumbs-2.0.2.tgz#ec0182e5a06235f698a464cc0e59560caa26a453"
+  integrity sha512-GB2kxWPl1KZzgd6Kb6INCmO7YT1mHDOVee1TUyJOCdbN//OpW4dwo2/6IBRiw94CNFD5kzyxS4EzRFBYPC6aMA==
 
 use@^3.1.0:
   version "3.1.1"
