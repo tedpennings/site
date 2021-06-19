@@ -7,6 +7,7 @@ import ConsolidatedLink from "./common/consolidated_link";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
+    padding: theme.spacing(1, 0),
     opacity: 0.3,
     transition: "opacity 300ms",
     "&:hover": {
