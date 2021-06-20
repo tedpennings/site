@@ -10,7 +10,7 @@
   "browser": "./src/index.jsx",
   "scripts": {
     "lint:eslint": "eslint src cypress --ext js,jsx,json,mdx,md",
-    "lint:prettier": "prettier --check src cypress",
+    "lint:prettier": "prettier --check src cypress .github",
     "lint": "concurrently -n 'prettier,eslint' yarn:lint:prettier yarn:lint:eslint",
     "start": "webpack serve",
     "open:cypress": "NODE_ENV=test yarn cypress open --config baseUrl=http://localhost:3000/",
