@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: 0,
       },
       "& $footer": {
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(1),
       },
     },
   },

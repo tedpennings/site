@@ -10,7 +10,8 @@ import me2021 from "./assets/me-2021.jpg";
 const useStyles = makeStyles((theme) => ({
   contentWrapper: {
     minHeight: "100vh",
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(6),
   },
   header: {
     background: theme.palette.hero.outer,
