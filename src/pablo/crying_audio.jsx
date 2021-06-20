@@ -21,6 +21,8 @@ export default function CryingAudio() {
       progressColor: theme.palette.secondary.main,
       waveColor: theme.palette.text.secondary,
       cursorWidth: 2,
+      barHeight: 5,
+      barMinHeight: 2,
       backend: "MediaElement",
     });
 
