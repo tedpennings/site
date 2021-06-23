@@ -54,7 +54,7 @@
     "jest": "27.0.4",
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-esm-transformer": "^1.0.0",
-    "jest-resolve": "27.0.4",
+    "jest-resolve": "27.0.5",
     "jest-watch-typeahead": "0.6.4",
     "jss": "^10.6.0",
     "medium-zoom": "^1.0.6",
