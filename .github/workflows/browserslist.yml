@@ -13,4 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - run: yarn
-      - run: npx browserslist@latest --update-db
+      - id: runbrowserslist
+        run: npx browserslist@latest --update-db
+        outputs:
