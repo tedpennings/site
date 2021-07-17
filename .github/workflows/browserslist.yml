@@ -1,8 +1,8 @@
 name: Update browserslist
 
 on:
-  push
-  pull_request
+  push:
+  pull_request:
   schedule:
     - cron: "10 4 * * 3" # daily - 4:10am on Wednesdays
 
@@ -14,4 +14,3 @@ jobs:
       - name: Checkout repository
       - run: yarn
       - run: npx browserslist@latest --update-db
-
