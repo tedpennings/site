@@ -1,0 +1,15 @@
+name: Update browserslist
+
+on:
+  push
+  schedule:
+  - cron: "10 4 * * 3" # daily - 4:10am on Wednesdays
+
+jobs:
+  Update browserslist daatabase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout repository
+      - run: yarn
+
