@@ -10,7 +10,7 @@ jobs:
   Update browserslist daatabase:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Checkout repository
+        uses: actions/checkout@v2
       - run: yarn
       - run: npx browserslist@latest --update-db
