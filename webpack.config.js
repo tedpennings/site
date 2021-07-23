@@ -36,8 +36,8 @@ module.exports = {
     extensions: [".js", ".jsx", ".mjs", ".mdx", ".json"],
 
     alias: {
-      "react-dom$": "react-dom/profiling",
-      "scheduler/tracing": "scheduler/tracing-profiling",
+      "react-dom": "react-dom/profiling",
+      "schedule/tracing": "schedule/tracing-profiling",
     },
   },
 
