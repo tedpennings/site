@@ -37,7 +37,7 @@ module.exports = {
 
     alias: {
       "react-dom": "react-dom/profiling",
-      "schedule/tracing": "schedule/tracing-profiling",
+      "scheduler/tracing": "scheduler/tracing-profiling",
     },
   },
 
@@ -47,7 +47,6 @@ module.exports = {
   },
 
   devServer: {
-    public: "public",
     compress: true,
     port: 3000,
     historyApiFallback: true,
