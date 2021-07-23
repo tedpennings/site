@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Fade } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -103,9 +104,7 @@ export default function App() {
               <div>
                 <Landing />
               </div>
-              <div className={classes.footer}>
-                <Footer />
-              </div>
+              <OptimizedFooter className={classes.footer} ready={ready} />
             </div>
           </div>
         </div>
@@ -113,3 +112,21 @@ export default function App() {
     </Fade>
   );
 }
+
+function OptimizedFooter({ className, ready }) {
+  // This is a hack to push the Footer JSX work into the next
+  // animation frame. The footer is expensive (MDX+MUI styles)
+  // so it's worth it to push it to the second render.
+  // The delay is imperceptible because it's in a 1s fade.
+  return (
+    <div className={className}>
+      <Fade in={ready} timeout={16} mountOnEnter>
+        <Footer />
+      </Fade>
+    </div>
+  );
+}
+OptimizedFooter.propTypes = {
+  className: PropTypes.string.isRequired,
+  ready: PropTypes.bool.isRequired,
+};
