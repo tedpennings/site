@@ -12,7 +12,7 @@ import ContentPage from "./content_page";
 import Landing from "./landing";
 
 const PabloPage = React.lazy(() =>
-  import(/* webpackChunkName: "pablos_page" */ "./pablo")
+  import(/* webpackChunkName: "pablos_page", webpackPrefetch: true */ "./pablo")
 );
 const MdxFixture = React.lazy(() =>
   import(

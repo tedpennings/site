@@ -15,10 +15,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, "dist"),
-
-    chunkFilename: isEnvProduction
-      ? "static/js/[name].[contenthash:8].chunk.js"
-      : "static/js/[name].chunk.js",
+    chunkFilename: "static/js/[name].[contenthash:8].chunk.js",
   },
 
   plugins: [
