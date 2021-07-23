@@ -1,5 +1,5 @@
 import { jssPreset } from "@material-ui/styles";
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { create } from "jss";
 
 // Embed font into bundle to prevent fetch delay
@@ -36,7 +36,7 @@ const bold = {
   fontVariationSettings: "'wght' 322",
 };
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: "Noboto Flex, Helvetica",
     body1: { ...regular },
