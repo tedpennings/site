@@ -35,8 +35,5 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Unit test
-        run: yarn test
-
       - name: Build Assets
         run: yarn build

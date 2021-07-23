@@ -16,6 +16,11 @@ import PabloPage from "./pablo";
 // const PabloPage = React.lazy(() =>
 // import(/* webpackChunkName: "pablos_page" */ "./pablo")
 // );
+const MdxFixture = React.lazy(() =>
+  import(
+    /* webpackChunkName: "mdx_fixture" */ "./common/mdx_rendering.fixture.mdx"
+  )
+);
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
@@ -27,6 +32,11 @@ ReactDOM.render(
             <Route path="/pablo">
               <ContentPage>
                 <PabloPage />
+              </ContentPage>
+            </Route>
+            <Route path="/mdx-fixture">
+              <ContentPage>
+                <MdxFixture />
               </ContentPage>
             </Route>
             <Route component={Landing} />
