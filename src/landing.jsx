@@ -117,6 +117,7 @@ function OptimizedFooter({ className, ready }) {
   // This is a hack to push the Footer JSX work into the next
   // animation frame. The footer is expensive (MDX+MUI styles)
   // so it's worth it to push it to the second render.
+  // This is imperceptible because it's in a 1s fade.
   return (
     <div className={className}>
       <Fade in={ready} timeout={16} mountOnEnter>
