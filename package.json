@@ -64,7 +64,7 @@
     "url-loader": "4.1.1",
     "use-react-router-breadcrumbs": "^2.0.2",
     "wavesurfer.js": "^5.1.0",
-    "webpack": "^5.46.0",
+    "webpack": "^5.47.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "4.0.0-rc.0"
