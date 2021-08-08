@@ -80,7 +80,7 @@ export default function App() {
   const [ready, setReady] = useState(false);
   const classes = useStyles();
   return (
-    <Fade in={ready} timeout={1000}>
+    <Fade appear in={ready} timeout={1000}>
       <div className={classes.container}>
         <div className={classes.root} data-test-id="root">
           <div className={classes.heroOuter}>
