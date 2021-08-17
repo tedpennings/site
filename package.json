@@ -59,7 +59,7 @@
     "react-router-dom": "^5.2.0",
     "responsive-loader": "^2.3.0",
     "scheduler": "^0.20.2",
-    "sharp": "^0.28.3",
+    "sharp": "^0.29.0",
     "terser-webpack-plugin": "^5.1.4",
     "url-loader": "4.1.1",
     "use-react-router-breadcrumbs": "^2.0.2",
