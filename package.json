@@ -18,7 +18,7 @@
     "test": "echo 'Run Cypress'"
   },
   "dependencies": {
-    "@babel/core": "^7.15.4",
+    "@babel/core": "^7.15.5",
     "@babel/plugin-transform-modules-commonjs": "^7.14.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
@@ -59,12 +59,12 @@
     "react-router-dom": "^5.2.1",
     "responsive-loader": "^2.3.0",
     "scheduler": "^0.20.2",
-    "sharp": "^0.29.0",
+    "sharp": "^0.29.1",
     "terser-webpack-plugin": "^5.2.3",
     "url-loader": "4.1.1",
     "use-react-router-breadcrumbs": "^2.0.2",
     "wavesurfer.js": "^5.2.0",
-    "webpack": "^5.52.0",
+    "webpack": "^5.52.1",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "4.1.0"
