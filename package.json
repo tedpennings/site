@@ -18,7 +18,7 @@
     "test": "echo 'Run Cypress'"
   },
   "dependencies": {
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.15.8",
     "@babel/plugin-transform-modules-commonjs": "^7.14.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
