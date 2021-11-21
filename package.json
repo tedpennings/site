@@ -8,7 +8,6 @@
   },
   "license": "MIT",
   "browser": "./src/index.jsx",
-  "type": "module",
   "browserslist": [
     "last 2 major versions and >1%",
     "not dead",
