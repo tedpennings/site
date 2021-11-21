@@ -8,6 +8,11 @@
   },
   "license": "MIT",
   "browser": "./src/index.jsx",
+  "browserslist": [
+    "last 2 major versions and >1%",
+    "not dead",
+    "not op_mini all"
+  ],
   "scripts": {
     "lint:eslint": "eslint src cypress --ext js,jsx,json,mdx,md",
     "lint:prettier": "prettier --check src cypress .github",
@@ -34,18 +39,17 @@
     "babel-loader": "8.2.3",
     "babel-plugin-import": "^1.13.3",
     "browserslist": "^4.18.1",
-    "camelcase": "^6.2.0",
-    "concurrently": "^6.3.0",
+    "concurrently": "^6.4.0",
     "copy-webpack-plugin": "^9.0.1",
     "cypress": "^8.7.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-mdx": "^1.16.0",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "file-loader": "6.2.0",
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
@@ -68,10 +72,5 @@
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "4.5.0"
-  },
-  "browserslist": [
-    "last 2 major versions and >1%",
-    "not dead",
-    "not op_mini all"
-  ]
+  }
 }

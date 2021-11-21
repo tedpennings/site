@@ -3,7 +3,7 @@ context("Navigation", () => {
     cy.visitSite();
   });
 
-  it("landing age loads with heading and photo", () => {
+  it("landing page loads with heading and photo", () => {
     assertLandingPage();
   });
 
