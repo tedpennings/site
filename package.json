@@ -8,6 +8,12 @@
   },
   "license": "MIT",
   "browser": "./src/index.jsx",
+  "type": "module",
+  "browserslist": [
+    "last 2 major versions and >1%",
+    "not dead",
+    "not op_mini all"
+  ],
   "scripts": {
     "lint:eslint": "eslint src cypress --ext js,jsx,json,mdx,md",
     "lint:prettier": "prettier --check src cypress .github",
@@ -37,7 +43,7 @@
     "concurrently": "^6.4.0",
     "copy-webpack-plugin": "^9.0.1",
     "cypress": "^8.7.0",
-    "eslint": "^8.3.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.25.3",
@@ -67,10 +73,5 @@
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "4.5.0"
-  },
-  "browserslist": [
-    "last 2 major versions and >1%",
-    "not dead",
-    "not op_mini all"
-  ]
+  }
 }
