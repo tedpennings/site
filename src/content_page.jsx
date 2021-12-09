@@ -9,7 +9,9 @@ import me2021 from "./assets/me-2021.jpg";
 
 const useStyles = makeStyles((theme) => ({
   contentWrapper: {
-    minHeight: "100vh",
+    display: "flex",
+    flex: "1 1 100%",
+    flexDirection: "column",
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(6),
   },
