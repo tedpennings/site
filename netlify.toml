@@ -1,0 +1,11 @@
+[build]
+command = "yarn build"
+publish = "dist"
+
+[build.environment]
+TERM = "xterm"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
