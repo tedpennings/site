@@ -1,7 +1,7 @@
 name: Cypress
 on: pull_request
 jobs:
-  cypress:
+  lint_and_test:
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
@@ -11,15 +11,24 @@ jobs:
 
       - uses: actions/checkout@v3
 
-      # Cache is shared with Build and Lint workflow
+      # yarn cache config from https://github.com/actions/cache/blob/master/examples.md#node---yarn
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v2
-        name: yarn cache
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          path: .yarn-cache
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: yarn install
         run: yarn install --frozen-lockfile
+
+      - name: Lint
+        run: yarn lint
 
       - name: Wait for Netlify
         uses: probablyup/wait-for-netlify-action@3.2.0
