@@ -15,7 +15,8 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, "dist"),
-    chunkFilename: "static/js/[name].[contenthash:8].chunk.js",
+    filename: "static/js/[name].[contenthash:12].js",
+    chunkFilename: "static/js/[name].[contenthash:12].chunk.js",
   },
 
   plugins: [
@@ -61,7 +62,7 @@ module.exports = {
             loader: require.resolve("responsive-loader"),
             options: {
               adapter: require("responsive-loader/sharp"),
-              name: "static/media/[name].[hash:8].[ext]",
+              name: "static/media/[name].[contenthash:12].[ext]",
               sizes: [1024, 99999],
             },
           },
@@ -77,7 +78,7 @@ module.exports = {
             loader: require.resolve("file-loader"),
             exclude: [/\.(jsx?)$/, /\.html$/, /\.json$/],
             options: {
-              name: "static/media/[name].[hash:8].[ext]",
+              name: "static/media/[name].[contenthash:12].[ext]",
             },
           },
         ],
