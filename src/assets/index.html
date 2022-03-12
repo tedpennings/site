@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <title>Ted Pennings</title>
+
+    <!-- Standard meta tags -->
     <meta
       name="viewport"
       content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -10,8 +12,10 @@
     <meta name="author" content="Ted Pennings" />
     <meta name="keywords" content="Ted Pennings, Pablo Valentine Pennings" />
     <meta name="robots" content="index, follow" />
+
+    <!-- OpenGraph tags -->
     <meta property="og:title" content="Ted Pennings" />
-    <meta property="og:description" content="Ted Pennings's personal website" />
+    <meta property="og:description" content="My personal website" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ted.pennin.gs/" />
     <meta
@@ -28,8 +32,21 @@
       content="<%=require('./me-2021.jpg').height%>"
     />
     <meta property="og:image:alt" content="Ted Pennings" />
-
     <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="ted.pennin.gs" />
+    <meta property="twitter:url" content="https://ted.pennin.gs/" />
+    <meta name="twitter:title" content="Ted Pennings" />
+    <meta name="twitter:description" content="My personal website" />
+    <meta
+      name="twitter:image"
+      content="https://ted.pennin.gs/<%=require('./me-2021.jpg')%>"
+    />
+    <meta name="twitter:image:alt" content="Ted Pennings" />
+
+    <!-- Script tags -->
     <link rel="preload" as="image" href="/<%=require('./me-2021.jpg')%>" />
   </head>
   <body>
