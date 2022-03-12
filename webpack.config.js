@@ -26,6 +26,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Ted Pennings",
       template: "src/assets/index.html",
+      hash: true,
     }),
     // new BundleAnalyzerPlugin(),
   ],
