@@ -14,7 +14,21 @@
     <meta property="og:description" content="Ted Pennings's personal website" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ted.pennin.gs/" />
-    <meta property="og:image" content="https://ted.pennin.gs/<%=require('./me-2021.jpg')%>" />
+    <meta
+      property="og:image"
+      content="https://ted.pennin.gs/<%=require('./me-2021.jpg')%>"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta
+    property="og:image:width"
+    content="<%=require('./me-2021.jpg').width%>"
+    />
+    <meta
+      property="og:image:height"
+      content="<%=require('./me-2021.jpg').height%>"
+    />
+    <meta property="og:image:alt" content="Ted Pennings" />
+
     <meta property="og:locale" content="en_US" />
     <link rel="preload" as="image" href="/<%=require('./me-2021.jpg')%>" />
   </head>
