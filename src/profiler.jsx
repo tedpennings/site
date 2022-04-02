@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/styles";
 import RightIcon from "@material-ui/icons/KeyboardArrowRight";
 import DownIcon from "@material-ui/icons/KeyboardArrowDown";
-import RemoveIcon from "@material-ui/icons/Remove";
 
 const PROFILE_STATUS = {
   NOT_READY: "not_ready",
@@ -209,6 +208,7 @@ function Frame({ classes, frameId, indent = 0 }) {
   const { name, line, column, resourceId } = profile.frames[frameId];
 
   const children = useMemo(
+    // TODO this seems wrong
     () => profile.stacks.filter((f) => f.parentId === frameId),
     [frameId, profile]
   );

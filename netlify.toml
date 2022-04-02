@@ -13,4 +13,4 @@ TERM = "xterm"
 [[headers]]
   for = "/*"
   [headers.values]
-  Document-Policy = js-profiling
+  Document-Policy = "js-profiling"
