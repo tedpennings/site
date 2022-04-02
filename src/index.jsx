@@ -11,6 +11,24 @@ import theme from "./theme";
 import ContentPage from "./content_page";
 import Landing from "./landing";
 
+window.loadingProfile = null;
+window.loadingProfileStart = null;
+window.loadingProfileEnd = null;
+
+if ("Profiler" in window) {
+  const duration = 1500;
+  window.loadingProfileStart = window.performance.now();
+  window.loadingProfileEnd = window.loadingProfileStart + duration;
+  const profiler = new window.Profiler({
+    sampleInterval: 10,
+    maxBufferSize: 10000,
+  });
+  setTimeout(async () => {
+    window.loadingProfile = await profiler.stop();
+    console.log("Profile complete", window.loadingProfile);
+  }, duration);
+}
+
 const PabloPage = React.lazy(() =>
   import(/* webpackChunkName: "pablos_page", webpackPrefetch: true */ "./pablo")
 );
@@ -18,6 +36,9 @@ const MdxFixture = React.lazy(() =>
   import(
     /* webpackChunkName: "mdx_fixture" */ "./common/mdx_rendering.fixture.mdx"
   )
+);
+const ProfilerPage = React.lazy(() =>
+  import(/* webpackChunkName: "profiler_page" */ "./profiler")
 );
 
 ReactDOM.render(
@@ -35,6 +56,11 @@ ReactDOM.render(
             <Route path="/mdx-fixture">
               <ContentPage>
                 <MdxFixture />
+              </ContentPage>
+            </Route>
+            <Route path="/profiler">
+              <ContentPage>
+                <ProfilerPage />
               </ContentPage>
             </Route>
             <Route component={Landing} />
