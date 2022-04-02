@@ -9,3 +9,8 @@ TERM = "xterm"
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Document-Policy: js-profiling
