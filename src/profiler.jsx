@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import { useRaf } from "react-use";
@@ -44,9 +45,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     borderRadius: theme.shape.borderRadius,
   },
+  stacksContainer: { margin: theme.spacing(2, 0) },
   frame: {
     display: "grid",
-    gridTemplateColumns: "32px 80px 200px 1fr",
+    gridTemplateColumns: "32px 138px 200px 1fr",
     lineHeight: "30px",
     "& span": {
       textOverflow: "ellipsis",
@@ -56,12 +58,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Profiler() {
-  // const theme = useTheme();
-  // console.log(theme);
   const classes = useStyles();
   const profileStatus = useProfileStatus();
 
   const profile = window.loadingProfile;
+  const parentStacks = useMemo(() => findParentStacks(profile), [profile]);
 
   if (
     !("Profiler" in window) ||
@@ -78,10 +79,10 @@ export default function Profiler() {
       {profileStatus === PROFILE_STATUS.NOT_READY || !profile ? (
         <Loading classes={classes} />
       ) : (
-        <ProfileContext.Provider value={profile}>
+        <ProfileContext.Provider value={{ profile, parentStacks }}>
           <VanityRow classes={classes} />
-          <Stacks classes={classes} />
           <Samples classes={classes} />
+          {/* <Stacks classes={classes} /> */}
         </ProfileContext.Provider>
       )}
     </div>
@@ -115,8 +116,7 @@ Loading.propTypes = {
 };
 
 function VanityRow({ classes }) {
-  const profile = useProfile();
-  const parentFrames = useMemo(() => findParentFrames(profile), [profile]);
+  const { profile, parentStacks } = useProfile();
   return (
     <div className={classes.vanitySquareRow}>
       <VanitySquare
@@ -131,7 +131,7 @@ function VanityRow({ classes }) {
       />
       <VanitySquare
         heading="Parent Frames"
-        value={parentFrames.length}
+        value={parentStacks.length}
         classes={classes}
       />
       <VanitySquare
@@ -163,7 +163,7 @@ function VanitySquare({ heading, value, classes }) {
 }
 
 function Samples({ classes }) {
-  const profile = useProfile();
+  const { profile } = useProfile();
   const samplesWithFrames = useMemo(() => {
     let swf = [];
     profile.samples.forEach((s, idx) => {
@@ -179,31 +179,37 @@ function Samples({ classes }) {
   return (
     <div className={classes.stacksContainer}>
       <Typography variant="h5">Samples</Typography>
-      {samplesWithFrames.map(({ stackId }, idx) => {
-        const { frameId, parentId } = profile.stacks[stackId];
-        return <Frame key={idx} classes={classes} frameId={frameId} />;
+      {samplesWithFrames.map(({ stackId, duration }, idx) => {
+        const { frameId } = profile.stacks[stackId];
+        return (
+          <Frame
+            key={idx}
+            duration={duration}
+            classes={classes}
+            frameId={frameId}
+          />
+        );
       })}
     </div>
   );
 }
 
 function Stacks({ classes }) {
-  const profile = useProfile();
-  const parentFrames = useMemo(() => findParentFrames(profile), [profile]);
+  const { parentStacks } = useProfile();
   return (
     <div className={classes.stacksContainer}>
       <Typography variant="h5">Stacks</Typography>
-      {parentFrames.map(({ frameId }, idx) => {
+      {parentStacks.map(([idx, { frameId }]) => {
         return <Frame key={idx} classes={classes} frameId={frameId} />;
       })}
     </div>
   );
 }
 
-function Frame({ classes, frameId, indent = 0 }) {
+function Frame({ classes, duration, frameId, depth = 0, ancestorIds = [] }) {
   const theme = useTheme();
-  const profile = useProfile();
-  const [isOpen, setIsOpen] = useState(indent < 4);
+  const { profile } = useProfile();
+  const [isOpen, setIsOpen] = useState(depth <= 10);
 
   const { name, line, column, resourceId } = profile.frames[frameId];
 
@@ -212,13 +218,18 @@ function Frame({ classes, frameId, indent = 0 }) {
     () => profile.stacks.filter((f) => f.parentId === frameId),
     [frameId, profile]
   );
+
   const Icon = isOpen ? DownIcon : RightIcon;
+
+  const durationCopy = duration ? `(${duration.toFixed(1)}ms)` : false;
 
   return (
     <>
       <div
         className={classes.frame}
-        style={{ marginLeft: theme.spacing(indent / 2) }}
+        style={{
+          margin: theme.spacing(depth === 0 ? 3 : 0, 0, 0, depth),
+        }}
       >
         {children.length ? (
           <IconButton
@@ -232,28 +243,39 @@ function Frame({ classes, frameId, indent = 0 }) {
         ) : (
           <span />
         )}
-        <span>Frame {frameId}</span>
+        <span>
+          Frame {frameId} {durationCopy}
+        </span>
         <span>{name || "<root>"}</span>{" "}
         <span>
           ({profile.resources[resourceId]}: {line}:{column})
         </span>
       </div>
       {isOpen &&
-        indent < 10 && // TODO cycle detection
-        children.map((c) => (
-          <Frame
-            key={c.frameId}
-            classes={classes}
-            frameId={c.frameId}
-            indent={indent + 1}
-          />
-        ))}
+        children.map(
+          (c) =>
+            !ancestorIds.includes(c.frameId) && (
+              <Frame
+                key={c.frameId}
+                classes={classes}
+                frameId={c.frameId}
+                depth={depth + 1}
+                ancestorIds={ancestorIds.concat(c.frameId)}
+              />
+            )
+        )}
     </>
   );
 }
 
-function findParentFrames(profile) {
-  return profile.stacks.filter((stack) => typeof stack.parentId !== "number");
+function findParentStacks(profile) {
+  const parents = [];
+  (profile?.stack ?? []).forEach((stack, idx) => {
+    if (typeof stack.stackId === "number") {
+      parents.push([idx, stack]);
+    }
+  });
+  return parents;
 }
 
 function useProfile() {
