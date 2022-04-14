@@ -7,7 +7,7 @@ context("Navigation", () => {
     assertLandingPage();
   });
 
-  it("navigates to Pablo's page by clicking the link", () => {
+  it.skip("navigates to Pablo's page by clicking the link", () => {
     cy.contains("a", "Pablo").click();
     assertPablosPage();
   });
