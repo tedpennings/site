@@ -12,12 +12,11 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flex: "1 1 100%",
-    alignItems: "center",
     justifyContent: "center",
-    minHeight: "100vh",
   },
   root: {
     display: "grid",
+    alignItems: "center",
     gridTemplateColumns: "7fr 5fr",
     "@media(min-width: 1024px)": {
       width: 975,
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
       flexDirection: "column",
       minWidth: 250,
-      padding: theme.spacing(4, 0),
+      paddingTop: theme.spacing(4),
       width: "85%",
       "& $heading": {
         // make heading look like a polaroid label
@@ -58,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
   main: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
   },
   heading: {
     background: theme.palette.hero.outer,
@@ -68,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     display: "flex",
     flexDirection: "column",
-    flex: "1 1 100%",
     padding: theme.spacing(2, 4, 1, 4),
   },
   footer: {
