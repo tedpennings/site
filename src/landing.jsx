@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
   main: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
   },
   heading: {
     background: theme.palette.hero.outer,
