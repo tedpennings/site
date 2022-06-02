@@ -64,7 +64,7 @@
     "responsive-loader": "^2.3.0",
     "scheduler": "^0.20.2",
     "sharp": "^0.29.3",
-    "terser-webpack-plugin": "^5.2.5",
+    "terser-webpack-plugin": "^5.3.3",
     "url-loader": "4.1.1",
     "use-react-router-breadcrumbs": "^2.0.2",
     "wavesurfer.js": "^5.2.0",
