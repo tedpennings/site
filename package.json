@@ -38,7 +38,7 @@
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.3",
     "babel-plugin-import": "^1.13.3",
-    "browserslist": "^4.19.1",
+    "browserslist": "^4.21.3",
     "concurrently": "^6.5.1",
     "copy-webpack-plugin": "^10.2.4",
     "cypress": "^9.4.1",
