@@ -49,6 +49,9 @@ module.exports = {
     compress: true,
     port: 3000,
     historyApiFallback: true,
+    headers: {
+      "Document-Policy": "js-profiling",
+    },
   },
 
   module: {
